@@ -10,6 +10,7 @@
             --bg-color: #f4f4f0;
             --text-color: #1a1a1a;
             --accent-color: #333;
+            --link-color: #0077b5; /* LinkedIn Mavisi */
         }
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -24,7 +25,8 @@
             margin: 0 auto;
             padding: 20px;
         }
-        /* Header */
+        
+        /* Header & Nav */
         header {
             display: flex;
             justify-content: space-between;
@@ -37,12 +39,25 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .contact-btn {
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-link {
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
-        
+        .nav-link:hover {
+            color: #555;
+        }
+        .linkedin-btn {
+            color: #0077b5; /* LinkedIn rengi */
+        }
+
         /* Hero Section */
         .hero {
             display: flex;
@@ -53,7 +68,6 @@
             width: 100%;
             height: 400px;
             background-color: #e0e0e0;
-            /* Cam Küre Görseli */
             background-image: url('https://images.unsplash.com/photo-1484589065579-248aad0d8b13?q=80&w=1959&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -113,11 +127,41 @@
             color: #444;
         }
 
-        /* Vision Section (DÜZELTİLDİ: Artık sola hizalı) */
+        /* Insights (Makaleler) Section - YENİ EKLENDİ */
+        .insights {
+            padding: 80px 20px;
+            background-color: #fff; /* Hafif ayrışması için beyaz zemin */
+        }
+        .insight-card {
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .insight-date {
+            font-size: 0.8rem;
+            color: #888;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .insight-link {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: bold;
+            border-bottom: 1px solid #1a1a1a;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        /* Vision Section */
         .vision {
             padding: 80px 20px;
             background-color: #e8e8e4;
-            /* Flex kaldırıldı, böylece container rahatça hizalanacak */
         }
         .vision-text {
             flex: 1;
@@ -137,7 +181,7 @@
             flex: 1;
             min-width: 300px;
             display: flex;
-            justify-content: center; /* Fotoğrafı kendi alanında ortala */
+            justify-content: center;
         }
         .vision-img img {
             width: 100%;
@@ -151,33 +195,56 @@
         footer {
             background-color: #1a1a1a;
             color: #fff;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
         footer h3 {
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
-        footer a {
+        footer p {
+            color: #aaa;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+        }
+        .footer-links a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
-            opacity: 0.8;
+            margin: 0 15px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
-        footer a:hover {
+        .footer-links a:hover {
             opacity: 1;
         }
         .footer-bottom {
-            margin-top: 40px;
+            margin-top: 60px;
             font-size: 0.8rem;
-            opacity: 0.5;
+            opacity: 0.4;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        
+        /* Substack Butonu */
+        .subscribe-btn {
+            background-color: #fff;
+            color: #1a1a1a;
+            padding: 15px 40px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .subscribe-btn:hover {
+            background-color: #ddd;
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .vision h2 { font-size: 2.2rem; }
-            /* Mobilde fotoğrafı üstte göstermek için sıralama */
             .vision .container { flex-direction: column-reverse !important; }
             .vision-img img { width: 100%; }
         }
@@ -188,7 +255,10 @@
     <div class="container">
         <header>
             <div class="logo">ATILLA YALCIN AI</div>
-            <a href="mailto:contact@atillayalcin.ai" class="contact-btn">Contact</a>
+            <nav class="nav-links">
+                <a href="LINKEDIN_PROFIL_LINKINIZ" target="_blank" class="nav-link linkedin-btn">LinkedIn</a>
+                <a href="mailto:contact@atillayalcin.ai" class="nav-link">Contact</a>
+            </nav>
         </header>
 
         <section class="hero">
@@ -219,6 +289,36 @@
         </section>
     </div>
 
+    <section class="insights">
+        <div class="container">
+            <div class="section-title">LATEST INSIGHTS & ANALYSES</div>
+            <div class="services-grid">
+                
+                <article class="insight-card">
+                    <span class="insight-date">FEBRUARY 2026</span>
+                    <h3>Kurumsal Yapay Zeka Yönetişimi: CASLE Yaklaşımı</h3>
+                    <p>Yapay zeka projelerinde etik, güvenlik ve ölçeklenebilirlik standartlarını nasıl belirlersiniz?</p>
+                    <a href="#" class="insight-link">Devamını Oku &rarr;</a>
+                </article>
+
+                <article class="insight-card">
+                    <span class="insight-date">FEBRUARY 2026</span>
+                    <h3>Secure AI Gateway Mimarisi</h3>
+                    <p>Hassas verilerinizi LLM modellerine açmadan önce kurmanız gereken güvenlik katmanları.</p>
+                    <a href="#" class="insight-link">Devamını Oku &rarr;</a>
+                </article>
+
+                <article class="insight-card">
+                    <span class="insight-date">JANUARY 2026</span>
+                    <h3>NVIDIA Blackwell & Geleceğin Veri Merkezleri</h3>
+                    <p>Yüksek performanslı hesaplama (HPC) altyapılarında yeni nesil sunucu trendleri.</p>
+                    <a href="#" class="insight-link">Devamını Oku &rarr;</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
     <section class="vision">
         <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; gap:60px;">
             <div class="vision-text">
@@ -233,10 +333,19 @@
 
     <footer>
         <h3>AI STRATEJİ BÜLTENİ</h3>
-        <p>Yapay zeka ve kurumsal teknoloji trendleri hakkındaki analizlerimi takip edin.</p>
-        <br>
-        <a href="mailto:contact@atillayalcin.ai">contact@atillayalcin.ai</a>
-        <br><br>
+        <p>Yapay zeka, kurumsal teknoloji trendleri ve stratejik analizlerimi takip edin.</p>
+        
+        <a href="mailto:contact@atillayalcin.ai?subject=Bülten Aboneliği&body=Listenize katılmak istiyorum." class="subscribe-btn">
+           BÜLTENE ABONE OL
+        </a>
+        
+        <br><br><br>
+        
+        <div class="footer-links">
+            <a href="mailto:contact@atillayalcin.ai">Email</a>
+            <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
+        </div>
+
         <div class="footer-bottom">
             İstanbul, Türkiye | &copy; 2026 Atilla Yalcin
         </div>
