@@ -7,7 +7,7 @@
     <meta name="description" content="Kurumsal IT mimarileri ve Yapay Zeka stratejileri konusunda uzman danışmanlık. Secure AI Gateway, Yönetişim ve Teknoloji Dönüşümü.">
     <style>
         :root {
-            --bg-color: #f4f4f0; /* Squarespace'teki o kırık beyaz/bej ton */
+            --bg-color: #f4f4f0;
             --text-color: #1a1a1a;
             --accent-color: #333;
         }
@@ -52,7 +52,8 @@
         .hero-img {
             width: 100%;
             height: 400px;
-            background-color: #e0e0e0; /* Küre görseli için yer tutucu */
+            background-color: #e0e0e0;
+            /* Cam Küre Görseli */
             background-image: url('https://images.unsplash.com/photo-1484589065579-248aad0d8b13?q=80&w=1959&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -112,14 +113,11 @@
             color: #444;
         }
 
-        /* Vision Section */
+        /* Vision Section (DÜZELTİLDİ: Artık sola hizalı) */
         .vision {
             padding: 80px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 50px;
-            background-color: #e8e8e4; /* Hafif ton farkı */
+            background-color: #e8e8e4;
+            /* Flex kaldırıldı, böylece container rahatça hizalanacak */
         }
         .vision-text {
             flex: 1;
@@ -138,12 +136,15 @@
         .vision-img {
             flex: 1;
             min-width: 300px;
+            display: flex;
+            justify-content: center; /* Fotoğrafı kendi alanında ortala */
         }
         .vision-img img {
             width: 100%;
             max-width: 400px;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: cover;
         }
 
         /* Footer */
@@ -176,7 +177,8 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .vision h2 { font-size: 2.2rem; }
-            .vision { flex-direction: column-reverse; } /* Mobilde foto üstte */
+            /* Mobilde fotoğrafı üstte göstermek için sıralama */
+            .vision .container { flex-direction: column-reverse !important; }
             .vision-img img { width: 100%; }
         }
     </style>
@@ -218,7 +220,7 @@
     </div>
 
     <section class="vision">
-        <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; gap:40px;">
+        <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; gap:60px;">
             <div class="vision-text">
                 <h2>Vizyon & Liderlik</h2>
                 <p>Yapay zeka, sadece bir teknoloji değil, iş dünyasını yeniden tanımlayan bir strateji devrimidir. Amacım, karmaşık algoritmaları anlaşılır iş değerlerine dönüştürerek, kurumların geleceğe güvenle adım atmasını sağlamaktır. Teknolojik derinliği, yönetimsel vizyonla birleştiriyorum.</p>
