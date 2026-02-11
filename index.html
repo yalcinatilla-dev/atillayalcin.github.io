@@ -13,9 +13,8 @@
             --bg-dark: #0a0a0a;
             --bg-card: #161616;
             --text-main: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #b0b0b0;
             --accent: #00f2ff; /* Neon Cyan */
-            --accent-hover: #00c8d4;
             --accent-gradient: linear-gradient(90deg, #00f2ff, #0077ff);
         }
 
@@ -30,7 +29,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Yatay kaydırmayı engelle */
+            overflow-x: hidden;
         }
 
         /* --- HEADER & NAV (Sticky) --- */
@@ -38,8 +37,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.85); /* Hafif şeffaf */
-            backdrop-filter: blur(12px); /* Buzlu cam efekti */
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             transition: all 0.3s ease;
@@ -61,7 +60,7 @@
             text-transform: uppercase;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; /* Yazı içi degrade */
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
@@ -76,7 +75,6 @@
             font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.3s;
-            position: relative;
         }
 
         .nav-links a:hover {
@@ -96,35 +94,45 @@
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (VIDEO BACKGROUND) --- */
         .hero {
-            height: 100vh; /* Tam ekran */
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Arka plan: Merkezde hafif aydınlık, kenarlar karanlık */
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
-            padding: 0 20px;
             position: relative;
+            padding: 0 20px;
+            overflow: hidden;
         }
 
-        /* Arka plan görseli (Silik teknoloji deseni) */
-        .hero::before {
-            content: '';
+        /* Video Arka Plan Ayarları */
+        .video-bg {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            /* Unsplash'ten soyut teknoloji görseli */
-            background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop'); 
-            background-size: cover;
-            background-position: center;
-            opacity: 0.08; /* Çok silik */
-            z-index: 0;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.4; /* Video parlaklığını kıstık ki yazı okunsun */
+            filter: grayscale(100%) contrast(1.2); /* Videoyu siyah beyaz ve keskin yap */
+        }
+        
+        /* Video yüklenmezse arkada duracak renk */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(10,10,10,1) 90%);
+            z-index: -1;
         }
 
         .hero-content {
-            z-index: 1; /* Görselin üstünde durması için */
+            z-index: 1;
             max-width: 900px;
         }
 
@@ -136,14 +144,16 @@
             background: linear-gradient(to bottom right, #ffffff, #888888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-size: 1.3rem;
-            color: var(--text-muted);
+            color: #e0e0e0;
             max-width: 750px;
             margin: 0 auto 40px auto;
             font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
 
         .cta-btn {
@@ -160,10 +170,10 @@
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.5); /* Neon parlama */
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
         }
 
-        /* --- TECH STACK STRIP (Kayan Yazı Efekti Verebiliriz ama sabit tuttum) --- */
+        /* --- TECH STACK STRIP --- */
         .tech-strip {
             background: #0f0f0f;
             padding: 35px 0;
@@ -174,10 +184,10 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: center; /* Ortala */
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 40px; /* Logolar arası boşluk */
+            gap: 40px;
             color: #444;
             font-weight: 800;
             font-size: 1.5rem;
@@ -185,7 +195,6 @@
             letter-spacing: 2px;
         }
         .tech-item {
-            cursor: default;
             transition: all 0.3s;
         }
         .tech-item:hover {
@@ -211,7 +220,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- CARDS (Glassmorphism Style) --- */
+        /* --- CARDS --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -219,18 +228,17 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.02); /* Çok şeffaf beyaz */
-            border: 1px solid rgba(255, 255, 255, 0.08); /* İnce çerçeve */
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px;
             border-radius: 12px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .card:hover {
             background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-10px); /* Yukarı kalkma efekti */
-            border-color: var(--accent); /* Kenarlık rengi değişir */
+            transform: translateY(-10px);
+            border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -264,18 +272,9 @@
             padding-bottom: 2px;
             transition: 0.3s;
         }
-        .card-link i {
-            font-size: 0.9rem;
-            margin: 0 0 0 8px; /* İkon ayarı */
-            color: var(--text-main);
-        }
         .card-link:hover {
             color: var(--accent);
             border-color: transparent;
-        }
-        .card-link:hover i {
-            margin-left: 12px;
-            color: var(--accent);
         }
 
         .date-badge {
@@ -286,6 +285,62 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 700;
+        }
+
+        /* --- VISION / ABOUT SECTION (YENİLENEN KISIM) --- */
+        .vision-section {
+            background: #111;
+            padding: 100px 20px;
+            border-top: 1px solid #222;
+        }
+        
+        .vision-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .vision-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .vision-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vision-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .vision-img-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .vision-img-container img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+            filter: grayscale(20%); /* Hafif siyah beyaz tonu */
+            transition: 0.3s;
+        }
+        
+        .vision-img-container img:hover {
+            filter: grayscale(0%); /* Üzerine gelince renklenir */
+            transform: scale(1.02);
+            border-color: var(--accent);
         }
 
         /* --- FOOTER --- */
@@ -323,13 +378,12 @@
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* MOBILE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
-            .nav-links { display: none; } /* Mobilde üst menü kalabalık yapmasın */
-            .tech-container { gap: 20px; font-size: 1.2rem; }
-            .section { padding: 80px 20px; }
+            .vision-wrapper { flex-direction: column-reverse; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -338,10 +392,10 @@
     <header>
         <div class="nav-container">
             <div class="logo">ATILLA YALCIN</div>
-            
             <nav class="nav-links">
                 <a href="#solutions">Çözümler</a>
                 <a href="#insights">Analizler</a>
+                <a href="#about">Vizyon</a>
                 <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
                 <a href="mailto:contact@atillayalcin.ai" class="btn-contact">İletişime Geç</a>
             </nav>
@@ -349,6 +403,10 @@
     </header>
 
     <section class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://cdn.coverr.co/videos/coverr-digital-connections-background-1080p-5054.mp4" type="video/mp4">
+            </video>
+
         <div class="hero-content">
             <h1>Future of Enterprise AI<br>Is Now.</h1>
             <p>Business Development & Solution Strategy Lead olarak; NVIDIA Blackwell gücünü, Güvenli AI Ağ Geçitlerini ve CASLE Yönetişim modellerini kurumunuza entegre ediyorum.</p>
@@ -389,6 +447,19 @@
         </div>
     </section>
 
+    <section id="about" class="vision-section">
+        <div class="container vision-wrapper">
+            <div class="vision-text">
+                <h2>Vizyon & Liderlik</h2>
+                <p>Yapay zeka, sadece bir teknoloji değil, iş dünyasını yeniden tanımlayan bir strateji devrimidir.</p>
+                <p>Amacım; karmaşık algoritmaları ve ileri sunucu teknolojilerini, C-Level yöneticilerin anlayabileceği net iş değerlerine dönüştürmektir. Teknolojik derinliği, yönetimsel vizyonla birleştirerek kurumlarınızı geleceğe hazırlıyorum.</p>
+            </div>
+            <div class="vision-img-container">
+                <img src="atilla.jpg" alt="Atilla Yalcin">
+            </div>
+        </div>
+    </section>
+
     <section id="insights" class="section" style="background:#0e0e0e;">
         <div class="container">
             <h2 class="section-title">LATEST INSIGHTS & ANALYSES</h2>
@@ -424,9 +495,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 60px;">
-                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:5px; font-size:0.9rem; transition:0.3s;">
-                    TÜM ARŞİVİ GÖRÜNTÜLE &rarr;
-                </a>
+                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:5px;">TÜM ARŞİVİ GÖRÜNTÜLE &rarr;</a>
             </div>
         </div>
     </section>
@@ -434,7 +503,7 @@
     <footer>
         <div class="newsletter-box">
             <h3 style="color:#fff; margin-bottom:15px; font-size:1.8rem;">AI Strateji Bülteni</h3>
-            <p style="color:#aaa;">Sektördeki gürültüden uzak, saf stratejik içgörüler ve analizler.</p>
+            <p style="color:#aaa;">Sektördeki gürültüden uzak, saf stratejik içgörüler.</p>
             <a href="https://atillayalcin.substack.com/subscribe" target="_blank" class="subscribe-btn-large">
                 BÜLTENE ABONE OL
             </a>
