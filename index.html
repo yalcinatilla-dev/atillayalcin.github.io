@@ -5,355 +5,446 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atilla Yalcin | Enterprise IT & AI Strategy Lead</title>
     <meta name="description" content="Kurumsal IT mimarileri ve Yapay Zeka stratejileri konusunda uzman danışmanlık. Secure AI Gateway, Yönetişim ve Teknoloji Dönüşümü.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-color: #f4f4f0;
-            --text-color: #1a1a1a;
-            --accent-color: #333;
-            --link-color: #0077b5; /* LinkedIn Mavisi */
+            /* Enterprise Dark Theme Palette */
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent: #00f2ff; /* Neon Cyan */
+            --accent-hover: #00c8d4;
+            --accent-gradient: linear-gradient(90deg, #00f2ff, #0077ff);
         }
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden; /* Yatay kaydırmayı engelle */
+        }
+
+        /* --- HEADER & NAV (Sticky) --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.85); /* Hafif şeffaf */
+            backdrop-filter: blur(12px); /* Buzlu cam efekti */
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Yazı içi degrade */
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-contact {
+            border: 1px solid var(--accent);
+            padding: 8px 22px;
+            border-radius: 50px;
+            color: var(--accent) !important;
+            transition: all 0.3s;
+        }
+        .btn-contact:hover {
+            background: var(--accent);
+            color: #000 !important;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; /* Tam ekran */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Arka plan: Merkezde hafif aydınlık, kenarlar karanlık */
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Arka plan görseli (Silik teknoloji deseni) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* Unsplash'ten soyut teknoloji görseli */
+            background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08; /* Çok silik */
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1; /* Görselin üstünde durması için */
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom right, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: #000;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.5); /* Neon parlama */
+        }
+
+        /* --- TECH STACK STRIP (Kayan Yazı Efekti Verebiliriz ama sabit tuttum) --- */
+        .tech-strip {
+            background: #0f0f0f;
+            padding: 35px 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+        .tech-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Ortala */
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px; /* Logolar arası boşluk */
+            color: #444;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .tech-item {
+            cursor: default;
+            transition: all 0.3s;
+        }
+        .tech-item:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        .section {
+            padding: 120px 20px;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header & Nav */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 20px;
-        }
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        .nav-link:hover {
-            color: #555;
-        }
-        .linkedin-btn {
-            color: #0077b5; /* LinkedIn rengi */
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            padding: 60px 20px;
-        }
-        .hero-img {
-            width: 100%;
-            height: 400px;
-            background-color: #e0e0e0;
-            background-image: url('https://images.unsplash.com/photo-1484589065579-248aad0d8b13?q=80&w=1959&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border-radius: 4px;
-            margin-bottom: 40px;
-        }
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-        .cta-button:hover {
-            background-color: #444;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 20px;
-            border-top: 1px solid #ddd;
         }
         .section-title {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 2rem;
             margin-bottom: 60px;
-            font-weight: 600;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        .service-item h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-        .service-item p {
-            font-size: 1rem;
-            color: #444;
-        }
-
-        /* Insights (Makaleler) Section - YENİ EKLENDİ */
-        .insights {
-            padding: 80px 20px;
-            background-color: #fff; /* Hafif ayrışması için beyaz zemin */
-        }
-        .insight-card {
-            border: 1px solid #eee;
-            padding: 30px;
-            border-radius: 4px;
-            transition: transform 0.3s;
-        }
-        .insight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-        .insight-date {
-            font-size: 0.8rem;
-            color: #888;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .insight-link {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: bold;
-            border-bottom: 1px solid #1a1a1a;
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        /* Vision Section */
-        .vision {
-            padding: 80px 20px;
-            background-color: #e8e8e4;
-        }
-        .vision-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .vision-text h2 {
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            letter-spacing: -1px;
-        }
-        .vision-text p {
-            font-size: 1.1rem;
-            max-width: 800px;
-        }
-        .vision-img {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            justify-content: center;
-        }
-        .vision-img img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1a1a1a;
             color: #fff;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
-        footer p {
-            color: #aaa;
-            max-width: 500px;
-            margin: 0 auto 30px auto;
-        }
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        .footer-bottom {
-            margin-top: 60px;
-            font-size: 0.8rem;
-            opacity: 0.4;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-        
-        /* Substack Butonu */
-        .subscribe-btn {
-            background-color: #fff;
-            color: #1a1a1a;
-            padding: 15px 40px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-        .subscribe-btn:hover {
-            background-color: #ddd;
+
+        /* --- CARDS (Glassmorphism Style) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        /* Mobile Responsiveness */
+        .card {
+            background: rgba(255, 255, 255, 0.02); /* Çok şeffaf beyaz */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* İnce çerçeve */
+            padding: 40px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px); /* Yukarı kalkma efekti */
+            border-color: var(--accent); /* Kenarlık rengi değişir */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .card i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .card-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+        .card-link i {
+            font-size: 0.9rem;
+            margin: 0 0 0 8px; /* İkon ayarı */
+            color: var(--text-main);
+        }
+        .card-link:hover {
+            color: var(--accent);
+            border-color: transparent;
+        }
+        .card-link:hover i {
+            margin-left: 12px;
+            color: var(--accent);
+        }
+
+        .date-badge {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 15px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #050505;
+            padding: 80px 20px;
+            border-top: 1px solid #222;
+            text-align: center;
+        }
+
+        .newsletter-box {
+            background: #111;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            padding: 50px 30px;
+            border-radius: 16px;
+            border: 1px solid #222;
+        }
+
+        .subscribe-btn-large {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 15px 50px;
+            border-radius: 4px;
+            font-weight: 800;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .subscribe-btn-large:hover {
+            background: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .vision h2 { font-size: 2.2rem; }
-            .vision .container { flex-direction: column-reverse !important; }
-            .vision-img img { width: 100%; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .nav-links { display: none; } /* Mobilde üst menü kalabalık yapmasın */
+            .tech-container { gap: 20px; font-size: 1.2rem; }
+            .section { padding: 80px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo">ATILLA YALCIN AI</div>
+    <header>
+        <div class="nav-container">
+            <div class="logo">ATILLA YALCIN</div>
+            
             <nav class="nav-links">
+                <a href="#solutions">Çözümler</a>
+                <a href="#insights">Analizler</a>
                 <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
-                <a href="mailto:contact@atillayalcin.ai" class="nav-link">Contact</a>
+                <a href="mailto:contact@atillayalcin.ai" class="btn-contact">İletişime Geç</a>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-img"></div>
-            <div class="hero-content">
-                <h1>Enterprise IT & AI Strategy Lead</h1>
-                <p>Kurumsal IT mimarileri ile İleri Yapay Zeka teknolojileri arasında köprü kuruyorum. Karmaşık teknolojileri, uygulanabilir iş stratejilerine ve ticari değere dönüştürmenizde size rehberlik ediyorum.</p>
-                <a href="mailto:contact@atillayalcin.ai" class="cta-button">İletişime Geçin</a>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Future of Enterprise AI<br>Is Now.</h1>
+            <p>Business Development & Solution Strategy Lead olarak; NVIDIA Blackwell gücünü, Güvenli AI Ağ Geçitlerini ve CASLE Yönetişim modellerini kurumunuza entegre ediyorum.</p>
+            <a href="mailto:contact@atillayalcin.ai" class="cta-btn">Stratejik Danışmanlık Alın</a>
+        </div>
+    </section>
 
-        <section class="services">
-            <div class="section-title">STRATEGIC SOLUTIONS</div>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>AI Strategy & Governance</h3>
-                    <p>Kurumlar için sürdürülebilir ve ölçeklenebilir yapay zeka yol haritaları. CASLE standartlarında, etik ve güvenli dönüşüm stratejileri.</p>
+    <div class="tech-strip">
+        <div class="tech-container">
+            <div class="tech-item">NVIDIA</div>
+            <div class="tech-item">HUAWEI</div>
+            <div class="tech-item">HPE</div>
+            <div class="tech-item">OPENAI</div>
+            <div class="tech-item">GITHUB</div>
+        </div>
+    </div>
+
+    <section id="solutions" class="section">
+        <div class="container">
+            <h2 class="section-title">STRATEJİK ÇÖZÜMLER</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Enterprise Tech Transformation</h3>
+                    <p>NVIDIA Blackwell mimarisi, On-premise (Yerinde) ve Hibrit Bulut (Hybrid Cloud) altyapılarıyla IT sistemlerinin modernizasyonu ve uçtan uca proje yönetimi.</p>
                 </div>
-                <div class="service-item">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
                     <h3>Secure AI Gateway</h3>
                     <p>Hassas kurumsal verileri koruyan, KVKK uyumlu yapay zeka entegrasyonları ve güvenli ağ geçidi mimarileri.</p>
                 </div>
-                <div class="service-item">
-    <h3>Enterprise Tech Transformation</h3>
-    <p>NVIDIA Blackwell mimarisi, On-premise (Yerinde) ve Hibrit Bulut (Hybrid Cloud) altyapılarıyla IT sistemlerinin modernizasyonu ve uçtan uca proje yönetimi.</p>
-</div>
+                <div class="card">
+                    <i class="fas fa-chess-king"></i>
+                    <h3>AI Strategy & Governance</h3>
+                    <p>Kurumlar için sürdürülebilir ve ölçeklenebilir yapay zeka yol haritaları. CASLE standartlarında, etik ve güvenli dönüşüm stratejileri.</p>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <section class="insights" style="padding: 80px 20px; background-color: #fff;">
+    <section id="insights" class="section" style="background:#0e0e0e;">
         <div class="container">
-            <div class="section-title" style="margin-bottom: 40px;">LATEST INSIGHTS & ANALYSES</div>
-            <div class="services-grid">
+            <h2 class="section-title">LATEST INSIGHTS & ANALYSES</h2>
+            <div class="grid">
                 
-                <article style="border: 1px solid #eee; padding: 30px; border-radius: 4px; transition: transform 0.3s;">
-                    <span style="font-size: 0.8rem; color: #666; display: block; margin-bottom: 10px;">FEBRUARY 2026</span>
-                    <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Kurumsal Yapay Zeka Yönetişimi: CASLE</h3>
-                    <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">Yapay zeka projelerinde etik, güvenlik ve ROI standartlarını nasıl belirlersiniz?</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/kurumsal-ai-yonetisimi-ve-casle-standartlar?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" style="text-decoration: none; color: #1a1a1a; font-weight: bold; border-bottom: 1px solid #1a1a1a;">Devamını Oku &rarr;</a>
+                <article class="card">
+                    <span class="date-badge">STRATEGY • FEB 2026</span>
+                    <h3>Kurumsal Yapay Zeka Yönetişimi: CASLE</h3>
+                    <p>Yapay zeka projelerinde etik, güvenlik ve ROI standartlarını nasıl belirlersiniz?</p>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/kurumsal-ai-yonetisimi-ve-casle-standartlar?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
+                        Analizi Oku <i class="fas fa-arrow-right"></i>
+                    </a>
                 </article>
 
-                <article style="border: 1px solid #eee; padding: 30px; border-radius: 4px; transition: transform 0.3s;">
-                    <span style="font-size: 0.8rem; color: #666; display: block; margin-bottom: 10px;">FEBRUARY 2026</span>
-                    <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Secure AI Gateway Mimarisi</h3>
-                    <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">Hassas verilerinizi LLM modellerine açmadan önce kurmanız gereken güvenlik katmanları.</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/secure-ai-gateway-veriniz-dsar-szmasn?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" style="text-decoration: none; color: #1a1a1a; font-weight: bold; border-bottom: 1px solid #1a1a1a;">Devamını Oku &rarr;</a>
+                <article class="card">
+                    <span class="date-badge">SECURITY • FEB 2026</span>
+                    <h3>Secure AI Gateway Mimarisi</h3>
+                    <p>Hassas verilerinizi LLM modellerine açmadan önce kurmanız gereken güvenlik katmanları.</p>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/secure-ai-gateway-veriniz-dsar-szmasn?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
+                        Analizi Oku <i class="fas fa-arrow-right"></i>
+                    </a>
                 </article>
 
-                <article style="border: 1px solid #eee; padding: 30px; border-radius: 4px; transition: transform 0.3s;">
-                    <span style="font-size: 0.8rem; color: #666; display: block; margin-bottom: 10px;">FEBRUARY 2026</span>
-                    <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Hype Bitti, İnşaat Başladı</h3>
-                    <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">NVIDIA Blackwell, Altyapı yatırımları ve PoC döneminden üretime geçiş rehberi.</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" style="text-decoration: none; color: #1a1a1a; font-weight: bold; border-bottom: 1px solid #1a1a1a;">Devamını Oku &rarr;</a>
+                <article class="card">
+                    <span class="date-badge">INFRASTRUCTURE • FEB 2026</span>
+                    <h3>Hype Bitti, İnşaat Başladı</h3>
+                    <p>NVIDIA Blackwell, Altyapı yatırımları ve PoC döneminden üretime geçiş rehberi.</p>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
+                        Analizi Oku <i class="fas fa-arrow-right"></i>
+                    </a>
                 </article>
 
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="text-decoration: none; border: 1px solid #1a1a1a; padding: 12px 30px; color: #1a1a1a; font-weight: bold; border-radius: 4px; transition: all 0.3s;">
-                    TÜM YAYINLARI VE ARŞİVİ İNCELE &rarr;
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:5px; font-size:0.9rem; transition:0.3s;">
+                    TÜM ARŞİVİ GÖRÜNTÜLE &rarr;
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="vision">
-        <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; gap:60px;">
-            <div class="vision-text">
-                <h2>Vizyon & Liderlik</h2>
-                <p>Yapay zeka, sadece bir teknoloji değil, iş dünyasını yeniden tanımlayan bir strateji devrimidir. Amacım, karmaşık algoritmaları anlaşılır iş değerlerine dönüştürerek, kurumların geleceğe güvenle adım atmasını sağlamaktır. Teknolojik derinliği, yönetimsel vizyonla birleştiriyorum.</p>
-            </div>
-            <div class="vision-img">
-                <img src="atilla.jpg" alt="Atilla Yalcin">
-            </div>
-        </div>
-    </section>
-
     <footer>
-        <h3>AI STRATEJİ BÜLTENİ</h3>
-        <p>Yapay zeka, kurumsal teknoloji trendleri ve stratejik analizlerimi takip edin.</p>
-        
-        <a href="https://atillayalcin.substack.com/subscribe" target="_blank" class="subscribe-btn">
-   BÜLTENE ABONE OL
-        </a>
-        
-        <br><br><br>
-        
-        <div class="footer-links">
-            <a href="mailto:contact@atillayalcin.ai">Email</a>
-            <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
+        <div class="newsletter-box">
+            <h3 style="color:#fff; margin-bottom:15px; font-size:1.8rem;">AI Strateji Bülteni</h3>
+            <p style="color:#aaa;">Sektördeki gürültüden uzak, saf stratejik içgörüler ve analizler.</p>
+            <a href="https://atillayalcin.substack.com/subscribe" target="_blank" class="subscribe-btn-large">
+                BÜLTENE ABONE OL
+            </a>
         </div>
-
-        <div class="footer-bottom">
-            İstanbul, Türkiye | &copy; 2026 Atilla Yalcin
+        
+        <div style="opacity: 0.5; font-size: 0.9rem; margin-top:50px;">
+            &copy; 2026 Atilla Yalcin | Enterprise IT & AI Strategy
+            <br><br>
+            <a href="mailto:contact@atillayalcin.ai" style="color:#fff; text-decoration:none; margin:0 15px;">Email</a>
+            <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank" style="color:#fff; text-decoration:none; margin:0 15px;">LinkedIn</a>
         </div>
     </footer>
 
