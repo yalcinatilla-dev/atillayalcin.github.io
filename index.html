@@ -9,106 +9,37 @@
     
     <style>
         :root {
-            /* Enterprise Dark Theme Palette */
             --bg-dark: #0a0a0a;
-            --bg-card: #161616;
             --text-main: #ffffff;
             --text-muted: #b0b0b0;
-            --accent: #00f2ff; /* Neon Cyan */
+            --accent: #00f2ff; 
             --accent-gradient: linear-gradient(90deg, #00f2ff, #0077ff);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        body {
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        /* HEADER */
+        header { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-contact { border: 1px solid var(--accent); padding: 8px 22px; border-radius: 50px; color: var(--accent) !important; }
+        .btn-contact:hover { background: var(--accent); color: #000 !important; }
 
-        /* --- HEADER & NAV (Sticky) --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .btn-contact {
-            border: 1px solid var(--accent);
-            padding: 8px 22px;
-            border-radius: 50px;
-            color: var(--accent) !important;
-            transition: all 0.3s;
-        }
-        .btn-contact:hover {
-            background: var(--accent);
-            color: #000 !important;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
-        }
-
-        /* --- HERO SECTION (VIDEO BACKGROUND) --- */
+        /* HERO SECTION (VIDEO FIXED) */
         .hero {
+            position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            padding: 0 20px;
             overflow: hidden;
-            /* Video yüklenmezse görünecek yedek görsel */
-            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
         }
 
-        /* Video Ayarları - Kesin Çalışması İçin */
+        /* Video Tam Ekran Ayarı */
         .video-bg {
             position: absolute;
             top: 50%;
@@ -118,277 +49,63 @@
             width: auto;
             height: auto;
             transform: translate(-50%, -50%);
-            z-index: 0; /* En arkada */
-            opacity: 0.6; /* Görünürlük ayarı */
+            z-index: -2; /* En altta */
             object-fit: cover;
+            filter: brightness(0.6); /* Videoyu hafif karart ki yazı parlasın */
         }
-        
-        /* Videonun üzerine gelen koyu filtre (Yazı okunsun diye) */
-        .hero::after {
+
+        /* Videonun üzerine ince siyah tül (Yazı okunurluğu için) */
+        .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 90%);
-            z-index: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: -1;
         }
 
-        .hero-content {
-            z-index: 2; /* Her şeyin üstünde */
-            max-width: 900px;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom right, #ffffff, #aaaaaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #fff;
-            max-width: 750px;
-            margin: 0 auto 40px auto;
-            font-weight: 300;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background: var(--accent-gradient);
-            color: #000;
-            padding: 16px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
-        }
-
-        /* --- TECH STACK STRIP --- */
-        .tech-strip {
-            background: #0f0f0f;
-            padding: 35px 0;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
-            position: relative;
-            z-index: 2;
-        }
-        .tech-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            color: #444;
-            font-weight: 800;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .tech-item {
-            transition: all 0.3s;
-        }
-        .tech-item:hover {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-
-        /* --- SECTIONS COMMON --- */
-        .section {
-            padding: 120px 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 60px;
-            color: #fff;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- CARDS --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 40px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-            font-weight: 600;
-        }
+        .hero-content { z-index: 1; max-width: 900px; padding: 20px; }
+        .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.3rem; color: #eee; max-width: 750px; margin: 0 auto 40px auto; text-shadow: 0 2px 10px rgba(0,0,0,1); }
         
-        .card i {
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            display: block;
-        }
+        .cta-btn { display: inline-block; background: var(--accent-gradient); color: #000; padding: 16px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0, 242, 255, 0.6); }
 
-        .card p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
+        /* TECH STRIP */
+        .tech-strip { background: #0f0f0f; padding: 30px 0; border-y: 1px solid #222; }
+        .tech-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 40px; color: #444; font-weight: 800; font-size: 1.5rem; flex-wrap: wrap; }
+        .tech-item:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); transition: 0.3s; }
 
-        .card-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-            transition: 0.3s;
-        }
-        .card-link:hover {
-            color: var(--accent);
-            border-color: transparent;
-        }
-
-        .date-badge {
-            font-size: 0.75rem;
-            color: #666;
-            margin-bottom: 15px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-        }
-
-        /* --- VISION / ABOUT SECTION (FOTOĞRAFLI) --- */
-        .vision-section {
-            background: #111;
-            padding: 100px 20px;
-            border-top: 1px solid #222;
-        }
+        /* SECTIONS */
+        .section { padding: 100px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 50px; border-left: 4px solid var(--accent); padding-left: 20px; color: #fff; }
         
-        .vision-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .vision-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .vision-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            background: linear-gradient(90deg, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .vision-text p {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .vision-img-container {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .vision-img-container img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border: 1px solid #333;
-            filter: grayscale(20%);
-            transition: 0.3s;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         
-        .vision-img-container img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.02);
-            border-color: var(--accent);
-        }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 12px; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; display: block; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .card p { color: var(--text-muted); margin-bottom: 25px; }
+        .card-link { color: #fff; text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
 
-        /* --- FOOTER --- */
-        footer {
-            background: #050505;
-            padding: 80px 20px;
-            border-top: 1px solid #222;
-            text-align: center;
-        }
+        /* VIZYON & FOTOĞRAF */
+        .vision-section { background: #111; padding: 100px 20px; border-top: 1px solid #222; }
+        .vision-wrapper { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .vision-text { flex: 1; min-width: 300px; }
+        .vision-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
+        .vision-img-container { flex: 1; display: flex; justify-content: center; }
+        .vision-img-container img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); filter: grayscale(20%); transition: 0.3s; border: 1px solid #333; }
+        .vision-img-container img:hover { filter: grayscale(0%); transform: scale(1.02); border-color: var(--accent); }
 
-        .newsletter-box {
-            background: #111;
-            max-width: 600px;
-            margin: 0 auto 50px auto;
-            padding: 50px 30px;
-            border-radius: 16px;
-            border: 1px solid #222;
-        }
+        /* FOOTER */
+        footer { background: #050505; padding: 80px 20px; text-align: center; border-top: 1px solid #222; }
+        .newsletter-box { background: #111; max-width: 600px; margin: 0 auto 50px; padding: 50px; border-radius: 16px; border: 1px solid #222; }
+        .subscribe-btn-large { display: inline-block; background: #fff; color: #000; padding: 15px 50px; font-weight: 800; text-decoration: none; margin-top: 20px; border-radius: 4px; transition: 0.3s; }
+        .subscribe-btn-large:hover { background: var(--accent); }
 
-        .subscribe-btn-large {
-            display: inline-block;
-            background: #fff;
-            color: #000;
-            padding: 15px 50px;
-            border-radius: 4px;
-            font-weight: 800;
-            text-decoration: none;
-            margin-top: 25px;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .subscribe-btn-large:hover {
-            background: var(--accent);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 2.5rem; } 
             .vision-wrapper { flex-direction: column-reverse; }
             .nav-links { display: none; }
         }
@@ -410,8 +127,8 @@
     </header>
 
     <section class="hero">
-        <video autoplay muted loop playsinline class="video-bg">
-            <source src="https://video.wixstatic.com/video/11062b_9261f25270924b1086a2be29c540995c/1080p/mp4/file.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline class="video-bg" poster="https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_960_720.jpg">
+            <source src="https://cdn.pixabay.com/video/2020/04/18/36464-411234710_large.mp4" type="video/mp4">
         </video>
 
         <div class="hero-content">
@@ -458,8 +175,8 @@
         <div class="container vision-wrapper">
             <div class="vision-text">
                 <h2>Vizyon & Liderlik</h2>
-                <p>Yapay zeka, sadece bir teknoloji değil, iş dünyasını yeniden tanımlayan bir strateji devrimidir.</p>
-                <p>Amacım; karmaşık algoritmaları ve ileri sunucu teknolojilerini, C-Level yöneticilerin anlayabileceği net iş değerlerine dönüştürmektir. Teknolojik derinliği, yönetimsel vizyonla birleştirerek kurumlarınızı geleceğe hazırlıyorum.</p>
+                <p style="color:#ddd; margin-bottom:20px;">Yapay zeka, sadece bir teknoloji değil, iş dünyasını yeniden tanımlayan bir strateji devrimidir.</p>
+                <p style="color:#aaa;">Amacım; karmaşık algoritmaları ve ileri sunucu teknolojilerini, C-Level yöneticilerin anlayabileceği net iş değerlerine dönüştürmektir. Teknolojik derinliği, yönetimsel vizyonla birleştirerek kurumlarınızı geleceğe hazırlıyorum.</p>
             </div>
             <div class="vision-img-container">
                 <img src="atilla.jpg" alt="Atilla Yalcin">
@@ -469,58 +186,48 @@
 
     <section id="insights" class="section" style="background:#0e0e0e;">
         <div class="container">
-            <h2 class="section-title">LATEST INSIGHTS & ANALYSES</h2>
+            <h2 class="section-title">LATEST INSIGHTS</h2>
             <div class="grid">
                 
                 <article class="card">
-                    <span class="date-badge">STRATEGY • FEB 2026</span>
+                    <span style="font-size:0.75rem; color:#666; display:block; margin-bottom:10px; font-weight:bold;">STRATEGY • FEB 2026</span>
                     <h3>Kurumsal Yapay Zeka Yönetişimi: CASLE</h3>
                     <p>Yapay zeka projelerinde etik, güvenlik ve ROI standartlarını nasıl belirlersiniz?</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/kurumsal-ai-yonetisimi-ve-casle-standartlar?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
-                        Analizi Oku <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/kurumsal-ai-yonetisimi-ve-casle-standartlar?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">Analizi Oku &rarr;</a>
                 </article>
 
                 <article class="card">
-                    <span class="date-badge">SECURITY • FEB 2026</span>
+                    <span style="font-size:0.75rem; color:#666; display:block; margin-bottom:10px; font-weight:bold;">SECURITY • FEB 2026</span>
                     <h3>Secure AI Gateway Mimarisi</h3>
                     <p>Hassas verilerinizi LLM modellerine açmadan önce kurmanız gereken güvenlik katmanları.</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/secure-ai-gateway-veriniz-dsar-szmasn?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
-                        Analizi Oku <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/secure-ai-gateway-veriniz-dsar-szmasn?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">Analizi Oku &rarr;</a>
                 </article>
 
                 <article class="card">
-                    <span class="date-badge">INFRASTRUCTURE • FEB 2026</span>
+                    <span style="font-size:0.75rem; color:#666; display:block; margin-bottom:10px; font-weight:bold;">INFRASTRUCTURE • FEB 2026</span>
                     <h3>Hype Bitti, İnşaat Başladı</h3>
                     <p>NVIDIA Blackwell, Altyapı yatırımları ve PoC döneminden üretime geçiş rehberi.</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">
-                        Analizi Oku <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal?r=7im7me&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" class="card-link">Analizi Oku &rarr;</a>
                 </article>
 
             </div>
-            
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:5px;">TÜM ARŞİVİ GÖRÜNTÜLE &rarr;</a>
+            <div style="text-align:center; margin-top:50px;">
+                <a href="https://atillayalcin.substack.com/archive" target="_blank" style="color:#fff; text-decoration:none; border-bottom:1px solid #555;">TÜM ARŞİVİ GÖRÜNTÜLE &rarr;</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="newsletter-box">
-            <h3 style="color:#fff; margin-bottom:15px; font-size:1.8rem;">AI Strateji Bülteni</h3>
+            <h3 style="color:#fff; margin-bottom:15px; font-size:1.5rem;">AI Strateji Bülteni</h3>
             <p style="color:#aaa;">Sektördeki gürültüden uzak, saf stratejik içgörüler.</p>
-            <a href="https://atillayalcin.substack.com/subscribe" target="_blank" class="subscribe-btn-large">
-                BÜLTENE ABONE OL
-            </a>
+            <a href="https://atillayalcin.substack.com/subscribe" target="_blank" class="subscribe-btn-large">BÜLTENE ABONE OL</a>
         </div>
-        
-        <div style="opacity: 0.5; font-size: 0.9rem; margin-top:50px;">
+        <div style="opacity:0.5; font-size:0.9rem; margin-top:40px;">
             &copy; 2026 Atilla Yalcin | Enterprise IT & AI Strategy
             <br><br>
-            <a href="mailto:contact@atillayalcin.ai" style="color:#fff; text-decoration:none; margin:0 15px;">Email</a>
-            <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank" style="color:#fff; text-decoration:none; margin:0 15px;">LinkedIn</a>
+            <a href="mailto:contact@atillayalcin.ai" style="color:#fff; margin:0 10px;">Email</a>
+            <a href="https://www.linkedin.com/in/atilla-yalçın-03037672/" target="_blank" style="color:#fff; margin:0 10px;">LinkedIn</a>
         </div>
     </footer>
 
