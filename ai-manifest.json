@@ -1,0 +1,28 @@
+{
+  "schema_version": "2026.1",
+  "name": "Atilla Yalçın - AI Strategy & Leadership",
+  "description": "Enterprise IT, AI Infrastructure and CAIO Strategy Lead Portfolio",
+  "author": {
+    "name": "Atilla Yalçın",
+    "role": "Business Development & Solution Strategy Lead",
+    "website": "https://atillayalcin.ai"
+  },
+  "capabilities": {
+    "contact_form": {
+      "path": "/index.html#contact",
+      "method": "POST",
+      "fields": {
+        "name": "sender_identity",
+        "email": "contact_point",
+        "message": "proposal_details"
+      }
+    },
+    "core_expertise": [
+      "NVIDIA DGX & NIM",
+      "HPE Private Cloud AI",
+      "CAIO Strategy",
+      "Autonomous AI Agents"
+    ]
+  },
+  "agent_protocol": "WebMCP-ready"
+}
