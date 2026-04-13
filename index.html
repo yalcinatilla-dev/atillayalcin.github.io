@@ -7,7 +7,6 @@
     <meta name="description" content="Otonom Ajanlar ve AI-Native Altyapılar Çağında Strateji ve Güven İnşası. Overseer-OS Mimarı.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 
     <style>
         :root {
@@ -24,6 +23,7 @@
             background-color: var(--dark);
             color: var(--text);
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -37,8 +37,9 @@
             padding: 20px 50px;
             box-sizing: border-box;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -53,8 +54,10 @@
             margin-left: 30px;
             text-decoration: none;
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
@@ -62,73 +65,88 @@
             color: var(--primary);
         }
 
-        /* Hero Section with Video */
+        /* HERO SECTION - KESİN ÇÖZÜM MİMARİSİ */
         #home {
             position: relative;
+            width: 100vw;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: hidden; /* Dışarı taşan videoyu gizle */
+            background-color: #000;
         }
 
         .hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    object-fit: cover; /* Videoyu boşluk bırakmadan sığdırır */
-    filter: brightness(30%) contrast(110%);
-}
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Videoyu boşluk bırakmadan kırparak sığdırır */
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: brightness(35%) contrast(115%);
+        }
+
+        /* Ekran oranı 16:9'dan farklıysa videoyu zorla yay */
+        @media (max-aspect-ratio: 16/9) {
+            .hero-video {
+                width: auto;
+                height: 100%;
+            }
+        }
+        @media (min-aspect-ratio: 16/9) {
+            .hero-video {
+                width: 100%;
+                height: auto;
+            }
+        }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 900px;
+            max-width: 1000px;
             padding: 0 20px;
         }
 
         .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2.8rem, 10vw, 4.5rem);
             font-weight: 800;
             margin-bottom: 0.5rem;
             letter-spacing: -2px;
-            line-height: 1.1;
+            line-height: 1;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hero-content h2 {
-            font-size: clamp(1.1rem, 3vw, 1.8rem);
+            font-size: clamp(1rem, 3vw, 1.8rem);
             color: var(--primary);
             font-weight: 300;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--gray);
             line-height: 1.6;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-group a {
-            padding: 15px 35px;
+            padding: 18px 40px;
             text-decoration: none;
             font-weight: 700;
             border-radius: 4px;
-            margin: 10px;
+            margin: 12px;
             display: inline-block;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .btn-fill {
@@ -137,18 +155,24 @@
         }
 
         .btn-outline {
-            border: 2px solid white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
+            backdrop-filter: blur(5px);
         }
 
-        .btn-fill:hover, .btn-outline:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+        .btn-fill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
         }
 
-        /* Section Styling */
-        section {
-            padding: 100px 50px;
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Global Section Styling */
+        section:not(#home) {
+            padding: 120px 50px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -156,47 +180,48 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             text-align: center;
         }
 
-        /* Solutions Grid */
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .solution-card {
-            background: #161616;
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid #222;
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid #1a1a1a;
             transition: 0.3s;
         }
 
         .solution-card:hover {
             border-color: var(--primary);
+            transform: translateY(-5px);
         }
 
         .solution-card h3 {
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
 
         /* Footer */
         footer {
-            padding: 50px;
+            padding: 60px;
             text-align: center;
-            border-top: 1px solid #222;
-            color: #666;
-            font-size: 0.9rem;
+            border-top: 1px solid #1a1a1a;
+            color: #444;
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
-            nav { padding: 20px; }
+            nav { padding: 15px 25px; }
             .nav-links { display: none; }
-            section { padding: 60px 20px; }
+            section:not(#home) { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -217,6 +242,7 @@
         <video autoplay muted loop playsinline class="hero-video">
             <source src="2-Ürün_Geliştirme_Arayüz_mü_Final_mi_.mp4" type="video/mp4">
         </video>
+        
         <div class="hero-content">
             <h1>Atilla Yalçın</h1>
             <h2>Independent AI Strategist & Lead Architect</h2>
@@ -253,23 +279,23 @@
         <h2 class="section-title">Latest Insights</h2>
         <div class="solutions-grid">
             <div class="solution-card">
-                <small>APR 2026</small>
+                <small style="color: #666; letter-spacing: 1px;">APR 2026</small>
                 <h3>WebMCP ve Ajan Ekonomisi</h3>
                 <p>Web sitelerinin "Ajan-Dostu" hale gelme süreci ve otonom ekonomide stratejik konumlanma.</p>
-                <a href="https://atillayalcin.substack.com/p/webmcp-ve-ajan-ekonomisi" style="color: var(--primary); text-decoration: none;">Analizi Oku →</a>
+                <a href="https://atillayalcin.substack.com/p/webmcp-ve-ajan-ekonomisi" style="color: var(--primary); text-decoration: none; font-weight: 600;">Analizi Oku →</a>
             </div>
             <div class="solution-card">
-                <small>FEB 2026</small>
+                <small style="color: #666; letter-spacing: 1px;">FEB 2026</small>
                 <h3>Hype Bitti, İnşaat Başladı</h3>
                 <p>NVIDIA Blackwell ve altyapı yatırımlarında üretim aşamasına geçiş rehberi.</p>
-                <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal" style="color: var(--primary); text-decoration: none;">Analizi Oku →</a>
+                <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal" style="color: var(--primary); text-decoration: none; font-weight: 600;">Analizi Oku →</a>
             </div>
         </div>
     </section>
 
     <footer>
         <p>© 2026 Atilla Yalçın | Independent AI Strategist & Lead Architect</p>
-        <p>atillayalcin.ai</p>
+        <p style="letter-spacing: 2px;">atillayalcin.ai</p>
     </footer>
 
 </body>
