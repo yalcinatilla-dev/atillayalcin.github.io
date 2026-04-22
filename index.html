@@ -7,6 +7,7 @@
     <meta name="description" content="30 yıllık ticari olgunluk ve 17 yıllık BT uzmanlığıyla; global üretici vizyonunu saha gerçekleriyle buluşturan, karmaşık altyapıları kârlı iş modellerine dönüştüren bütünleşik mimari liderlik.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -37,7 +38,7 @@
             padding: 20px 50px;
             box-sizing: border-box;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -65,7 +66,7 @@
             color: var(--primary);
         }
 
-        /* HERO SECTION - KESİN ÇÖZÜM MİMARİSİ */
+        /* HERO SECTION */
         #home {
             position: relative;
             width: 100vw;
@@ -73,7 +74,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Dışarı taşan videoyu gizle */
+            overflow: hidden;
             background-color: #000;
         }
 
@@ -83,24 +84,10 @@
             left: 50%;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Videoyu boşluk bırakmadan kırparak sığdırır */
+            object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 0;
             filter: brightness(35%) contrast(115%);
-        }
-
-        /* Ekran oranı 16:9'dan farklıysa videoyu zorla yay */
-        @media (max-aspect-ratio: 16/9) {
-            .hero-video {
-                width: auto;
-                height: 100%;
-            }
-        }
-        @media (min-aspect-ratio: 16/9) {
-            .hero-video {
-                width: 100%;
-                height: auto;
-            }
         }
 
         .hero-content {
@@ -139,7 +126,8 @@
             margin-right: auto;
         }
 
-        .cta-group a {
+        /* Butonlar */
+        .cta-group a, .btn-fill {
             padding: 18px 40px;
             text-decoration: none;
             font-weight: 700;
@@ -170,11 +158,16 @@
             border-color: white;
         }
 
-        /* Global Section Styling */
+        /* Ortak Seksiyon Ayarları */
         section:not(#home) {
-            padding: 120px 50px;
+            padding: 120px 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
@@ -184,34 +177,73 @@
             text-align: center;
         }
 
-        .solutions-grid {
+        /* Grid ve Kart Tasarımları (Hizmetler ve Analizler İçin) */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .solution-card {
+        .card {
             background: linear-gradient(145deg, #111, #0a0a0a);
-            padding: 50px;
-            border-radius: 12px;
             border: 1px solid #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
             transition: 0.3s;
         }
 
-        .solution-card:hover {
+        .card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .solution-card h3 {
+        .card i {
+            font-size: 2rem;
             color: var(--primary);
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            display: block;
         }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Vizyon / Hakkında Bölümü CSS */
+        .vision-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .vision-text { flex: 1; min-width: 300px; }
+        .vision-img-container { flex: 1; display: flex; justify-content: center; }
+        .vision-img-container img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        /* Değer Önerisi Kutuları CSS */
+        .value-prop-box { text-align: center; padding: 20px; }
+        .value-prop-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .value-prop-box h4 { color: #fff; font-size: 1.3rem; margin-bottom: 15px; }
+        .value-prop-box p { font-size: 1rem; color: var(--gray); line-height: 1.6; }
 
         /* Footer */
         footer {
-            padding: 60px;
+            padding: 60px 20px;
             text-align: center;
             border-top: 1px solid #1a1a1a;
             color: #444;
@@ -222,6 +254,7 @@
             nav { padding: 15px 25px; }
             .nav-links { display: none; }
             section:not(#home) { padding: 80px 20px; }
+            .vision-wrapper { flex-direction: column-reverse; }
         }
     </style>
 </head>
@@ -231,7 +264,7 @@
         <a href="#home" class="logo">ATILLA YALCIN</a>
         <div class="nav-links">
             <a href="#solutions">Çözümler</a>
-            <a href="hakkinda.html">Hakkında</a>
+            <a href="#about">Hakkında</a>
             <a href="#insights">Analizler</a>
             <a href="https://linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
             <a href="mailto:contact@atillayalcin.ai">İletişime Geç</a>
@@ -258,8 +291,6 @@
     </section>
 
     <section id="solutions">
-        <h2 class="section-title">Stratejik Çözümler</h2>
-        <section id="solutions" class="section">
         <div class="container">
             <h2 class="section-title">STRATEJİK ÇÖZÜMLER & UZMANLIK ALANLARI</h2>
             <div class="grid">
@@ -288,8 +319,8 @@
                     <p>Sanallaştırma geçişlerinde kompleks lisanslama ve TCO optimizasyonu sağlayan yazılım stratejileri.</p>
                 </div>
 
-                <div class="card" style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);">
-                    <i class="fas fa-project-diagram" style="color:var(--accent);"></i>
+                <div class="card" style="border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);">
+                    <i class="fas fa-project-diagram" style="color:var(--primary);"></i>
                     <h3>Strategic Solution & BoM Engineering</h3>
                     <p>Çok paydaşlı şartnamelerin analizi; üretici ve kanal verimliliğini artıran, Part Number (P/N) seviyesinde optimize edilmiş Master Kitlist (BoM) tasarımı.</p>
                 </div>
@@ -298,27 +329,82 @@
         </div>
     </section>
 
-    <section id="insights">
-        <h2 class="section-title">Latest Insights</h2>
-        <div class="solutions-grid">
-            <div class="solution-card">
-                <small style="color: #666; letter-spacing: 1px;">APR 2026</small>
-                <h3>WebMCP ve Ajan Ekonomisi</h3>
-                <p>Web sitelerinin "Ajan-Dostu" hale gelme süreci ve otonom ekonomide stratejik konumlanma.</p>
-                <a href="https://atillayalcin.substack.com/p/webmcp-ve-ajan-ekonomisi" style="color: var(--primary); text-decoration: none; font-weight: 600;">Analizi Oku →</a>
+    <section id="about" style="background: linear-gradient(180deg, #0a0a0a, #111);">
+        <div class="container vision-wrapper">
+            <div class="vision-text">
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #fff; font-weight: 800;">Uçtan Uca Ekosistem Hakimiyeti</h2>
+                <p style="color:#ddd; margin-bottom:20px; font-size: 1.15rem; line-height: 1.6;">Yapay zeka (AI) dikeyindeki derin uzmanlığımın yanı sıra; Kurumsal BT sektörünün tüm katmanlarına (Sunucu, Veri Depolama, Ağ, Güvenlik, Bulut) bütüncül bir vizyonla hakimim ve bu yapıları uçtan uca kurgulayıp yönetiyorum.</p>
+                <p style="color:#aaa; font-size: 1.05rem; line-height: 1.7;">Masanın her iki tarafında <strong>(bayi ve üretici/distribütör)</strong> bulunmanın verdiği eşsiz perspektifle; ekosistemdeki operasyonel riskleri minimize eden, TCO/ROI dengesini kuran, hem iş ortaklığına hem de stratejik danışmanlığa açık güvenilir bir liman vadediyorum.</p>
             </div>
-            <div class="solution-card">
-                <small style="color: #666; letter-spacing: 1px;">FEB 2026</small>
-                <h3>Hype Bitti, İnşaat Başladı</h3>
-                <p>NVIDIA Blackwell ve altyapı yatırımlarında üretim aşamasına geçiş rehberi.</p>
-                <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal" style="color: var(--primary); text-decoration: none; font-weight: 600;">Analizi Oku →</a>
+            <div class="vision-img-container">
+                <img src="atilla.jpg" alt="Atilla Yalcin">
+            </div>
+        </div>
+    </section>
+
+    <section id="value-prop">
+        <div class="container">
+            <h2 class="section-title">NEDEN STRATEJİK ORTAKLIK?</h2>
+            <div class="grid" style="margin-bottom: 80px;">
+                <div class="value-prop-box">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Kanal Orkestrasyonu</h4>
+                    <p>Bayi kanalının teknik kapasitesini artırıyor, üretici hedefleriyle pazar taleplerini teknik seviyede kusursuzca hizalıyorum.</p>
+                </div>
+                <div class="value-prop-box">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Finansal Optimizasyon</h4>
+                    <p>Teknik çözümleri ROI ve TCO odaklı finansal modellere dönüştürerek, ekosistemdeki satış kapatma hızını maksimize ediyorum.</p>
+                </div>
+                <div class="value-prop-box">
+                    <i class="fas fa-check-double"></i>
+                    <h4>Operasyonel Güven</h4>
+                    <p>Projelerde "Sıfır Hata" prensibiyle çalışarak riskleri daha masada çözer, şartname ve BoM kaynaklı zaman/maliyet kayıplarını engellerim.</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--primary); border-radius: 16px; padding: 60px 30px; text-align: center; box-shadow: 0 10px 40px rgba(0, 210, 255, 0.08); position: relative; overflow: hidden;">
+                <div style="position:absolute; top:-50px; left:50%; transform:translateX(-50%); width:300px; height:100px; background:var(--primary); filter:blur(100px); opacity:0.15; z-index:0;"></div>
+                
+                <div style="position:relative; z-index:1;">
+                    <h3 style="color:#fff; font-size:2.2rem; margin-bottom:20px;">Şartnameniz Hazır mı?</h3>
+                    <p style="color:#ccc; font-size:1.15rem; max-width:800px; margin: 0 auto 40px auto; line-height:1.6;">
+                        Projelerinizdeki donanım ve yazılım konfigürasyonlarını Master Kitlist (BoM) seviyesinde inceleyelim. Üretici standartlarına tam uyum sağlayarak hataları eleyelim ve proje kârlılığınızı güvence altına alalım.
+                    </p>
+                    <a href="mailto:contact@atillayalcin.ai?subject=Konfigürasyon Optimizasyonu ve BoM Doğrulama Talebi" class="btn-fill" style="margin: 0;">
+                        Konfigürasyonunuzu Optimize Edelim &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="insights" style="background: linear-gradient(180deg, #111, #0a0a0a);">
+        <div class="container">
+            <h2 class="section-title">Latest Insights</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <small style="color: #666; letter-spacing: 1px; font-weight: 600;">APR 2026</small>
+                    <h3 style="margin-top: 10px;">WebMCP ve Ajan Ekonomisi</h3>
+                    <p style="margin-bottom: 20px;">Web sitelerinin "Ajan-Dostu" hale gelme süreci ve otonom ekonomide stratejik konumlanma.</p>
+                    <a href="https://atillayalcin.substack.com/p/webmcp-ve-ajan-ekonomisi" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--primary); padding-bottom: 2px;">Analizi Oku &rarr;</a>
+                </div>
+                
+                <div class="card">
+                    <small style="color: #666; letter-spacing: 1px; font-weight: 600;">FEB 2026</small>
+                    <h3 style="margin-top: 10px;">Hype Bitti, İnşaat Başladı</h3>
+                    <p style="margin-bottom: 20px;">NVIDIA Blackwell ve altyapı yatırımlarında üretim aşamasına geçiş rehberi.</p>
+                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--primary); padding-bottom: 2px;">Analizi Oku &rarr;</a>
+                </div>
+                
             </div>
         </div>
     </section>
 
     <footer>
         <p>© 2026 Atilla Yalçın | Independent AI Strategist & Lead Architect</p>
-        <p style="letter-spacing: 2px;">atillayalcin.ai</p>
+        <p style="letter-spacing: 2px; margin-top: 10px;">atillayalcin.ai</p>
     </footer>
 
 </body>
