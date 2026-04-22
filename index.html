@@ -398,6 +398,168 @@
                 </div>
             </div>
 
+<div style="background: linear-gradient(135deg, rgba(15,15,15,0.9), rgba(5,5,5,0.95)); border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 50px 20px; margin-bottom: 60px; box-shadow: inset 0 0 30px rgba(0, 210, 255, 0.05);">
+                <div class="container" style="max-width: 1000px; margin: 0 auto;">
+                    
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h4 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px;">
+                            <i class="fas fa-network-wired"></i> Proprietary Cognitive Engine
+                        </h4>
+                        <h3 id="os-title" style="color: #fff; font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; transition: color 0.5s;">ATILLAYALCIN_AI_OS</h3>
+                        
+                        <div style="display: inline-flex; align-items: center; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 50px;">
+                            <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; display: inline-block; margin-right: 10px; animation: pulse 1.5s infinite;"></span>
+                            <span style="color: #ddd; font-size: 0.9rem; font-weight: 600;">Sistem Durumu: Dinamik Öğrenme Aktif | Kapasite: 65 Modül (Genişliyor)</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222; margin-bottom: 30px;">
+                        
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Overseer-OS Odağı</span>
+                            <label style="position: relative; display: inline-block; width: 50px; height: 26px;">
+                                <input type="checkbox" id="overseer-toggle" style="opacity: 0; width: 0; height: 0;" onchange="toggleOverseer()">
+                                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 34px;" id="toggle-bg">
+                                    <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%;" id="toggle-knob"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Hiyerarşi Filtresi:</span>
+                            <select id="category-filter" onchange="filterModules()" style="background: #111; color: #fff; border: 1px solid #444; padding: 8px 15px; border-radius: 6px; font-family: 'Inter', sans-serif; outline: none;">
+                                <option value="all">Tüm Modüller (65)</option>
+                                <option value="core">Çekirdek & Operasyon</option>
+                                <option value="tech">Mühendislik & Veri</option>
+                                <option value="strategy">Strateji & Liderlik</option>
+                                <option value="gov">Yönetişim & Güvenlik</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="module-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 12px; justify-items: center; padding: 20px;">
+                        </div>
+                    
+                    <p style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 20px;">
+                        * Planner – Executor – Auditor hiyerarşisiyle çalışan bilişsel devreler.
+                    </p>
+
+                </div>
+            </div>
+
+            <style>
+                /* Yanıp sönen ışık animasyonu */
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+                }
+                .module-node {
+                    width: 50px; height: 50px; border-radius: 50%; 
+                    display: flex; align-items: center; justify-content: center;
+                    font-size: 0.8rem; font-weight: bold; color: #fff;
+                    transition: all 0.4s ease; cursor: crosshair;
+                    border: 2px solid transparent;
+                }
+                .node-active { transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
+                .node-inactive { opacity: 0.15; transform: scale(0.9); background: #222 !important; color: #555 !important; }
+            </style>
+
+            <script>
+                // 65 Modülün tam kategorizasyonu
+                const categories = {
+                    core: [1,4,5,10,16,18,20,29,47, 57, 58, 59],
+                    tech: [2,3,7,11,12,13,14,15,27,28,30,37,44,45,49,51,52,54, 60, 61],
+                    strategy: [8,9,17,19,21,22,23,25,26,31,39,42,43, 62, 63],
+                    gov: [46,48,50,53,55,56,64,65, 6,24,32,33,34,35,36,38,40,41] // Yönetişim ve Bilişsel birleşik
+                };
+
+                // Renk Paleti
+                const colors = {
+                    core: '#3b82f6', // Mavi
+                    tech: '#06b6d4', // Cyan
+                    strategy: '#8b5cf6', // Mor
+                    gov: '#10b981', // Yeşil
+                    overseer: '#00f2ff' // Neon Mavi (Tüm sistem için)
+                };
+
+                let isOverseerActive = false;
+
+                // Modülleri Ekrana Çizme
+                function initModules() {
+                    const grid = document.getElementById('module-grid');
+                    grid.innerHTML = '';
+                    
+                    for(let i=1; i<=65; i++) {
+                        let cat = 'gov'; // Varsayılan
+                        if(categories.core.includes(i)) cat = 'core';
+                        else if(categories.tech.includes(i)) cat = 'tech';
+                        else if(categories.strategy.includes(i)) cat = 'strategy';
+
+                        const node = document.createElement('div');
+                        node.className = `module-node node-${cat}`;
+                        node.id = `mod-${i}`;
+                        node.innerText = `S${i}`;
+                        node.style.background = colors[cat];
+                        node.setAttribute('data-cat', cat);
+                        
+                        // Hover efekti (İsteğe bağlı tooltip eklenebilir)
+                        node.title = `Modül S${i} - Aktif`;
+                        
+                        grid.appendChild(node);
+                    }
+                }
+
+                // Filtreleme Mantığı
+                function filterModules() {
+                    const selected = document.getElementById('category-filter').value;
+                    const nodes = document.querySelectorAll('.module-node');
+
+                    nodes.forEach(node => {
+                        const cat = node.getAttribute('data-cat');
+                        if(selected === 'all' || cat === selected) {
+                            node.classList.remove('node-inactive');
+                            node.classList.add('node-active');
+                            // Eğer Overseer kapalıysa kendi rengine dön, açıksa overseer rengine
+                            node.style.background = isOverseerActive ? colors.overseer : colors[cat];
+                            node.style.color = isOverseerActive ? '#000' : '#fff';
+                        } else {
+                            node.classList.remove('node-active');
+                            node.classList.add('node-inactive');
+                        }
+                    });
+                }
+
+                // Overseer-OS Geçişi
+                function toggleOverseer() {
+                    isOverseerActive = document.getElementById('overseer-toggle').checked;
+                    const title = document.getElementById('os-title');
+                    const toggleBg = document.getElementById('toggle-bg');
+                    const toggleKnob = document.getElementById('toggle-knob');
+
+                    if(isOverseerActive) {
+                        title.innerText = "OVERSEER-OS MİMARİSİ";
+                        title.style.color = colors.overseer;
+                        title.style.textShadow = "0 0 20px rgba(0, 242, 255, 0.5)";
+                        toggleBg.style.backgroundColor = colors.overseer;
+                        toggleKnob.style.transform = "translateX(24px)";
+                    } else {
+                        title.innerText = "ATILLAYALCIN_AI_OS";
+                        title.style.color = "#fff";
+                        title.style.textShadow = "none";
+                        toggleBg.style.backgroundColor = "#333";
+                        toggleKnob.style.transform = "translateX(0)";
+                    }
+                    filterModules(); // Renkleri güncellemek için filtreyi yeniden tetikle
+                }
+
+                // Sayfa yüklendiğinde çalıştır
+                document.addEventListener("DOMContentLoaded", () => {
+                    initModules();
+                    setTimeout(filterModules, 500); // Hafif bir gecikmeyle animasyonlu açılış
+                });
+            </script>
+            
             <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--primary); border-radius: 16px; padding: 60px 30px; text-align: center; box-shadow: 0 10px 40px rgba(0, 210, 255, 0.08); position: relative; overflow: hidden;">
                 <div style="position:absolute; top:-50px; left:50%; transform:translateX(-50%); width:300px; height:100px; background:var(--primary); filter:blur(100px); opacity:0.15; z-index:0;"></div>
                 
