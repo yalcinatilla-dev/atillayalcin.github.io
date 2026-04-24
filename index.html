@@ -806,241 +806,187 @@
         </div>
     </section>
 
-    <section id="insights" style="background: linear-gradient(180deg, #111, #0a0a0a);">
-        <div class="container">
-            <section id="impact-analysis" style="background: #050505; border-top: 1px solid #222; border-bottom: 1px solid #222;">
-        <div class="container">
-            <h2 class="section-title">OPERASYONEL ETKİ: GELENEKSEL VS. AI-OS</h2>
-            <p style="text-align: center; color: #888; margin-top: -40px; margin-bottom: 60px;">Karmaşık BT projelerinde ATILLAYALCIN_AI_OS'un yarattığı zaman ve doğruluk kaldıracı.</p>
+    <section id="impact-analysis" style="background: #050505; border-top: 1px solid #222; border-bottom: 1px solid #222;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 100px 20px;">
+        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">OPERASYONEL ETKİ: GELENEKSEL VS. AI-OS</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Karmaşık kurumsal projelerde ATILLAYALCIN_AI_OS'un yarattığı zaman, doğruluk ve kârlılık kaldıracı.</p>
 
-            <div class="grid" style="grid-template-columns: 1fr;">
-                
-                <div class="card" style="margin-bottom: 40px; border-left: 4px solid var(--primary);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
-                        <div style="flex: 2; min-width: 300px;">
-                            <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Çok Lokasyonlu Altyapı Modernizasyonu</span>
-                            <h3 style="margin: 10px 0;">300 Personel | 5 Lokasyon | Storage & Siber Güvenlik Mimari Tasarımı</h3>
-                            <p style="color: #aaa; margin-bottom: 20px;">Mevcut sistemlerin analizi, veri trafiği risklerinin tespiti ve Zero-Trust siber güvenlik mimarisinin uçtan uca kurgulanması.</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S22: Ecosystem Orchestrator</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S46: Zero-Trust Security</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S53: Supervisor Agent</span>
-                            </div>
-                        </div>
-                        <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #222;">
-                            <div style="margin-bottom: 15px;">
-                                <small style="color: #666; display: block; margin-bottom: 5px;">Geleneksel Metod</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 100%; background: #e74c3c;"></div>
-                                    </div>
-                                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.8rem;">14+ Gün</span>
-                                </div>
-                            </div>
-                            <div>
-                                <small style="color: #666; display: block; margin-bottom: 5px;">ATILLAYALCIN_AI_OS</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div>
-                                    </div>
-                                    <span style="color: var(--primary); font-weight: bold; font-size: 0.8rem;">4-6 Saat</span>
-                                </div>
-                            </div>
-                        </div>
+        <style>
+            .ai-os-scenario-card {
+                background: #0a0a0a;
+                border: 1px solid #1a1a1a;
+                border-left: 4px solid var(--primary, #00d2ff); /* Kalıcı Mavi Çizgi */
+                border-radius: 8px;
+                padding: 30px;
+                margin-bottom: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.3s ease;
+            }
+            .ai-os-scenario-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 210, 255, 0.08); /* Hover Parlaması */
+                border-color: #222;
+                border-left-color: var(--primary, #00d2ff);
+                background: #0d0d0d;
+            }
+            .scenario-badge {
+                background: rgba(0, 210, 255, 0.1); 
+                color: var(--primary); 
+                padding: 5px 12px; 
+                border-radius: 4px; 
+                font-size: 0.75rem; 
+                font-weight: 600;
+                border: 1px solid rgba(0, 210, 255, 0.2);
+            }
+            .bar-bg { width: 100%; background: #222; border-radius: 4px; height: 8px; overflow: hidden; }
+        </style>
+
+        <div class="grid" style="display: flex; flex-direction: column;">
+
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Çok Lokasyonlu Altyapı Modernizasyonu</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">300 Personel | 5 Lokasyon | Storage & Siber Güvenlik Mimari Tasarımı</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Mevcut sistemlerin analizi, veri trafiği risklerinin tespiti ve Zero-Trust siber güvenlik mimarisinin uçtan uca kurgulanması.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
+                        <span class="scenario-badge">S46: Zero-Trust Security</span>
+                        <span class="scenario-badge">S53: Supervisor Agent</span>
                     </div>
                 </div>
-
-                <div class="card" style="margin-bottom: 40px; border-left: 4px solid var(--primary);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
-                        <div style="flex: 2; min-width: 300px;">
-                            <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Teknik BoM & Konfigürasyon Giydirme</span>
-                            <h3 style="margin: 10px 0;">Mevcut Şartname Üzerinden Çözüm, Marka ve Model Belirleme</h3>
-                            <p style="color: #aaa; margin-bottom: 20px;">Teknik gereksinimlerin vendor standartlarıyla eşleştirilmesi ve P/N seviyesinde hatasız Kitlist (BoM) tasarımı.</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S6: Text Refinement</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S42: Proposal Engineering</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S27: Procurement Advisor</span>
-                            </div>
-                        </div>
-                        <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #222;">
-                            <div style="margin-bottom: 15px;">
-                                <small style="color: #666; display: block; margin-bottom: 5px;">Geleneksel Metod</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 100%; background: #e74c3c;"></div>
-                                    </div>
-                                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.8rem;">3-5 Gün</span>
-                                </div>
-                            </div>
-                            <div>
-                                <small style="color: #666; display: block; margin-bottom: 5px;">ATILLAYALCIN_AI_OS</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div>
-                                    </div>
-                                    <span style="color: var(--primary); font-weight: bold; font-size: 0.8rem;">15-30 Dakika</span>
-                                </div>
-                            </div>
-                        </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">14+ Gün</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">4-6 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="card" style="border-left: 4px solid var(--primary);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
-                        <div style="flex: 2; min-width: 300px;">
-                            <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Teknik Şartname (RFP) Hazırlanması</span>
-                            <h3 style="margin: 10px 0;">Sıfırdan Üretici Standartlarına Uygun RFP Yazımı</h3>
-                            <p style="color: #aaa; margin-bottom: 20px;">İşletme hedefleriyle uyumlu, regülasyonlara (KVKK/GDPR) tam entegre profesyonel şartname dökümantasyonu.</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S3: Technical Reporting</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S48: Compliance Guard</span>
-                                <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(0, 210, 255, 0.2);">S19: Corporate Diplomacy</span>
-                            </div>
-                        </div>
-                        <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #222;">
-                            <div style="margin-bottom: 15px;">
-                                <small style="color: #666; display: block; margin-bottom: 5px;">Geleneksel Metod</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 100%; background: #e74c3c;"></div>
-                                    </div>
-                                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.8rem;">7-10 Gün</span>
-                                </div>
-                            </div>
-                            <div>
-                                <small style="color: #666; display: block; margin-bottom: 5px;">ATILLAYALCIN_AI_OS</small>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="height: 8px; width: 100%; background: #333; border-radius: 4px; overflow: hidden;">
-                                        <div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div>
-                                    </div>
-                                    <span style="color: var(--primary); font-weight: bold; font-size: 0.8rem;">2 Saat</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Teknik BoM & Konfigürasyon Giydirme</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Mevcut Şartname Üzerinden Çözüm, Marka ve Model Belirleme</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Teknik gereksinimlerin vendor standartlarıyla eşleştirilmesi ve P/N seviyesinde hatasız Kitlist (BoM) tasarımı.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S6: Text Refinement</span>
+                        <span class="scenario-badge">S42: Proposal Engineering</span>
+                        <span class="scenario-badge">S27: Procurement Advisor</span>
                     </div>
                 </div>
-<style>
-    .ai-os-scenario-card {
-        background: #0a0a0a;
-        border: 1px solid #1a1a1a;
-        border-left: 3px solid transparent;
-        border-radius: 8px;
-        padding: 30px;
-        margin-bottom: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 0.3s ease;
-    }
-    .ai-os-scenario-card:hover {
-        transform: translateY(-5px);
-        border-left: 3px solid var(--primary, #00d2ff); /* Mavi yan kenar vurgusu */
-        box-shadow: 0 10px 25px rgba(0, 210, 255, 0.05); /* Hafif neon parlama */
-        border-color: #222;
-        background: #0d0d0d;
-    }
-</style>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">15-30 Dakika</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
 
-<div class="ai-os-scenario-card">
-    <div style="flex: 1; min-width: 300px; padding-right: 20px;">
-        <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</h4>
-        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">10.000+ Satırlık Kompleks BoM ve Üretici (Vendor) Kârlılık Optimizasyonu</h3>
-        <p style="color: #888; line-height: 1.6; margin-bottom: 20px; font-size: 0.95rem;">Çok markalı, devasa donanım/yazılım şartnamelerinin; anlık döviz riski, global stok durumu ve üretici indirim (Deal Reg) matrislerine göre 'Arbitraj' yapılarak en kârlı senaryoya dönüştürülmesi.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S43: Strategic Arbitrage</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S22: Ecosystem Orchestrator</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S8: Market Trend Analysis</span>
-        </div>
-    </div>
-    <div style="width: 300px; margin-top: 20px;">
-        <div style="margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span>
-                <span style="color: #ff4d4d; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span>
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Teknik Şartname (RFP) Hazırlanması</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Sıfırdan Üretici Standartlarına Uygun RFP Yazımı</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">İşletme hedefleriyle uyumlu, regülasyonlara (KVKK/GDPR) tam entegre profesyonel şartname dökümantasyonu.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S3: Technical Reporting</span>
+                        <span class="scenario-badge">S48: Compliance Guard</span>
+                        <span class="scenario-badge">S19: Corporate Diplomacy</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">7-10 Gün</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">2 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
             </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 100%; background: #ff4d4d; height: 100%; border-radius: 4px;"></div>
-            </div>
-        </div>
-        <div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span>
-                <span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">6-8 Saat</span>
-            </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 15%; background: var(--primary); height: 100%; border-radius: 4px; box-shadow: 0 0 10px var(--primary);"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="ai-os-scenario-card">
-    <div style="flex: 1; min-width: 300px; padding-right: 20px;">
-        <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</h4>
-        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">Kurumsal GenAI (Büyük Dil Modeli) ve Yüksek Performanslı Altyapı (HPC) Kurgusu</h3>
-        <p style="color: #888; line-height: 1.6; margin-bottom: 20px; font-size: 0.95rem;">Özel yapay zeka sunucularının (Örn: Blackwell/Hopper); termal soğutma (Thermal), enerji tüketimi, GPU veri yolu hesaplamaları ve 5 yıllık bağımsız TCO projeksiyonunun otonom tasarımı.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S58: Predictive Compute</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S27: GPU Procurement</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S13: AI Architecture</span>
-        </div>
-    </div>
-    <div style="width: 300px; margin-top: 20px;">
-        <div style="margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span>
-                <span style="color: #ff4d4d; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span>
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">10.000+ Satırlık Kompleks BoM ve Üretici Kârlılık Optimizasyonu</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Devasa donanım şartnamelerinin; anlık döviz riski, global stok durumu ve üretici indirim (Deal Reg) matrislerine göre 'Arbitraj' yapılarak en kârlı senaryoya dönüştürülmesi.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S43: Strategic Arbitrage</span>
+                        <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
+                        <span class="scenario-badge">S8: Market Trend Analysis</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">6-8 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 15%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
             </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 100%; background: #ff4d4d; height: 100%; border-radius: 4px;"></div>
-            </div>
-        </div>
-        <div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span>
-                <span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span>
-            </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 10%; background: var(--primary); height: 100%; border-radius: 4px; box-shadow: 0 0 10px var(--primary);"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="ai-os-scenario-card">
-    <div style="flex: 1; min-width: 300px; padding-right: 20px;">
-        <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</h4>
-        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">Dağınık ERP, Lojistik ve Personel Loglarından 'Sağlıklı Veri' Üretimi</h3>
-        <p style="color: #888; line-height: 1.6; margin-bottom: 20px; font-size: 0.95rem;">Yıllara yayılan, birbiriyle konuşmayan yapılandırılmamış (Unstructured) kurumsal verilerin; Zero-Trust mantığıyla izole edilerek incelenmesi, operasyonel darboğazların (bottleneck) tespiti ve otonom karar destek sistemine dönüştürülmesi.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S1: Data Orchestration</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S2: Analytical Synthesis</span>
-            <span style="background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">S54: Self-Healing</span>
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Kurumsal GenAI (Büyük Dil Modeli) ve HPC Kurgusu</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Özel yapay zeka sunucularının; termal soğutma, enerji tüketimi, GPU veri yolu hesaplamaları ve 5 yıllık bağımsız TCO projeksiyonunun otonom tasarımı.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S58: Predictive Compute</span>
+                        <span class="scenario-badge">S27: GPU Procurement</span>
+                        <span class="scenario-badge">S13: AI Architecture</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Dağınık Kurumsal Loglardan 'Sağlıklı Veri' Üretimi</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Yapılandırılmamış (Unstructured) kurumsal verilerin Zero-Trust mantığıyla incelenmesi, operasyonel darboğazların tespiti ve otonom karar destek sistemine dönüştürülmesi.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">S1: Data Orchestration</span>
+                        <span class="scenario-badge">S2: Analytical Synthesis</span>
+                        <span class="scenario-badge">S54: Self-Healing</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Ay</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 12%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div style="width: 300px; margin-top: 20px;">
-        <div style="margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span>
-                <span style="color: #ff4d4d; font-weight: bold; font-size: 0.85rem;">2-3 Ay</span>
-            </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 100%; background: #ff4d4d; height: 100%; border-radius: 4px;"></div>
-            </div>
-        </div>
-        <div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span>
-                <span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">3-5 Gün</span>
-            </div>
-            <div style="width: 100%; background: #222; border-radius: 4px; height: 6px;">
-                <div style="width: 12%; background: var(--primary); height: 100%; border-radius: 4px; box-shadow: 0 0 10px var(--primary);"></div>
-            </div>
-        </div>
-    </div>
-</div>
-            </div>
+</section>            </div>
         </div>
     </section>
             <h2 class="section-title">Latest Insights</h2>
