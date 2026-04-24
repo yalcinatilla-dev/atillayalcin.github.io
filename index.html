@@ -919,7 +919,30 @@
                         </div>
                     </div>
                 </div>
-<div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+<style>
+    .ai-os-scenario-card {
+        background: #0a0a0a;
+        border: 1px solid #1a1a1a;
+        border-left: 3px solid transparent;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .ai-os-scenario-card:hover {
+        transform: translateY(-5px);
+        border-left: 3px solid var(--primary, #00d2ff); /* Mavi yan kenar vurgusu */
+        box-shadow: 0 10px 25px rgba(0, 210, 255, 0.05); /* Hafif neon parlama */
+        border-color: #222;
+        background: #0d0d0d;
+    }
+</style>
+
+<div class="ai-os-scenario-card">
     <div style="flex: 1; min-width: 300px; padding-right: 20px;">
         <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</h4>
         <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">10.000+ Satırlık Kompleks BoM ve Üretici (Vendor) Kârlılık Optimizasyonu</h3>
@@ -952,7 +975,7 @@
     </div>
 </div>
 
-<div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+<div class="ai-os-scenario-card">
     <div style="flex: 1; min-width: 300px; padding-right: 20px;">
         <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</h4>
         <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">Kurumsal GenAI (Büyük Dil Modeli) ve Yüksek Performanslı Altyapı (HPC) Kurgusu</h3>
@@ -985,7 +1008,7 @@
     </div>
 </div>
 
-<div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+<div class="ai-os-scenario-card">
     <div style="flex: 1; min-width: 300px; padding-right: 20px;">
         <h4 style="color: var(--primary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</h4>
         <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 15px;">Dağınık ERP, Lojistik ve Personel Loglarından 'Sağlıklı Veri' Üretimi</h3>
