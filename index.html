@@ -988,26 +988,103 @@
     </div>
 </section>      
 
-    </section>
-            <h2 class="section-title">Latest Insights</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <small style="color: #666; letter-spacing: 1px; font-weight: 600;">APR 2026</small>
-                    <h3 style="margin-top: 10px;">WebMCP ve Ajan Ekonomisi</h3>
-                    <p style="margin-bottom: 20px;">Web sitelerinin "Ajan-Dostu" hale gelme süreci ve otonom ekonomide stratejik konumlanma.</p>
-                    <a href="https://atillayalcin.substack.com/p/webmcp-ve-ajan-ekonomisi" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--primary); padding-bottom: 2px;">Analizi Oku &rarr;</a>
-                </div>
-                
-                <div class="card">
-                    <small style="color: #666; letter-spacing: 1px; font-weight: 600;">FEB 2026</small>
-                    <h3 style="margin-top: 10px;">Hype Bitti, İnşaat Başladı</h3>
-                    <p style="margin-bottom: 20px;">NVIDIA Blackwell ve altyapı yatırımlarında üretim aşamasına geçiş rehberi.</p>
-                    <a href="https://open.substack.com/pub/atillayalcin/p/hype-bitti-insaat-baslad-2026nn-kurumsal" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--primary); padding-bottom: 2px;">Analizi Oku &rarr;</a>
-                </div>
-                
+<section id="insights" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">LATEST INSIGHTS</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Teknoloji, strateji ve otonom ekosistemler üzerine derinlemesine analizler.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            
+            <div class="insight-card">
+                <span class="insight-date">NİSAN 2026</span>
+                <h3 class="insight-title">WebMCP ve Ajan Ekonomisi</h3>
+                <p class="insight-desc">Web sitelerinin 'Ajan-Dostu' (Agentic) hale gelme süreci ve otonom ekonomide stratejik konumlanma. Geleceğin B2B ticaretini şirketler değil, botlar (CDA) mı yönetecek?</p>
+                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
             </div>
+
+            <div class="insight-card">
+                <span class="insight-date">ŞUBAT 2026</span>
+                <h3 class="insight-title">Hype Bitti, İnşaat Başladı</h3>
+                <p class="insight-desc">NVIDIA Blackwell ve yüksek performanslı (HPC) altyapı yatırımlarında üretim aşamasına geçiş rehberi. Kurumlar veri merkezlerini ve soğutma (thermal) sistemlerini AI çağına nasıl hazırlamalı?</p>
+                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="insight-card">
+                <span class="insight-date">MAYIS 2026</span>
+                <h3 class="insight-title">Inference-as-a-Service ve Zero-Trust</h3>
+                <p class="insight-desc">Büyük verinin (Big Data) otonom ajanlarla işlenerek 'Sağlıklı Kararlara' dönüştürülmesi. Kurumsal hafızayı ve ticari sırları dışarı çıkarmadan yapay zeka nasıl izole edilir?</p>
+                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+            </div>
+
         </div>
+    </div>
+</section>
+
+<style>
+    .insight-card {
+        background: #0a0a0a;
+        border: 1px solid #1a1a1a;
+        border-radius: 8px;
+        padding: 35px 30px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+    .insight-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 3px;
+        background: var(--primary, #00d2ff);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+    .insight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.05);
+        background: #0d0d0d;
+        border-color: #222;
+    }
+    .insight-card:hover::before {
+        transform: scaleX(1);
+    }
+    .insight-date {
+        color: var(--primary, #00d2ff);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+    .insight-title {
+        color: #fff;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    .insight-desc {
+        color: #888;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    .insight-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.3s;
+    }
+    .insight-link:hover {
+        color: var(--primary, #00d2ff);
+    }
+</style>
+    
     </section>
 
     <footer>
