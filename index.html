@@ -457,9 +457,39 @@
             fileList.innerHTML = selectedFiles.map((f) => `<div><i class="fas fa-check" style="color:var(--primary)"></i> ${f.name}</div>`).join('');
         }
 
+     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropZone = document.getElementById('poc-drop-zone');
+        const fileInput = document.getElementById('poc-file-input');
+        const fileList = document.getElementById('file-list');
+        const emailInput = document.getElementById('poc-email-input');
+        const submitBtn = document.getElementById('poc-submit-btn');
+        const log = document.getElementById('poc-log');
+        let selectedFiles = [];
+
+        // Dosya seçme penceresini açma
+        if(dropZone) {
+            dropZone.onclick = () => fileInput.click();
+        }
+
+        if(fileInput) {
+            fileInput.onchange = (e) => handleFiles(e.target.files);
+        }
+
+        function handleFiles(files) {
+            const newFiles = Array.from(files);
+            if (selectedFiles.length + newFiles.length > 3) {
+                alert("Maksimum 3 dosya yükleyebilirsiniz.");
+                return;
+            }
+            selectedFiles = [...selectedFiles, ...newFiles];
+            fileList.innerHTML = selectedFiles.map((f) => `<div><i class="fas fa-check" style="color:var(--primary)"></i> ${f.name}</div>`).join('');
+        }
+
+        // Analizi Başlat Butonu Mantığı
         submitBtn.onclick = async () => {
             const email = emailInput.value.trim();
-            const banned = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'icloud.com'];
+            const banned = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com'];
             const domain = email.split('@')[1];
 
             if (!email || !email.includes('@') || banned.includes(domain)) {
@@ -474,10 +504,9 @@
                 return;
             }
 
-            log.innerText = "ATILLAYALCIN_AI_OS v16.0.4 Veriyi İşliyor... Raporunuz contact@atillayalcin.ai üzerinden iletilecek.";
+            log.innerText = "ATILLAYALCIN_AI_OS v16.0.4 Veriyi İşliyor...";
             log.style.color = "var(--primary)";
 
-            // --- CANLI BAĞLANTI KÖPRÜSÜ (FETCH) ---
             const formData = new FormData();
             formData.append('email', email);
             selectedFiles.forEach(file => formData.append('files', file));
@@ -489,20 +518,19 @@
                 });
 
                 if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Stratejik raporunuz otonom olarak iletildi.";
+                    log.innerText = "İşlem Başarılı! Rapor otonom olarak iletildi.";
                     log.style.color = "#00ff88";
                 } else {
-                    log.innerText = "API Hatası: Sistem yoğun olabilir, lütfen tekrar deneyin.";
+                    log.innerText = "Sistem Hatası: Bağlantı kurulamadı.";
                     log.style.color = "#ff4444";
                 }
             } catch (error) {
-                log.innerText = "Bağlantı Hatası: api.atillayalcin.ai erişilemiyor.";
+                log.innerText = "Bağlantı Kesildi: api.atillayalcin.ai yanıt vermiyor.";
                 log.style.color = "#ff4444";
             }
         };
-            
-            // Backend API Bridge (v16.0.4) tetikleme mantığı buraya eklenecektir.
-        };
+    });
+</script>
     </script>
 </section>
 </section>
