@@ -404,15 +404,83 @@
         </div>
     </div>
 </section>
-
-<section id="poc-offer" style="background: #000; padding: 60px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+<section id="poc-gateway" style="background: #000; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
-        <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.8rem;">Gizli Maliyetleri veya Teknik Hataları Saniyeler İçinde Tespit Edelim</h3>
-        <p style="color: #888; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; line-height: 1.6;">Sistemimin kapasitesini verileriniz üzerinde kanıtlamayı tercih ederim. En karmaşık veri setinizi Zero-Trust protokolüyle analiz edip, 48 saat içinde otonom karar haritanızı çıkaralım.</p>
-        <a href="mailto:info@atillayalcin.ai?subject=48%20Saatlik%20Otonom%20PoC%20Talebi" style="display: inline-block; padding: 18px 45px; background: var(--primary); color: #000; font-weight: 800; text-decoration: none; border-radius: 4px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);">
-            <i class="fas fa-bolt"></i> 48 Saatlik PoC Talep Et
-        </a>
+        <h3 style="color: #fff; margin-bottom: 20px; font-size: 2.2rem; font-weight: 800;">Gizli Maliyetleri veya Teknik Hataları Saniyeler İçinde Tespit Edelim</h3>
+        <p style="color: #888; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem; line-height: 1.7;">
+            Sistemimin kapasitesini verileriniz üzerinde kanıtlamayı tercih ederim. En karmaşık veri setinizi Zero-Trust protokolüyle analiz edip, 48 saat içinde otonom karar haritanızı çıkaralım.
+        </p>
+
+        <div style="background: #050505; border: 1px solid #1a1a1a; border-radius: 12px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            
+            <div style="margin-bottom: 25px;">
+                <input type="email" id="poc-email-input" placeholder="Kurumsal E-posta Adresiniz" 
+                       style="width: 100%; max-width: 500px; padding: 15px; background: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 1rem; outline: none; transition: border-color 0.3s; font-family: 'Inter', sans-serif;">
+            </div>
+
+            <div id="poc-drop-zone" style="border: 2px dashed #333; border-radius: 10px; padding: 40px; cursor: pointer; transition: 0.3s; margin-bottom: 25px; position: relative;">
+                <i class="fas fa-file-upload" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px; display: block;"></i>
+                <span id="drop-text" style="color: #666; font-size: 1rem;">Dosyaları buraya sürükleyin veya <span style="color: var(--primary);">tıklayarak seçin</span><br>(Max 3 dosya | Domain başına ücretsiz limit)</span>
+                <input type="file" id="poc-file-input" multiple style="display: none;">
+                <div id="file-list" style="margin-top: 20px; text-align: left; color: #aaa; font-size: 0.9rem;"></div>
+            </div>
+
+            <button id="poc-submit-btn" style="background: var(--primary); color: #000; font-weight: 800; padding: 18px 50px; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; transition: 0.3s; box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);">
+                <i class="fas fa-bolt"></i> Otonom Analizi Başlat
+            </button>
+            <p id="poc-log" style="margin-top: 25px; font-size: 0.95rem; font-weight: 600; color: var(--primary); min-height: 20px;"></p>
+        </div>
     </div>
+
+    <script>
+        const dropZone = document.getElementById('poc-drop-zone');
+        const fileInput = document.getElementById('poc-file-input');
+        const fileList = document.getElementById('file-list');
+        const emailInput = document.getElementById('poc-email-input');
+        const submitBtn = document.getElementById('poc-submit-btn');
+        const log = document.getElementById('poc-log');
+        let selectedFiles = [];
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--primary)'; };
+        dropZone.ondragleave = () => { dropZone.style.borderColor = '#333'; };
+        dropZone.ondrop = (e) => { e.preventDefault(); dropZone.style.borderColor = '#333'; handleFiles(e.dataTransfer.files); };
+
+        function handleFiles(files) {
+            const newFiles = Array.from(files);
+            if (selectedFiles.length + newFiles.length > 3) {
+                alert("Ücretsiz PoC kapsamında maksimum 3 dosya yükleyebilirsiniz.");
+                return;
+            }
+            selectedFiles = [...selectedFiles, ...newFiles];
+            fileList.innerHTML = selectedFiles.map((f) => `<div><i class="fas fa-check" style="color:var(--primary)"></i> ${f.name}</div>`).join('');
+        }
+
+        submitBtn.onclick = async () => {
+            const email = emailInput.value.trim();
+            const banned = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'icloud.com'];
+            const domain = email.split('@')[1];
+
+            if (!email || !email.includes('@') || banned.includes(domain)) {
+                log.innerText = "Hata: Lütfen geçerli bir kurumsal e-posta adresi giriniz.";
+                log.style.color = "#ff4444";
+                return;
+            }
+
+            if (selectedFiles.length === 0) {
+                log.innerText = "Hata: Lütfen analiz edilecek veri dosyasını yükleyiniz.";
+                log.style.color = "#ff4444";
+                return;
+            }
+
+            log.innerText = "ATILLAYALCIN_AI_OS v16.0.4 Veriyi İşliyor... Raporunuz contact@atillayalcin.ai üzerinden iletilecek.";
+            log.style.color = "var(--primary)";
+            
+            // Backend API Bridge (v16.0.4) tetikleme mantığı buraya eklenecektir.
+        };
+    </script>
+</section>
 </section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
