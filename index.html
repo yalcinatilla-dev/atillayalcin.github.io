@@ -476,6 +476,30 @@
 
             log.innerText = "ATILLAYALCIN_AI_OS v16.0.4 Veriyi İşliyor... Raporunuz contact@atillayalcin.ai üzerinden iletilecek.";
             log.style.color = "var(--primary)";
+
+            // --- CANLI BAĞLANTI KÖPRÜSÜ (FETCH) ---
+            const formData = new FormData();
+            formData.append('email', email);
+            selectedFiles.forEach(file => formData.append('files', file));
+
+            try {
+                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    log.innerText = "İşlem Başarılı! Stratejik raporunuz otonom olarak iletildi.";
+                    log.style.color = "#00ff88";
+                } else {
+                    log.innerText = "API Hatası: Sistem yoğun olabilir, lütfen tekrar deneyin.";
+                    log.style.color = "#ff4444";
+                }
+            } catch (error) {
+                log.innerText = "Bağlantı Hatası: api.atillayalcin.ai erişilemiyor.";
+                log.style.color = "#ff4444";
+            }
+        };
             
             // Backend API Bridge (v16.0.4) tetikleme mantığı buraya eklenecektir.
         };
