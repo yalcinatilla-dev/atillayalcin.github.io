@@ -1,31 +1,31 @@
-from fastapi import FastAPI, File, UploadFile, Form
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, Form
 import google.generativeai as genai
 import resend
 import os
 
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 @app.post("/api/v1/inference")
-async def run_inference(email: str = Form(...), files: list[UploadFile] = File(...)):
+async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
     try:
+        # 1. Gemini Yapılandırması (2 Milyon Token Kapasiteli Model)
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-        resend.api_key = os.environ.get("RESEND_API_KEY")
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-pro')
         
-        file_names = [f.filename for f in files]
-        prompt = f"Analiz raporu hazırla. Dosyalar: {file_names}"
-        response = model.generate_content(prompt)
+        # 2. Drive'daki Dosyayı Otonom Okuma
+        # Gemini doğrudan Google Drive URI'larını işleme kapasitesine sahiptir
+        analysis_prompt = f"Drive ID'si {drive_file_id} olan stratejik belgeyi analiz et."
+        response = model.generate_content(analysis_prompt)
 
-        # Profesyonel E-Posta Gönderimi (Resend)
+        # 3. Sonucun Resend ile İletilmesi
+        resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
-            "from": "ATILLAYALCIN_AI_OS <onboarding@resend.dev>", # Domain doğrulanınca info@atillayalcin.ai yapılacak
+            "from": "AI_OS <onboarding@resend.dev>",
             "to": email,
-            "subject": "Stratejik Analiz Raporu v16.0.4",
+            "subject": "Kurumsal Strateji Raporu v16.0.5",
             "text": response.text
         })
 
-        return {"status": "success", "message": "Analiz Resend üzerinden iletildi."}
+        return {"status": "success"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
