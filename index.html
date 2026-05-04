@@ -434,108 +434,101 @@
     </div>
 
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
-    <script>
-        const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
-        const SCOPES = 'https://www.googleapis.com/auth/drive.file';
-        
-        let tokenClient;
-        let accessToken = null;
-        let selectedFiles = [];
+<script>
+    // Sizin oluşturduğunuz Client ID burada devreye giriyor
+    const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
+    const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+    
+    let tokenClient;
+    let accessToken = null;
+    let selectedFiles = [];
 
-        function gapiLoaded() { gapi.load('client:picker', () => {}); }
-        function gisLoaded() {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-                client_id: CLIENT_ID,
-                scope: SCOPES,
-                callback: (resp) => { 
-                    accessToken = resp.access_token; 
-                    if (accessToken) triggerInference(); // Yetki gelince otomatik devam et
-                },
-            });
-        }
-
-        function updateFileList(files) {
-            const list = document.getElementById('final-file-list');
-            selectedFiles = Array.from(files);
-            list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
-        }
-
-   async function triggerInference() {
-    const email = document.getElementById('final-email').value;
-    const log = document.getElementById('final-log');
-    if (selectedFiles.length === 0) { log.innerText = "Hata: Lütfen analiz edilecek bir dosya seçin."; return; }
-
-    if (!accessToken) {
-        log.innerText = "Google 5TB Alanınız İçin Güvenli Erişim Yetkisi Alınıyor...";
-        tokenClient.requestAccessToken({prompt: ''});
-        return;
+    function gapiLoaded() { gapi.load('client:picker', () => {}); }
+    function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+            client_id: CLIENT_ID, // ID KULLANIM NOKTASI
+            scope: SCOPES,
+            callback: (resp) => { 
+                accessToken = resp.access_token; 
+                if (accessToken) triggerInference(); 
+            },
+        });
     }
 
-    const file = selectedFiles[0];
-    log.innerText = `${file.name} 5TB Alanınıza Aktarılıyor...`; // Dinamik isim
-    log.style.color = "#00d2ff";
-
-    try {
-        const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-';
-        
-        // GOOGLE DRIVE MULTIPART PROTOKOLÜ (MANUEL ONAYLI YAPI)
-        const metadata = {
-            'name': file.name,
-            'parents': [folderId]
-        };
-
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(file);
-        reader.onload = async function(e) {
-            const contentType = file.type || 'application/octet-stream';
-            const base64Data = btoa(new Uint8Array(e.target.result).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-
-            const boundary = 'atillayalcin_ai_os_boundary';
-            const delimiter = "\r\n--" + boundary + "\r\n";
-            const close_delim = "\r\n--" + boundary + "--";
-
-            const multipartBody = 
-                delimiter + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata) + 
-                delimiter + 'Content-Type: ' + contentType + '\r\nContent-Transfer-Encoding: base64\r\n\r\n' + base64Data + 
-                close_delim;
-
-            const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-                method: 'POST',
-                headers: new Headers({
-                    'Authorization': 'Bearer ' + accessToken,
-                    'Content-Type': 'multipart/related; boundary=' + boundary
-                }),
-                body: multipartBody
-            });
-
-            if (!uploadResp.ok) throw new Error("Drive Aktarım Hatası!");
-            const uploadData = await uploadResp.json();
-
-            // API INFERENCE TETİKLEME
-            log.innerText = "Gemini 1.5 Pro Otonom Strateji Analizini Başlatıyor...";
-            const apiFormData = new FormData();
-            apiFormData.append('email', email);
-            apiFormData.append('drive_file_id', uploadData.id);
-
-            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                method: 'POST',
-                body: apiFormData
-            });
-
-            if (response.ok) {
-                log.innerText = `İşlem Başarılı! ${file.name} raporu iletildi.`;
-                log.style.color = "#00ff88";
-            }
-        };
-    } catch (error) {
-        log.innerText = "Bağlantı Hatası: " + error.message;
-        log.style.color = "#ff4444";
+    function updateFileList(files) {
+        const list = document.getElementById('final-file-list');
+        selectedFiles = Array.from(files);
+        list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
     }
-}
-    </script>
-</section>
+
+    async function triggerInference() {
+        const email = document.getElementById('final-email').value;
+        const log = document.getElementById('final-log');
+        if (selectedFiles.length === 0) { log.innerText = "Hata: Dosya seçilmedi."; return; }
+
+        if (!accessToken) {
+            log.innerText = "Güvenli Erişim Yetkisi Alınıyor...";
+            tokenClient.requestAccessToken({prompt: ''});
+            return;
+        }
+
+        const file = selectedFiles[0];
+        log.innerText = `${file.name} 5TB Alanınıza Aktarılıyor...`; // Marmara Birlik Yazısı Kaldırıldı
+        log.style.color = "#00d2ff";
+
+        try {
+            const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-'; // Sizin Klasör ID'niz
+            
+            // DRIVE MULTIPART YÜKLEME (MANUEL PROTOKOL)
+            const reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = async function(e) {
+                const contentType = file.type || 'application/octet-stream';
+                const base64Data = btoa(new Uint8Array(e.target.result).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+                const boundary = 'atillayalcin_ai_os_boundary';
+                const delimiter = "\r\n--" + boundary + "\r\n";
+                const close_delim = "\r\n--" + boundary + "--";
+
+                const metadata = { 'name': file.name, 'parents': [folderId] };
+                const multipartBody = delimiter + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata) + 
+                    delimiter + 'Content-Type: ' + contentType + '\r\nContent-Transfer-Encoding: base64\r\n\r\n' + base64Data + close_delim;
+
+                const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+                    method: 'POST',
+                    headers: new Headers({
+                        'Authorization': 'Bearer ' + accessToken,
+                        'Content-Type': 'multipart/related; boundary=' + boundary
+                    }),
+                    body: multipartBody
+                });
+
+                const uploadData = await uploadResp.json();
+                if (!uploadData.id) throw new Error("Yükleme Başarısız.");
+
+                // BACKEND TETİKLEME
+                log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+                const apiFormData = new FormData();
+                apiFormData.append('email', email);
+                apiFormData.append('drive_file_id', uploadData.id);
+
+                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                    method: 'POST',
+                    body: apiFormData
+                });
+
+                if (response.ok) {
+                    log.innerText = `İşlem Başarılı! ${file.name} raporu iletildi.`;
+                    log.style.color = "#00ff88";
+                }
+            };
+        } catch (error) {
+            log.innerText = "Bağlantı Hatası: " + error.message;
+            log.style.color = "#ff4444";
+        }
+    }
+</script></section>
 </section></section></section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
