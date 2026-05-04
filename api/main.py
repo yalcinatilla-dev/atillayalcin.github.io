@@ -17,7 +17,7 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
         content = await file.read()
         with open(temp_path, "wb") as f: f.write(content)
 
-        # 1. Gemini Stabil Yapılandırma
+        # 1. Gemini Stabil Yapılandırma (v1 zorlaması)
         api_key = os.environ.get("GEMINI_API_KEY")
         genai.configure(api_key=api_key)
         
@@ -29,11 +29,11 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
             time.sleep(2)
             uploaded_gemini_file = genai.get_file(uploaded_gemini_file.name)
 
-        # GÜNCEL MODEL İSMİ (v1beta hatasını önlemek için stabil isim)
-        model = genai.GenerativeModel(model_name='gemini-1.5-flash')
+        # MODEL ÇAĞRISI: models/ önekini SDK kendisi ekler, biz sadece ismi veriyoruz
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         response = model.generate_content([
-            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı analiz et ve profesyonel bir kurumsal rapor hazırla.",
+            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı derinlemesine analiz et ve profesyonel bir kurumsal rapor hazırla.",
             uploaded_gemini_file
         ])
 
@@ -61,5 +61,4 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
 
     except Exception as e:
         if os.path.exists(temp_path): os.remove(temp_path)
-        # Hata detayını frontend'e daha açık gönderiyoruz
-        return {"status": "error", "message": f"Analiz Hatası: {str(e)}"}
+        return {"status": "error", "message": f"Sistem Hatası: {str(e)}"}
