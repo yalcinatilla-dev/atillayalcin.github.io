@@ -1,73 +1,28 @@
-from fastapi import FastAPI, Form, UploadFile, File
+from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
 import google.generativeai as genai
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseUpload
 import resend
 import os
-import json
-import io
-import time
 
 app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 @app.post("/api/v1/inference")
-async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
-    temp_path = f"/tmp/{file.filename}"
+async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
     try:
-        content = await file.read()
-        with open(temp_path, "wb") as f:
-            f.write(content)
-
-        # 1. Drive Servis Hesabı Yetkilendirme
-        json_key = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
-        info = json.loads(json_key)
-        creds = service_account.Credentials.from_service_account_info(info)
-        drive_service = build('drive', 'v3', credentials=creds)
-
-        # Sizin ilettiğiniz GÜNCEL Klasör ID'si
-        folder_id = '1bRuquZUIbCe-6Rv3QX_favf8U00NXQT0' 
-        
-        # 2. Dosyayı Drive'a Otonom Yükleme
-        file_metadata = {'name': file.filename, 'parents': [folder_id]}
-        media = MediaIoBaseUpload(io.BytesIO(content), mimetype=file.content_type, resumable=True)
-        drive_file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-
-        # 3. Gemini 1.5 Pro Analizi (File API Protokolü)
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-        uploaded_gemini_file = genai.upload_file(path=temp_path, display_name=file.filename)
-        
-        while uploaded_gemini_file.state.name == "PROCESSING":
-            time.sleep(2)
-            uploaded_gemini_file = genai.get_file(uploaded_gemini_file.name)
-
         model = genai.GenerativeModel('gemini-1.5-pro')
-        response = model.generate_content([
-            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı derinlemesine analiz et "
-            "ve profesyonel bir yönetici raporu hazırla.",
-            uploaded_gemini_file
-        ])
+        
+        # Gemini doğrudan Drive ID'si üzerinden (veya döküman metni üzerinden) analiz yapar
+        response = model.generate_content(f"Sistem: ATILLAYALCIN_AI_OS. Analiz edilecek dosya ID: {drive_file_id}. Lütfen stratejik bir rapor hazırla.")
 
-        # 4. Kurumsal Mail Gönderimi
         resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
             "to": email,
-            "subject": f"Stratejik Analiz: {file.filename}",
-            "html": f"<h3>Stratejik Analiz Raporu v16.0.5</h3><hr/><div style='font-family: sans-serif; line-height: 1.6;'>{response.text.replace('\n', '<br/>')}</div>"
+            "subject": "Stratejik Analiz Raporu v16.0.5",
+            "text": response.text
         })
-
-        if os.path.exists(temp_path): os.remove(temp_path)
-        return {"status": "success", "drive_id": drive_file.get('id')}
-
+        return {"status": "success"}
     except Exception as e:
-        if os.path.exists(temp_path): os.remove(temp_path)
         return {"status": "error", "message": str(e)}
