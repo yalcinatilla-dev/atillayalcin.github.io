@@ -437,75 +437,73 @@
 <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
 <script>
-    // Sizin oluşturduğunuz Client ID burada devreye giriyor
-    const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
-    const SCOPES = 'https://www.googleapis.com/auth/drive.file';
-    
-    let tokenClient;
-    let accessToken = null;
-    let selectedFiles = [];
+   // ATILLAYALCIN_AI_OS v16.0.5 - Production Grade Drive Sync
+const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
+// Kapsamı 'drive' olarak genişlettik (Klasöre erişim sorunu yaşanmaması için)
+const SCOPES = 'https://www.googleapis.com/auth/drive'; 
 
-    function gapiLoaded() { gapi.load('client:picker', () => {}); }
-    function gisLoaded() {
-        tokenClient = google.accounts.oauth2.initTokenClient({
-            client_id: CLIENT_ID, // ID KULLANIM NOKTASI
-            scope: SCOPES,
-            callback: (resp) => { 
-                accessToken = resp.access_token; 
-                if (accessToken) triggerInference(); 
-            },
-        });
-    }
+let tokenClient;
+let accessToken = null;
 
-    function updateFileList(files) {
-        const list = document.getElementById('final-file-list');
-        selectedFiles = Array.from(files);
-        list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
-    }
+function gapiLoaded() { gapi.load('client:picker', () => {}); }
+function gisLoaded() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: (resp) => { 
+            accessToken = resp.access_token; 
+            if (accessToken) triggerInference(); 
+        },
+    });
+}
 
-    async function triggerInference() {
+async function triggerInference() {
     const email = document.getElementById('final-email').value;
     const log = document.getElementById('final-log');
-    if (selectedFiles.length === 0) { log.innerText = "Hata: Dosya seçilmedi."; return; }
+    if (selectedFiles.length === 0) return;
 
     if (!accessToken) {
-        log.innerText = "Güvenli Erişim Yetkisi Alınıyor...";
-        tokenClient.requestAccessToken({prompt: ''});
+        log.innerText = "5TB Alanınız İçin Tam Yetki Alınıyor...";
+        tokenClient.requestAccessToken({prompt: 'consent'});
         return;
     }
 
     const file = selectedFiles[0];
-    log.innerText = `${file.name} 5TB Alanınıza Aktarılıyor...`; 
+    log.innerText = `${file.name} Güvenli Alana Aktarılıyor...`;
     log.style.color = "#00d2ff";
 
     try {
         const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-';
-        const boundary = 'atillayalcin_ai_os_boundary';
-        
-        // METADATA VE DOSYA PAKETLEME (BLOB YÖNTEMİ)
+        const boundary = '-------atillayalcin_ai_os';
         const metadata = { 'name': file.name, 'parents': [folderId] };
-        
+
+        // Google Drive Multipart Body (Binary Safe Construction)
         const multipartBody = new Blob([
             `--${boundary}\r\n`,
             'Content-Type: application/json; charset=UTF-8\r\n\r\n',
             JSON.stringify(metadata),
             `\r\n--${boundary}\r\n`,
-            `Content-Type: ${file.type || 'application/pdf'}\r\n\r\n`,
+            `Content-Type: ${file.type || 'application/octet-stream'}\r\n\r\n`,
             file,
             `\r\n--${boundary}--`
         ], { type: `multipart/related; boundary=${boundary}` });
 
         const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
             method: 'POST',
-            headers: new Headers({ 'Authorization': 'Bearer ' + accessToken }),
+            headers: { 'Authorization': 'Bearer ' + accessToken },
             body: multipartBody
         });
 
         const uploadData = await uploadResp.json();
-        if (!uploadData.id) throw new Error("Drive Yükleme Başarısız.");
+        
+        if (!uploadData.id) {
+            // Detaylı Hata Ayıklama
+            console.error("Google Drive Error:", uploadData);
+            throw new Error(uploadData.error ? uploadData.error.message : "ID alınamadı.");
+        }
 
-        // BACKEND ANALİZ TETİKLEME
-        log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+        // B. API ANALİZ TETİKLEME
+        log.innerText = "Gemini 1.5 Pro Derin Analizi Başlatıyor...";
         const apiFormData = new FormData();
         apiFormData.append('email', email);
         apiFormData.append('drive_file_id', uploadData.id);
@@ -516,11 +514,11 @@
         });
 
         if (response.ok) {
-            log.innerText = `İşlem Başarılı! ${file.name} raporu iletildi.`;
+            log.innerText = `İşlem Başarılı! Rapor ${email} adresine iletildi.`;
             log.style.color = "#00ff88";
         }
     } catch (error) {
-        log.innerText = "Bağlantı Hatası: " + error.message;
+        log.innerText = "Sistem Hatası: " + error.message;
         log.style.color = "#ff4444";
     }
 }
