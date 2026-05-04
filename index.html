@@ -462,60 +462,79 @@
             list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
         }
 
-        async function triggerInference() {
-            const email = document.getElementById('final-email').value;
-            const log = document.getElementById('final-log');
-            if (selectedFiles.length === 0) { log.innerText = "Hata: Lütfen analiz edilecek bir dosya seçin."; return; }
+   async function triggerInference() {
+    const email = document.getElementById('final-email').value;
+    const log = document.getElementById('final-log');
+    if (selectedFiles.length === 0) { log.innerText = "Lütfen bir dosya seçin."; return; }
 
-            if (!accessToken) {
-                log.innerText = "Google 5TB Alanınız İçin Güvenli Erişim Yetkisi Alınıyor...";
-                tokenClient.requestAccessToken({prompt: ''});
-                return;
+    if (!accessToken) {
+        log.innerText = "Google 5TB Alanınız İçin Yetki Alınıyor...";
+        tokenClient.requestAccessToken({prompt: ''});
+        return;
+    }
+
+    log.innerText = "Veri (Marmarabirlik) 5TB Alanınıza Aktarılıyor...";
+    log.style.color = "#00d2ff";
+
+    try {
+        const file = selectedFiles[0];
+        const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-'; // Sizin klasör ID'niz
+        
+        // GOOGLE DRIVE MULTIPART PROTOKOLÜ (MANUEL İNŞA)
+        const boundary = 'atillayalcin_ai_os_boundary';
+        const delimiter = "\r\n--" + boundary + "\r\n";
+        const close_delim = "\r\n--" + boundary + "--";
+
+        const metadata = {
+            'name': file.name,
+            'parents': [folderId]
+        };
+
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onload = async function(e) {
+            const contentType = file.type || 'application/octet-stream';
+            const base64Data = btoa(new Uint8Array(e.target.result).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+
+            const multipartBody = 
+                delimiter + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata) + 
+                delimiter + 'Content-Type: ' + contentType + '\r\nContent-Transfer-Encoding: base64\r\n\r\n' + base64Data + 
+                close_delim;
+
+            // A. DRIVE UPLOAD
+            const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+                method: 'POST',
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + accessToken,
+                    'Content-Type': 'multipart/related; boundary=' + boundary
+                }),
+                body: multipartBody
+            });
+
+            if (!uploadResp.ok) throw new Error("Drive Yükleme Hatası!");
+            const uploadData = await uploadResp.json();
+
+            // B. API INFERENCE
+            log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+            const apiFormData = new FormData();
+            apiFormData.append('email', email);
+            apiFormData.append('drive_file_id', uploadData.id);
+
+            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                method: 'POST',
+                body: apiFormData
+            });
+
+            if (response.ok) {
+                log.innerText = "İşlem Başarılı! Stratejik raporunuz iletildi.";
+                log.style.color = "#00ff88";
             }
-
-            log.innerText = "Marmarabirlik Verisi 5TB Alanınıza Yükleniyor...";
-            log.style.color = "#00d2ff";
-            
-            try {
-                const file = selectedFiles[0];
-                const metadata = {
-                    'name': file.name,
-                    'parents': ['1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-'] // Vercel'deki DRIVE_FOLDER_ID ile aynı olmalı
-                };
-                const formData = new FormData();
-                formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
-                formData.append('file', file);
-
-                // A. GOOGLE DRIVE UPLOAD (Multipart)
-                const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-                    method: 'POST',
-                    headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
-                    body: formData
-                });
-                const uploadData = await uploadResp.json();
-
-                // B. VERCEL API INFERENCE
-                log.innerText = "Gemini 1.5 Pro Otonom Strateji Analizini Başlatıyor...";
-                const apiFormData = new FormData();
-                apiFormData.append('email', email);
-                apiFormData.append('drive_file_id', uploadData.id); // Yüklenen dosyanın ID'sini gönderiyoruz
-
-                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                    method: 'POST',
-                    body: apiFormData
-                });
-
-                if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Stratejik raporunuz info@atillayalcin.ai adresinden iletildi.";
-                    log.style.color = "#00ff88";
-                } else {
-                    log.innerText = "API Hatası: Analiz motoru yanıt vermedi.";
-                }
-            } catch (error) {
-                log.innerText = "Bağlantı Hatası: " + error.message;
-                log.style.color = "#ff4444";
-            }
-        }
+        };
+    } catch (error) {
+        log.innerText = "Hata: " + error.message;
+        log.style.color = "#ff4444";
+    }
+}
     </script>
 </section>
 </section></section></section>
