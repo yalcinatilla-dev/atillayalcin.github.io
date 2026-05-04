@@ -449,7 +449,10 @@
             tokenClient = google.accounts.oauth2.initTokenClient({
                 client_id: CLIENT_ID,
                 scope: SCOPES,
-                callback: (resp) => { accessToken = resp.access_token; },
+                callback: (resp) => { 
+                    accessToken = resp.access_token; 
+                    if (accessToken) triggerInference(); // Yetki gelince devam et
+                },
             });
         }
 
@@ -462,25 +465,27 @@
         async function triggerInference() {
             const email = document.getElementById('final-email').value;
             const log = document.getElementById('final-log');
-            const file = selectedFiles[0];
+            if (selectedFiles.length === 0) { log.innerText = "Lütfen bir dosya seçin."; return; }
 
             if (!accessToken) {
-                log.innerText = "5TB Alanınız İçin Google Yetkisi Alınıyor...";
-                tokenClient.requestAccessToken({prompt: 'consent'});
+                log.innerText = "Google 5TB Alanınız İçin Yetki Alınıyor...";
+                tokenClient.requestAccessToken({prompt: ''});
                 return;
             }
 
-            log.innerText = "Veri Güvenli Alana Yükleniyor ve Analiz Başlatılıyor...";
+            log.innerText = "Marmarabirlik Verisi Güvenli Alana Yükleniyor...";
             
             try {
+                const file = selectedFiles[0];
                 const metadata = {
                     'name': file.name,
-                    'parents': ['1yQ9_Sizin_Klasor_ID_Buraya'] // Videodaki kodunuzda doğru görünüyordu, dokunmayın.
+                    'parents': ['1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-'] // Vercel'deki DRIVE_FOLDER_ID ile aynı olmalı
                 };
                 const formData = new FormData();
                 formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
                 formData.append('file', file);
 
+                // A. DRIVE UPLOAD
                 const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
                     method: 'POST',
                     headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
@@ -488,6 +493,8 @@
                 });
                 const uploadData = await uploadResp.json();
 
+                // B. API INFERENCE
+                log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
                 const apiFormData = new FormData();
                 apiFormData.append('email', email);
                 apiFormData.append('drive_file_id', uploadData.id);
@@ -507,6 +514,7 @@
             }
         }
     </script>
+</section>
 </section></section></section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
