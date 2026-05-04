@@ -465,26 +465,22 @@
    async function triggerInference() {
     const email = document.getElementById('final-email').value;
     const log = document.getElementById('final-log');
-    if (selectedFiles.length === 0) { log.innerText = "Lütfen bir dosya seçin."; return; }
+    if (selectedFiles.length === 0) { log.innerText = "Hata: Lütfen analiz edilecek bir dosya seçin."; return; }
 
     if (!accessToken) {
-        log.innerText = "Google 5TB Alanınız İçin Yetki Alınıyor...";
+        log.innerText = "Google 5TB Alanınız İçin Güvenli Erişim Yetkisi Alınıyor...";
         tokenClient.requestAccessToken({prompt: ''});
         return;
     }
 
-    log.innerText = "Veri (Marmarabirlik) 5TB Alanınıza Aktarılıyor...";
+    const file = selectedFiles[0];
+    log.innerText = `${file.name} 5TB Alanınıza Aktarılıyor...`; // Dinamik isim
     log.style.color = "#00d2ff";
 
     try {
-        const file = selectedFiles[0];
-        const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-'; // Sizin klasör ID'niz
+        const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-';
         
-        // GOOGLE DRIVE MULTIPART PROTOKOLÜ (MANUEL İNŞA)
-        const boundary = 'atillayalcin_ai_os_boundary';
-        const delimiter = "\r\n--" + boundary + "\r\n";
-        const close_delim = "\r\n--" + boundary + "--";
-
+        // GOOGLE DRIVE MULTIPART PROTOKOLÜ (MANUEL ONAYLI YAPI)
         const metadata = {
             'name': file.name,
             'parents': [folderId]
@@ -496,12 +492,15 @@
             const contentType = file.type || 'application/octet-stream';
             const base64Data = btoa(new Uint8Array(e.target.result).reduce((data, byte) => data + String.fromCharCode(byte), ''));
 
+            const boundary = 'atillayalcin_ai_os_boundary';
+            const delimiter = "\r\n--" + boundary + "\r\n";
+            const close_delim = "\r\n--" + boundary + "--";
+
             const multipartBody = 
                 delimiter + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata) + 
                 delimiter + 'Content-Type: ' + contentType + '\r\nContent-Transfer-Encoding: base64\r\n\r\n' + base64Data + 
                 close_delim;
 
-            // A. DRIVE UPLOAD
             const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
                 method: 'POST',
                 headers: new Headers({
@@ -511,11 +510,11 @@
                 body: multipartBody
             });
 
-            if (!uploadResp.ok) throw new Error("Drive Yükleme Hatası!");
+            if (!uploadResp.ok) throw new Error("Drive Aktarım Hatası!");
             const uploadData = await uploadResp.json();
 
-            // B. API INFERENCE
-            log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+            // API INFERENCE TETİKLEME
+            log.innerText = "Gemini 1.5 Pro Otonom Strateji Analizini Başlatıyor...";
             const apiFormData = new FormData();
             apiFormData.append('email', email);
             apiFormData.append('drive_file_id', uploadData.id);
@@ -526,12 +525,12 @@
             });
 
             if (response.ok) {
-                log.innerText = "İşlem Başarılı! Stratejik raporunuz iletildi.";
+                log.innerText = `İşlem Başarılı! ${file.name} raporu iletildi.`;
                 log.style.color = "#00ff88";
             }
         };
     } catch (error) {
-        log.innerText = "Hata: " + error.message;
+        log.innerText = "Bağlantı Hatası: " + error.message;
         log.style.color = "#ff4444";
     }
 }
