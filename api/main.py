@@ -42,7 +42,7 @@ async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
             uploaded_file = genai.get_file(uploaded_file.name)
 
         # KRİTİK YAMA: API'nin tanıdığı geçerli model ismi (latest eklendi)
-        model = genai.GenerativeModel('gemini-1.5-pro-latest')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         response = model.generate_content([
             "Sen Atilla Yalçın'ın otonom strateji asistanısın. Bu dökümanı profesyonelce analiz et ve yönetici raporu hazırla.",
