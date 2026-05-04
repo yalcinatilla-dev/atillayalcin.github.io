@@ -1,32 +1,39 @@
-from fastapi import FastAPI, Form
-from fastapi.middleware.cors import CORSMiddleware
+import os, json, resend
+from fastapi import FastAPI, Form, UploadFile, File
 import google.generativeai as genai
-import resend
-import os
-import requests
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaIoBaseUpload
+import io
 
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 @app.post("/api/v1/inference")
-async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
+async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
     try:
-        genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-        resend.api_key = os.environ.get("RESEND_API_KEY")
-        
-        # Gemini 1.5 Pro Konfigürasyonu
-        model = genai.GenerativeModel('gemini-1.5-pro')
-        
-        # Otonom Analiz Komutu (Geniş Bağlam Penceresi)
-        # Not: Gelecek adımda Drive'dan fiziksel okuma için 'google-api-python-client' eklenebilir.
-        # Şu anki sürümde Gemini'nin dökümanı anladığını teyit ediyoruz.
-        response = model.generate_content(f"Sistem: ATILLAYALCIN_AI_OS. Hedef Belge ID: {drive_file_id}. Bu belgeyi Atilla Yalçın Strateji standartlarında analiz et ve raporu {email} adresine gönderilecek şekilde yapılandır.")
+        # 1. Drive Servis Hesabı Yetkilendirme
+        info = json.loads(os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON"))
+        creds = service_account.Credentials.from_service_account_info(info)
+        drive_service = build('drive', 'v3', credentials=creds)
 
+        # 2. Dosyayı Drive'a Otonom Yükleme
+        folder_id = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-' # Doğru ID (9oI)
+        file_metadata = {'name': file.filename, 'parents': [folder_id]}
+        media = MediaIoBaseUpload(io.BytesIO(await file.read()), mimetype=file.content_type)
+        drive_file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+
+        # 3. Gemini 1.5 Pro Analizi
+        genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+        model = genai.GenerativeModel('gemini-1.5-pro')
+        response = model.generate_content(f"Drive ID: {drive_file.get('id')}. Belgeyi Atilla Yalçın standartlarında analiz et.")
+
+        # 4. Kurumsal Mail Gönderimi
+        resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
             "to": email,
             "subject": "Stratejik Analiz Raporu v16.0.5",
-            "html": f"<h3>Stratejik Analiz Sonucu</h3><p>{response.text}</p>"
+            "text": response.text
         })
         return {"status": "success"}
     except Exception as e:
