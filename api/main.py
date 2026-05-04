@@ -17,29 +17,36 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
         content = await file.read()
         with open(temp_path, "wb") as f: f.write(content)
 
-        # 1. Gemini 1.5 Flash ile Hızlı Analiz (Yeni Anahtar Gereklidir)
-        genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+        # 1. Gemini Stabil Yapılandırma
+        api_key = os.environ.get("GEMINI_API_KEY")
+        genai.configure(api_key=api_key)
+        
+        # Dosyayı Gemini File API'ye yükle
         uploaded_gemini_file = genai.upload_file(path=temp_path)
+        
+        # İşlenme durumunu kontrol et
         while uploaded_gemini_file.state.name == "PROCESSING":
-            time.sleep(1)
+            time.sleep(2)
             uploaded_gemini_file = genai.get_file(uploaded_gemini_file.name)
 
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # GÜNCEL MODEL İSMİ (v1beta hatasını önlemek için stabil isim)
+        model = genai.GenerativeModel(model_name='gemini-1.5-flash')
+        
         response = model.generate_content([
-            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı analiz et ve kurumsal rapor hazırla.",
+            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı analiz et ve profesyonel bir kurumsal rapor hazırla.",
             uploaded_gemini_file
         ])
 
-        # 2. Resend ile Gönderim
+        # 2. Resend ile Rapor Gönderimi
         resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
             "to": email,
             "subject": f"Stratejik Analiz: {file.filename}",
-            "html": f"<h3>Analiz Raporu v16.0.5</h3><div style='white-space: pre-wrap;'>{response.text}</div>"
+            "html": f"<h3>Stratejik Analiz Raporu v16.0.5</h3><hr><div style='white-space: pre-wrap; font-family: sans-serif; line-height: 1.6;'>{response.text}</div>"
         })
 
-        # 3. Drive'a Sessiz Yedekleme (Arka Planda)
+        # 3. Drive Arşivleme (Sessiz Çalışır)
         try:
             info = json.loads(os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON"))
             creds = service_account.Credentials.from_service_account_info(info)
@@ -47,11 +54,12 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
             file_metadata = {'name': file.filename, 'parents': ['1bRuquZUIbCe-6Rv3QX_favf8U00NXQT0']}
             media = MediaIoBaseUpload(io.BytesIO(content), mimetype=file.content_type)
             drive_service.files().create(body=file_metadata, media_body=media).execute()
-        except: pass # Arşivleme hata verse de raporu etkilemez
+        except: pass
 
         if os.path.exists(temp_path): os.remove(temp_path)
         return {"status": "success"}
 
     except Exception as e:
         if os.path.exists(temp_path): os.remove(temp_path)
-        return {"status": "error", "message": f"Kritik Hata: {str(e)}"}
+        # Hata detayını frontend'e daha açık gönderiyoruz
+        return {"status": "error", "message": f"Analiz Hatası: {str(e)}"}
