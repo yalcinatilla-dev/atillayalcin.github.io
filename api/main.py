@@ -25,49 +25,48 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
     try:
         content = await file.read()
         with open(temp_path, "wb") as f:
-            with io.BytesIO(content) as buffer:
-                f.write(buffer.getbuffer())
+            f.write(content)
 
-        # 1. Drive'a Arşivleme (Corporate Memory)
+        # 1. Drive Servis Hesabı Yetkilendirme
         json_key = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
         info = json.loads(json_key)
         creds = service_account.Credentials.from_service_account_info(info)
         drive_service = build('drive', 'v3', credentials=creds)
 
-        folder_id = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-' # Doğru ID (Büyük I)
+        # KRİTİK: Klasör ID'sini BURADAN KOPYALAYIN (Büyük I kullanılmıştır)
+        folder_id = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-' 
+        
+        # 2. Dosyayı Drive'a Otonom Yükleme
         file_metadata = {'name': file.filename, 'parents': [folder_id]}
-        media = MediaIoBaseUpload(io.BytesIO(content), mimetype=file.content_type)
+        media = MediaIoBaseUpload(io.BytesIO(content), mimetype=file.content_type, resumable=True)
         drive_file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
-        # 2. Gemini File API'ye Yükleme (Analiz İçin)
+        # 3. Gemini 1.5 Pro Analizi (File API Protokolü)
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
         uploaded_gemini_file = genai.upload_file(path=temp_path, display_name=file.filename)
         
-        # Dosya işlenene kadar bekle (Kritik adım)
+        # Dosya 'ACTIVE' olana kadar kısa bekleme (Saniyeler sürer)
         while uploaded_gemini_file.state.name == "PROCESSING":
-            time.sleep(1)
+            time.sleep(2)
             uploaded_gemini_file = genai.get_file(uploaded_gemini_file.name)
 
-        # 3. Gemini 1.5 Pro Analizi
         model = genai.GenerativeModel('gemini-1.5-pro')
         response = model.generate_content([
-            "Sistem: ATILLAYALCIN_AI_OS. Sen stratejik bir iş ortağısın. "
-            "Bu dökümanı derinlemesine analiz et ve kurumsal bir rapor hazırla.",
+            "Sen Atilla Yalçın'ın stratejik AI asistanısın. Bu dökümanı derinlemesine analiz et "
+            "ve profesyonel bir yönetici raporu hazırla.",
             uploaded_gemini_file
         ])
 
-        # 4. Resend ile Gönderim
+        # 4. Kurumsal Mail Gönderimi
         resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
             "to": email,
             "subject": f"Stratejik Analiz: {file.filename}",
-            "html": f"<h3>Analiz Raporu v16.0.5</h3><div style='white-space: pre-wrap;'>{response.text}</div>"
+            "html": f"<h3>Stratejik Analiz Raporu v16.0.5</h3><hr/><div style='font-family: sans-serif; line-height: 1.6;'>{response.text.replace('\n', '<br/>')}</div>"
         })
 
-        # Temizlik
         if os.path.exists(temp_path): os.remove(temp_path)
-        
         return {"status": "success", "drive_id": drive_file.get('id')}
 
     except Exception as e:
