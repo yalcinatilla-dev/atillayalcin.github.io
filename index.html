@@ -462,38 +462,56 @@
             list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
         }
 
-        async function triggerInference() {
-            const email = document.getElementById('final-email').value;
-            const log = document.getElementById('final-log');
+  async function triggerInference() {
+    const email = document.getElementById('final-email').value;
+    const log = document.getElementById('final-log');
+    const file = selectedFiles[0]; // İlk dosyayı hedef alıyoruz
 
-            if (!accessToken) {
-                log.innerText = "Önce Google 5TB Alanınız İçin Yetki Vermeniz Gerekiyor...";
-                tokenClient.requestAccessToken({prompt: 'consent'});
-                return;
-            }
+    if (!accessToken) {
+        log.innerText = "5TB Alanınız İçin Google Yetkisi Alınıyor...";
+        tokenClient.requestAccessToken({prompt: 'consent'});
+        return;
+    }
 
-            log.innerText = "Büyük Veri (Marmarabirlik) 5TB Alanınıza Yükleniyor ve Gemini 1.5 Pro Analizi Başlatılıyor...";
-            log.style.color = "#00d2ff";
+    log.innerText = "Büyük Veri (Marmarabirlik) Güvenli Alana Yükleniyor...";
+    
+    try {
+        // A. DOSYAYI DRIVE'A YÜKLEME (Frontend Tarafında)
+        const metadata = {
+            'name': file.name,
+            'parents': ['BURAYA_DRIVE_FOLDER_ID_YAZIN'] // 1. Adımdaki Klasör ID'si
+        };
+        const formData = new FormData();
+        formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
+        formData.append('file', file);
 
-            try {
-                const formData = new FormData();
-                formData.append('email', email);
-                formData.append('drive_file_id', 'storage_optimized_v16_0_5'); 
+        const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+            method: 'POST',
+            headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
+            body: formData
+        });
+        const uploadData = await uploadResp.json();
 
-                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                    method: 'POST',
-                    body: formData
-                });
+        // B. DRIVE ID'SİNİ BACKEND'E GÖNDERME
+        log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+        const apiFormData = new FormData();
+        apiFormData.append('email', email);
+        apiFormData.append('drive_file_id', uploadData.id);
 
-                if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Kurumsal raporunuz otonom olarak iletildi.";
-                    log.style.color = "#00ff88";
-                }
-            } catch (error) {
-                log.innerText = "Bağlantı Hatası: Ağ kısıtlamalarını kontrol edin.";
-                log.style.color = "#ff4444";
-            }
+        const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+            method: 'POST',
+            body: apiFormData
+        });
+
+        if (response.ok) {
+            log.innerText = "İşlem Başarılı! Kurumsal raporunuz iletildi.";
+            log.style.color = "#00ff88";
         }
+    } catch (error) {
+        log.innerText = "Hata: " + error.message;
+        log.style.color = "#ff4444";
+    }
+}
     </script>
 </section>
 </section></section>
