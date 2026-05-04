@@ -13,8 +13,8 @@ async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
         model = genai.GenerativeModel('gemini-1.5-pro')
         
-        # Gemini doğrudan Drive ID'si üzerinden (veya döküman metni üzerinden) analiz yapar
-        response = model.generate_content(f"Sistem: ATILLAYALCIN_AI_OS. Analiz edilecek dosya ID: {drive_file_id}. Lütfen stratejik bir rapor hazırla.")
+        # Gemini doğrudan Drive ID'si üzerinden analiz talimatını alır
+        response = model.generate_content(f"Sistem: ATILLAYALCIN_AI_OS. Hedef Dosya ID: {drive_file_id}. Lütfen bu dökümanı Atilla Yalçın standartlarında analiz et.")
 
         resend.api_key = os.environ.get("RESEND_API_KEY")
         resend.Emails.send({
