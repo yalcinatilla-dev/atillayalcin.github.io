@@ -1,5 +1,9 @@
 fastapi
 uvicorn
 google-generativeai
-python-multipart
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
 resend
+requests
+python-multipart
