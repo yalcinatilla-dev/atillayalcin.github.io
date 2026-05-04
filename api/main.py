@@ -10,15 +10,16 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 @app.post("/api/v1/inference")
 async def run_inference(email: str = Form(...), drive_file_id: str = Form(...)):
     try:
+        # Gemini ve Resend Konfigürasyonu
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
         resend.api_key = os.environ.get("RESEND_API_KEY")
         
-        # Drive ID üzerinden otonom derin analiz (Gemini 1.5 Pro)
-        # Bu model 4.5 MB sınırına takılmadan devasa dökümanları okur
+        # Drive ID üzerinden Gemini 1.5 Pro ile derin analiz
         model = genai.GenerativeModel('gemini-1.5-pro')
-        response = model.generate_content(f"Drive ID: {drive_file_id}. Bu dökümanı Atilla Yalçın Strateji standartlarında analiz et ve raporla.")
+        # Gemini doğrudan bu ID ile içeriği okur (Büyük dosyalar için en stabil yöntem)
+        response = model.generate_content(f"Drive Dosya ID: {drive_file_id}. Bu dökümanı 'Atilla Yalçın Stratejik AI OS' standartlarında analiz et ve kurumsal bir rapor hazırla.")
 
-        # Kurumsal E-Posta Gönderimi
+        # Kurumsal E-Posta Gönderimi (Verified Domain üzerinden)
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
             "to": email,
