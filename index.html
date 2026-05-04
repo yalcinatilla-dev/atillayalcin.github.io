@@ -515,23 +515,26 @@
                 if (!uploadData.id) throw new Error("Drive yükleme başarısız oldu.");
 
                 // B. BACKEND ANALİZ TETİKLEME
-                log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
-                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                    method: 'POST',
-                    body: new URLSearchParams({ 'email': email, 'drive_file_id': uploadData.id })
-                });
+            log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                method: 'POST',
+                body: new URLSearchParams({ 'email': email, 'drive_file_id': uploadData.id })
+            });
 
-                if (response.ok) {
-                    log.innerText = `İşlem Başarılı! Rapor ${email} adresine gönderildi.`;
-                    log.style.color = "#00ff88";
-                } else {
-                    throw new Error("Backend analiz motoru yanıt vermedi.");
-                }
-
-            } catch (error) {
-                log.innerText = "Sistem Hatası: " + error.message;
-                log.style.color = "#ff4444";
+            // YENİ EKLENEN KISIM: Gerçek hatayı ayrıştırma
+            const data = await response.json();
+            
+            if (data.status === "success") {
+                log.innerText = `İşlem Başarılı! Rapor ${email} adresine gönderildi.`;
+                log.style.color = "#00ff88";
+            } else {
+                throw new Error(data.message); // Hata varsa ekrana yansıtacak
             }
+
+        } catch (error) {
+            log.innerText = "Sistem Hatası: " + error.message;
+            log.style.color = "#ff4444";
+        }
         }
     </script>
 </section>
