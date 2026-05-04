@@ -33,8 +33,8 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
         creds = service_account.Credentials.from_service_account_info(info)
         drive_service = build('drive', 'v3', credentials=creds)
 
-        # KRİTİK: Klasör ID'sini BURADAN KOPYALAYIN (Büyük I kullanılmıştır)
-        folder_id = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-' 
+        # Sizin ilettiğiniz GÜNCEL Klasör ID'si
+        folder_id = '1bRuquZUIbCe-6Rv3QX_favf8U00NXQT0' 
         
         # 2. Dosyayı Drive'a Otonom Yükleme
         file_metadata = {'name': file.filename, 'parents': [folder_id]}
@@ -45,7 +45,6 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
         genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
         uploaded_gemini_file = genai.upload_file(path=temp_path, display_name=file.filename)
         
-        # Dosya 'ACTIVE' olana kadar kısa bekleme (Saniyeler sürer)
         while uploaded_gemini_file.state.name == "PROCESSING":
             time.sleep(2)
             uploaded_gemini_file = genai.get_file(uploaded_gemini_file.name)
