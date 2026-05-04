@@ -453,64 +453,44 @@
             });
         }
 
-        function updateFileList(files) {
-            const list = document.getElementById('final-file-list');
-            selectedFiles = Array.from(files);
-            list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
+        // ATILLAYALCIN_AI_OS v16.0.5 - Enterprise Gateway
+let selectedFiles = [];
+
+function updateFileList(files) {
+    const list = document.getElementById('final-file-list');
+    selectedFiles = Array.from(files);
+    // Dinamik dosya ismi gösterimi (Marmara Birlik ibaresi kaldırıldı)
+    list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
+}
+
+async function triggerInference() {
+    const email = document.getElementById('final-email').value;
+    const log = document.getElementById('final-log');
+    if (selectedFiles.length === 0) return;
+
+    const file = selectedFiles[0];
+    log.innerText = `${file.name} Kurumsal Veri Tüneline Aktarılıyor...`;
+    log.style.color = "#00d2ff";
+
+    try {
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('file', file); // Dosya doğrudan backend'e gider
+
+        const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            log.innerText = `İşlem Başarılı! ${file.name} analizi iletildi.`;
+            log.style.color = "#00ff88";
         }
-
-        async function triggerInference() {
-            const email = document.getElementById('final-email').value;
-            const log = document.getElementById('final-log');
-            if (selectedFiles.length === 0) { log.innerText = "Lütfen bir dosya seçin."; return; }
-
-            if (!accessToken) {
-                tokenClient.requestAccessToken({prompt: 'consent'});
-                return;
-            }
-
-            const file = selectedFiles[0];
-            log.innerText = `${file.name} aktarılıyor...`; // Dinamik isim onarıldı
-            
-            try {
-                const folderId = '1yQ9oI17e7_Xp59Nsh09X-h33yM99P6l-';
-                const boundary = '-------atillayalcin_ai_os';
-                const metadata = { 'name': file.name, 'parents': [folderId] };
-
-                const multipartBody = new Blob([
-                    `--${boundary}\r\n`,
-                    'Content-Type: application/json; charset=UTF-8\r\n\r\n',
-                    JSON.stringify(metadata),
-                    `\r\n--${boundary}\r\n`,
-                    `Content-Type: ${file.type || 'application/octet-stream'}\r\n\r\n`,
-                    file,
-                    `\r\n--${boundary}--`
-                ], { type: `multipart/related; boundary=${boundary}` });
-
-                const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-                    method: 'POST',
-                    headers: { 'Authorization': 'Bearer ' + accessToken },
-                    body: multipartBody
-                });
-
-                const uploadData = await uploadResp.json();
-                if (!uploadData.id) throw new Error("Yükleme Başarısız: " + (uploadData.error ? uploadData.error.message : "ID alınamadı."));
-
-                log.innerText = "Gemini 1.5 Pro analizi başlatıyor...";
-                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                    method: 'POST',
-                    body: new URLSearchParams({ 'email': email, 'drive_file_id': uploadData.id })
-                });
-
-                if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Rapor iletildi.";
-                    log.style.color = "#00ff88";
-                }
-            } catch (error) {
-                log.innerText = "Sistem Hatası: " + error.message;
-                log.style.color = "#ff4444";
-            }
-        }
+    } catch (error) {
+        log.innerText = "Sistem Hatası: " + error.message;
+        log.style.color = "#ff4444";
+    }
+}
     </script>
 </section>
 </section></section></section>
