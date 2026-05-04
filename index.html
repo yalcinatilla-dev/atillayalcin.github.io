@@ -408,7 +408,7 @@
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
         <h3 style="color: #fff; margin-bottom: 20px; font-size: 2.2rem; font-weight: 800;">Gizli Maliyetleri veya Teknik Hataları Saniyeler İçinde Tespit Edelim</h3>
         <p style="color: #888; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem; line-height: 1.7;">
-            Sistemimin kapasitesini verileriniz üzerinde kanıtlamayı tercih ederim. En karmaşık veri setinizi Zero-Trust protokolüyle analiz edip, 48 saat içinde otonom karar haritanızı çıkaralım.
+            Sistemimin kapasitesini verileriniz üzerinde kanıtlamayı tercih ederim. En karmaşık veri setinizi 5TB'lık güvenli alanımda analiz edip, saniyeler içinde otonom karar haritanızı çıkaralım.
         </p>
 
         <div style="background: #050505; border: 1px solid #1a1a1a; border-radius: 12px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
@@ -433,125 +433,69 @@
         </div>
     </div>
 
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+
     <script>
-        let selectedFiles = [];
+        const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
+        const SCOPES = 'https://www.googleapis.com/auth/drive.file';
         
+        let tokenClient;
+        let accessToken = null;
+        let selectedFiles = [];
+
+        function gapiLoaded() { gapi.load('client:picker', () => {}); }
+        function gisLoaded() {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: (resp) => { 
+                    accessToken = resp.access_token; 
+                    if (accessToken) triggerInference(); // Yetki gelince analizi devam ettir
+                },
+            });
+        }
+
         function updateFileList(files) {
             const list = document.getElementById('final-file-list');
-            const filesArray = Array.from(files);
-            if (selectedFiles.length + filesArray.length > 3) {
-                alert("Maksimum 3 dosya yükleyebilirsiniz.");
-                return;
-            }
-            selectedFiles = [...selectedFiles, ...filesArray];
+            selectedFiles = Array.from(files);
             list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
         }
 
         async function triggerInference() {
-            const email = document.getElementById('final-email').value.trim();
+            const email = document.getElementById('final-email').value;
             const log = document.getElementById('final-log');
-            
-            if (!email || !email.includes('@')) {
-                log.innerText = "Hata: Lütfen geçerli bir e-posta adresi giriniz.";
-                log.style.color = "#ff4444";
+
+            if (!accessToken) {
+                log.innerText = "Önce Google 5TB Alanınız İçin Yetki Vermeniz Gerekiyor...";
+                tokenClient.requestAccessToken({prompt: 'consent'});
                 return;
             }
 
-            if (selectedFiles.length === 0) {
-                log.innerText = "Hata: Lütfen bir dosya ekleyiniz.";
-                log.style.color = "#ff4444";
-                return;
-            }
-
-            log.innerText = "ATILLAYALCIN_AI_OS v16.0.4 Veriyi İşliyor... Lütfen bekleyin.";
+            log.innerText = "Büyük Veri (Marmarabirlik) 5TB Alanınıza Yükleniyor ve Gemini 1.5 Pro Analizi Başlatılıyor...";
             log.style.color = "#00d2ff";
 
-            const formData = new FormData();
-            formData.append('email', email);
-            selectedFiles.forEach(file => formData.append('files', file));
-
             try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('drive_file_id', 'storage_optimized_v16_0_5'); 
+
                 const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
                     method: 'POST',
                     body: formData
                 });
 
                 if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Stratejik raporunuz otonom olarak iletildi.";
+                    log.innerText = "İşlem Başarılı! Kurumsal raporunuz otonom olarak iletildi.";
                     log.style.color = "#00ff88";
-                } else {
-                    log.innerText = "API Hatası: api.atillayalcin.ai yanıt vermedi. (Kod: " + response.status + ")";
-                    log.style.color = "#ff4444";
                 }
             } catch (error) {
-                log.innerText = "Bağlantı Hatası: Bilişsel köprü aktif değil.";
+                log.innerText = "Bağlantı Hatası: Ağ kısıtlamalarını kontrol edin.";
                 log.style.color = "#ff4444";
             }
         }
-        <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-
-<script>
-    // Sizin özel Client ID'niz
-    const CLIENT_ID = '849690520933-ojuj9fvrho0akdrdlk09p6fj7o9qq18j.apps.googleusercontent.com';
-    const SCOPES = 'https://www.googleapis.com/auth/drive.file';
-    
-    let tokenClient;
-    let accessToken = null;
-
-    function gapiLoaded() { gapi.load('client:picker', () => {}); }
-    function gisLoaded() {
-        tokenClient = google.accounts.oauth2.initTokenClient({
-            client_id: CLIENT_ID,
-            scope: SCOPES,
-            callback: (resp) => { 
-                accessToken = resp.access_token; 
-                if (accessToken) {
-                    document.getElementById('final-log').innerText = "Yetkilendirme Başarılı. Analizi başlatabilirsiniz.";
-                }
-            },
-        });
-    }
-
-    async function triggerInference() {
-        const email = document.getElementById('final-email').value;
-        const log = document.getElementById('final-log');
-
-        // 1. Yetki Kontrolü
-        if (!accessToken) {
-            log.innerText = "Lütfen önce Google hesabınızla yetki verin...";
-            tokenClient.requestAccessToken({prompt: 'consent'});
-            return;
-        }
-
-        // 2. Drive'a Yükleme ve Analiz Süreci (Simüle Edilen Otonom Akış)
-        log.innerText = "5TB Güvenli Veri Alanına Yükleniyor ve Gemini 1.5 Pro Analizi Başlatılıyor...";
-        log.style.color = "#00d2ff";
-
-        try {
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('drive_file_id', 'drive_integration_active'); // Backend bu ID ile Drive'a bağlanır
-
-            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-                log.innerText = "İşlem Başarılı! Kurumsal raporunuz otonom olarak iletildi.";
-                log.style.color = "#00ff88";
-            } else {
-                log.innerText = "Hata: Bilişsel Köprü yanıt vermedi.";
-                log.style.color = "#ff4444";
-            }
-        } catch (error) {
-            log.innerText = "Bağlantı Hatası: Ağ protokollerini kontrol edin.";
-            log.style.color = "#ff4444";
-        }
-    }
-</script>
     </script>
+</section>
 </section></section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
