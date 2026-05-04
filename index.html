@@ -451,7 +451,7 @@
                 scope: SCOPES,
                 callback: (resp) => { 
                     accessToken = resp.access_token; 
-                    if (accessToken) triggerInference(); // Yetki gelince devam et
+                    if (accessToken) triggerInference(); // Yetki gelince otomatik devam et
                 },
             });
         }
@@ -465,15 +465,16 @@
         async function triggerInference() {
             const email = document.getElementById('final-email').value;
             const log = document.getElementById('final-log');
-            if (selectedFiles.length === 0) { log.innerText = "Lütfen bir dosya seçin."; return; }
+            if (selectedFiles.length === 0) { log.innerText = "Hata: Lütfen analiz edilecek bir dosya seçin."; return; }
 
             if (!accessToken) {
-                log.innerText = "Google 5TB Alanınız İçin Yetki Alınıyor...";
+                log.innerText = "Google 5TB Alanınız İçin Güvenli Erişim Yetkisi Alınıyor...";
                 tokenClient.requestAccessToken({prompt: ''});
                 return;
             }
 
-            log.innerText = "Marmarabirlik Verisi Güvenli Alana Yükleniyor...";
+            log.innerText = "Marmarabirlik Verisi 5TB Alanınıza Yükleniyor...";
+            log.style.color = "#00d2ff";
             
             try {
                 const file = selectedFiles[0];
@@ -485,7 +486,7 @@
                 formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
                 formData.append('file', file);
 
-                // A. DRIVE UPLOAD
+                // A. GOOGLE DRIVE UPLOAD (Multipart)
                 const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
                     method: 'POST',
                     headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
@@ -493,11 +494,11 @@
                 });
                 const uploadData = await uploadResp.json();
 
-                // B. API INFERENCE
-                log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
+                // B. VERCEL API INFERENCE
+                log.innerText = "Gemini 1.5 Pro Otonom Strateji Analizini Başlatıyor...";
                 const apiFormData = new FormData();
                 apiFormData.append('email', email);
-                apiFormData.append('drive_file_id', uploadData.id);
+                apiFormData.append('drive_file_id', uploadData.id); // Yüklenen dosyanın ID'sini gönderiyoruz
 
                 const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
                     method: 'POST',
@@ -505,11 +506,13 @@
                 });
 
                 if (response.ok) {
-                    log.innerText = "İşlem Başarılı! Raporunuz info@atillayalcin.ai adresinden iletildi.";
+                    log.innerText = "İşlem Başarılı! Stratejik raporunuz info@atillayalcin.ai adresinden iletildi.";
                     log.style.color = "#00ff88";
+                } else {
+                    log.innerText = "API Hatası: Analiz motoru yanıt vermedi.";
                 }
             } catch (error) {
-                log.innerText = "Hata: " + error.message;
+                log.innerText = "Bağlantı Hatası: " + error.message;
                 log.style.color = "#ff4444";
             }
         }
