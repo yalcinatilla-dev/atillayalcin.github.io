@@ -465,7 +465,7 @@
   async function triggerInference() {
     const email = document.getElementById('final-email').value;
     const log = document.getElementById('final-log');
-    const file = selectedFiles[0]; // İlk dosyayı hedef alıyoruz
+    const file = selectedFiles[0]; 
 
     if (!accessToken) {
         log.innerText = "5TB Alanınız İçin Google Yetkisi Alınıyor...";
@@ -473,13 +473,14 @@
         return;
     }
 
-    log.innerText = "Büyük Veri (Marmarabirlik) Güvenli Alana Yükleniyor...";
+    log.innerText = "Veri (Marmarabirlik) Güvenli Alana Yükleniyor...";
+    log.style.color = "#00d2ff";
     
     try {
-        // A. DOSYAYI DRIVE'A YÜKLEME (Frontend Tarafında)
+        // A. DOSYAYI DRIVE'A YÜKLEME
         const metadata = {
             'name': file.name,
-            'parents': ['BURAYA_DRIVE_FOLDER_ID_YAZIN'] // 1. Adımdaki Klasör ID'si
+            'parents': ['BURAYA_AI_OS_VAULT_KLASOR_ID_YAZIN'] // Drive'da oluşturduğunuz klasörün ID'si
         };
         const formData = new FormData();
         formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
@@ -492,7 +493,7 @@
         });
         const uploadData = await uploadResp.json();
 
-        // B. DRIVE ID'SİNİ BACKEND'E GÖNDERME
+        // B. ANALİZİ BAŞLATMA
         log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
         const apiFormData = new FormData();
         apiFormData.append('email', email);
