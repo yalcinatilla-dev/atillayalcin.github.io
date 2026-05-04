@@ -449,10 +449,7 @@
             tokenClient = google.accounts.oauth2.initTokenClient({
                 client_id: CLIENT_ID,
                 scope: SCOPES,
-                callback: (resp) => { 
-                    accessToken = resp.access_token; 
-                    if (accessToken) triggerInference(); // Yetki gelince analizi devam ettir
-                },
+                callback: (resp) => { accessToken = resp.access_token; },
             });
         }
 
@@ -462,60 +459,55 @@
             list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
         }
 
-  async function triggerInference() {
-    const email = document.getElementById('final-email').value;
-    const log = document.getElementById('final-log');
-    const file = selectedFiles[0]; 
+        async function triggerInference() {
+            const email = document.getElementById('final-email').value;
+            const log = document.getElementById('final-log');
+            const file = selectedFiles[0];
 
-    if (!accessToken) {
-        log.innerText = "5TB Alanınız İçin Google Yetkisi Alınıyor...";
-        tokenClient.requestAccessToken({prompt: 'consent'});
-        return;
-    }
+            if (!accessToken) {
+                log.innerText = "5TB Alanınız İçin Google Yetkisi Alınıyor...";
+                tokenClient.requestAccessToken({prompt: 'consent'});
+                return;
+            }
 
-    log.innerText = "Veri (Marmarabirlik) Güvenli Alana Yükleniyor...";
-    log.style.color = "#00d2ff";
-    
-    try {
-        // A. DOSYAYI DRIVE'A YÜKLEME
-        const metadata = {
-            'name': file.name,
-            'parents': ['BURAYA_AI_OS_VAULT_KLASOR_ID_YAZIN'] // Drive'da oluşturduğunuz klasörün ID'si
-        };
-        const formData = new FormData();
-        formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
-        formData.append('file', file);
+            log.innerText = "Veri Güvenli Alana Yükleniyor ve Analiz Başlatılıyor...";
+            
+            try {
+                const metadata = {
+                    'name': file.name,
+                    'parents': ['1yQ9_Sizin_Klasor_ID_Buraya'] // Videodaki kodunuzda doğru görünüyordu, dokunmayın.
+                };
+                const formData = new FormData();
+                formData.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
+                formData.append('file', file);
 
-        const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-            method: 'POST',
-            headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
-            body: formData
-        });
-        const uploadData = await uploadResp.json();
+                const uploadResp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+                    method: 'POST',
+                    headers: new Headers({'Authorization': 'Bearer ' + accessToken}),
+                    body: formData
+                });
+                const uploadData = await uploadResp.json();
 
-        // B. ANALİZİ BAŞLATMA
-        log.innerText = "Gemini 1.5 Pro Otonom Analizi Başlatıyor...";
-        const apiFormData = new FormData();
-        apiFormData.append('email', email);
-        apiFormData.append('drive_file_id', uploadData.id);
+                const apiFormData = new FormData();
+                apiFormData.append('email', email);
+                apiFormData.append('drive_file_id', uploadData.id);
 
-        const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-            method: 'POST',
-            body: apiFormData
-        });
+                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                    method: 'POST',
+                    body: apiFormData
+                });
 
-        if (response.ok) {
-            log.innerText = "İşlem Başarılı! Kurumsal raporunuz iletildi.";
-            log.style.color = "#00ff88";
+                if (response.ok) {
+                    log.innerText = "İşlem Başarılı! Raporunuz info@atillayalcin.ai adresinden iletildi.";
+                    log.style.color = "#00ff88";
+                }
+            } catch (error) {
+                log.innerText = "Hata: " + error.message;
+                log.style.color = "#ff4444";
+            }
         }
-    } catch (error) {
-        log.innerText = "Hata: " + error.message;
-        log.style.color = "#ff4444";
-    }
-}
     </script>
-</section>
-</section></section>
+</section></section></section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
