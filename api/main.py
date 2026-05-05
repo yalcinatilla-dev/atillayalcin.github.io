@@ -1,9 +1,7 @@
-import os, json, io
+import os
 from fastapi import FastAPI, Form, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseUpload
+import resend
 
 app = FastAPI()
 
@@ -15,41 +13,48 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Domain kullanım sayacı (Serverless Memory)
+domain_usage = {}
+
 @app.post("/api/v1/inference")
 async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
     try:
-        # 1. Drive Yetkilendirme (Service Account)
-        json_key = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
-        if not json_key:
-            return {"status": "error", "message": "Sistem hatası: Drive yetkisi eksik."}
+        domain = email.split('@')[1].lower()
         
-        info = json.loads(json_key)
-        creds = service_account.Credentials.from_service_account_info(info)
-        drive_service = build('drive', 'v3', credentials=creds)
+        # 1. KOTA KONTROLÜ (Maksimum 3)
+        if domain not in domain_usage:
+            domain_usage[domain] = 0
+            
+        if domain_usage[domain] >= 3:
+            return {"status": "limit_reached"}
 
-        # 2. Dosya Hazırlığı (Email bilgisini dosya adına ekliyoruz)
+        # 2. DOSYAYI OKUMA
         content = await file.read()
-        folder_id = '1bRuquZUIbCe-6Rv3QX_favf8U00NXQT0'
         
-        # Dosya adı formatı: [email] Orijinal_Dosya_Adi.pdf
-        new_filename = f"[{email}] {file.filename}"
+        # 3. DOSYAYI SİZE E-POSTA EKİ OLARAK GÖNDERME
+        resend.api_key = os.environ.get("RESEND_API_KEY")
         
-        file_metadata = {
-            'name': new_filename,
-            'parents': [folder_id],
-            'description': f"Gönderen Kullanıcı: {email}"
-        }
-        
-        media = MediaIoBaseUpload(io.BytesIO(content), mimetype=file.content_type)
-        
-        # 3. Drive'a Otonom Yükleme
-        drive_service.files().create(
-            body=file_metadata,
-            media_body=media,
-            fields='id'
-        ).execute()
+        resend.Emails.send({
+            "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
+            "to": "caio@atillayalcin.ai", # Dosya doğrudan sizin bu adresinize düşecek
+            "subject": f"YENİ ANALİZ TALEBİ: {email}",
+            "html": f"""
+            <h3>Manuel Analiz Talebi</h3>
+            <p><b>Gönderen Kullanıcı:</b> {email}</p>
+            <p><b>Şirket Domaini:</b> {domain}</p>
+            <p><b>Kullanılan Ücretsiz Hak:</b> {domain_usage[domain] + 1} / 3</p>
+            <hr>
+            <p>Kullanıcının gönderdiği şartname/log dosyası bu e-postanın ekindedir. Analizi yaptıktan sonra doğrudan bu mail adresine dönüş yapabilirsiniz.</p>
+            """,
+            "attachments": [
+                {"filename": file.filename, "content": list(content)} # Dosya eke eklendi
+            ]
+        })
+
+        # İşlem başarılıysa sayacı artır
+        domain_usage[domain] += 1
 
         return {"status": "success"}
 
     except Exception as e:
-        return {"status": "error", "message": f"İletim Hatası: {str(e)}"}
+        return {"status": "error", "message": f"Sistem İletim Hatası: {str(e)}"}
