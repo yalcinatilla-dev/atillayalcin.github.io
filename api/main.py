@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Domain kullanım sayacı (Serverless Memory)
+# Domain kullanım sayacı (Vercel her uyandığında sıfırlanır, düşük yoğunluk için uygundur)
 domain_usage = {}
 
 @app.post("/api/v1/inference")
@@ -21,33 +21,36 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
     try:
         domain = email.split('@')[1].lower()
         
-        # 1. KOTA KONTROLÜ (Maksimum 3)
+        # 1. KOTA KONTROLÜ (Domain başına 3 dosya)
         if domain not in domain_usage:
             domain_usage[domain] = 0
             
         if domain_usage[domain] >= 3:
             return {"status": "limit_reached"}
 
-        # 2. DOSYAYI OKUMA
+        # 2. DOSYA VERİSİNİ OKUMA
         content = await file.read()
         
-        # 3. DOSYAYI SİZE E-POSTA EKİ OLARAK GÖNDERME
+        # 3. DOĞRUDAN GMAIL HESABINIZA GÖNDERİM
         resend.api_key = os.environ.get("RESEND_API_KEY")
         
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
-            "to": "caio@atillayalcin.ai", # Dosya doğrudan sizin bu adresinize düşecek
-            "subject": f"YENİ ANALİZ TALEBİ: {email}",
+            "to": "yalcin.atilla@gmail.com", # Burayı doğrudan Gmail adresiniz yaptık
+            "subject": f"STRATEJİK ANALİZ TALEBİ: {email}",
             "html": f"""
-            <h3>Manuel Analiz Talebi</h3>
-            <p><b>Gönderen Kullanıcı:</b> {email}</p>
-            <p><b>Şirket Domaini:</b> {domain}</p>
-            <p><b>Kullanılan Ücretsiz Hak:</b> {domain_usage[domain] + 1} / 3</p>
+            <h3>Yeni Analiz Dosyası Ulaştı</h3>
+            <p><b>Gönderen:</b> {email}</p>
+            <p><b>Şirket:</b> {domain}</p>
+            <p><b>Kota Durumu:</b> {domain_usage[domain] + 1} / 3</p>
             <hr>
-            <p>Kullanıcının gönderdiği şartname/log dosyası bu e-postanın ekindedir. Analizi yaptıktan sonra doğrudan bu mail adresine dönüş yapabilirsiniz.</p>
+            <p>Bu dosya manuel analiz için gönderilmiştir. Analiz sonucunu doğrudan kullanıcıya iletebilirsiniz.</p>
             """,
             "attachments": [
-                {"filename": file.filename, "content": list(content)} # Dosya eke eklendi
+                {
+                    "filename": file.filename,
+                    "content": list(content) # Dosyayı liste formatında eke ekler
+                }
             ]
         })
 
@@ -57,4 +60,4 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
         return {"status": "success"}
 
     except Exception as e:
-        return {"status": "error", "message": f"Sistem İletim Hatası: {str(e)}"}
+        return {"status": "error", "message": f"İletim Hatası: {str(e)}"}
