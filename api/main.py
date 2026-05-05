@@ -33,7 +33,7 @@ async def run_inference(email: str = Form(...), file: UploadFile = File(...)):
             time.sleep(2)
             uploaded_file = genai.get_file(uploaded_file.name)
 
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash-latest')
         response = model.generate_content([
             "Sen Atilla Yalçın'ın stratejik asistanısın. Bu dökümanı profesyonelce analiz et.",
             uploaded_file
