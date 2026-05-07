@@ -1,17 +1,22 @@
-import os, json, io
+import os
 from fastapi import FastAPI, Form, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import resend
 
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
-domain_usage = {}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/api/v1/inference")
 async def run_inference(
     email: str = Form(...), 
-    file: UploadFile = File(None), # İsteğe bağlı (None)
+    file: UploadFile = File(...), # Artık FastAPI çökmez, çünkü hep dosya (veya hayalet) gelecek
     is_audit: str = Form("false"),
     model: str = Form("N/A"),
     usage: str = Form("N/A"),
@@ -20,10 +25,8 @@ async def run_inference(
     try:
         resend.api_key = os.environ.get("RESEND_API_KEY")
         
-        # Dinamik Konu Başlığı
         subject = f"GPU VERİMLİLİK DENETİMİ: {email}" if is_audit == "true" else f"STRATEJİK ANALİZ TALEBİ: {email}"
         
-        # HTML İçeriği (Anket verilerini buraya gömüyoruz)
         body_content = f"""
         <div style="font-family:sans-serif; color:#333;">
             <h2 style="color:#00d2ff;">Yeni Talep Bildirimi</h2>
@@ -41,12 +44,15 @@ async def run_inference(
             </div>
             """
         
-        body_content += "<hr><p style='font-size:12px; color:#999;'>Döküman eklendiyse bu e-postanın ekindedir.</p></div>"
-
         attachments = []
-        if file:
+        
+        # Hayalet Dosyayı Filtreliyoruz (Eğer gerçek bir dosyaysa mail'e ekle)
+        if file.filename != "sistem_otomatik_dosya_yok.txt":
+            body_content += "<hr><p style='font-size:12px; color:#999;'>Döküman e-postanın ekindedir.</p></div>"
             content = await file.read()
             attachments.append({"filename": file.filename, "content": list(content)})
+        else:
+            body_content += "<hr><p style='font-size:12px; color:#999;'>Bu talebe dosya eklenmemiştir.</p></div>"
 
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <contact@atillayalcin.ai>",
