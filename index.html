@@ -429,57 +429,53 @@
                 <i class="fas fa-bolt"></i> OTONOM ANALİZİ BAŞLAT
             </button>
             <div id="gpu-audit-section" style="margin-top: 30px; padding: 25px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 12px; text-align: left;">
-    <h4 style="color: #ffcc00; margin-top: 0;">🔥 GPU Verimlilik & Maliyet Denetimi</h4>
-    <p style="font-size: 0.8rem; color: #888;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
+<div class="card" style="margin-top: 30px;">
+    <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px;">🔥 GPU Verimlilik & Maliyet Denetimi</h3>
+    <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
     
-    <select id="audit-model" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #111; color: #fff; border: 1px solid #333;">
+    <select id="audit-model" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none;">
         <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
-        <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral</option>
-        <option value="Diger">Diğer / In-House</option>
+        <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral (Açık Kaynak)</option>
+        <option value="Diger">Mevcut: Diğer / In-House</option>
     </select>
 
-    <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token)" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #111; color: #fff; border: 1px solid #333;">
+    <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
 
-    <select id="audit-privacy" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid #333;">
-        <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise)</option>
-        <option value="Orta">Gizlilik: Orta (Hibrid)</option>
-        <option value="Dusuk">Gizlilik: Düşük (Public API)</option>
+    <select id="audit-privacy" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; outline: none;">
+        <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise Gerekli)</option>
+        <option value="Orta">Gizlilik: Orta (Hibrid Bulut)</option>
+        <option value="Dusuk">Gizlilik: Düşük (Public API Yeterli)</option>
     </select>
 
-    <button class="submit-btn" onclick="triggerGpuAudit()" style="margin-top: 15px;">
-    <i class="fas fa-chart-line"></i> DENETİMİ GÖNDER
-</button>
+    <button class="submit-btn" onclick="triggerGpuAudit()">
+        <i class="fas fa-chart-line"></i> DENETİMİ GÖNDER
+    </button>
 </div>
-            <p id="final-log" style="margin-top: 25px; font-size: 0.95rem; font-weight: 600; color: #00d2ff; min-height: 20px;"></p>
-        </div>
-    </div>
 <script>
     let selectedFiles = [];
 
-    function updateFileList(files) {
-        const list = document.getElementById('final-file-list');
-        selectedFiles = Array.from(files);
-        if (selectedFiles.length > 0) {
-            list.innerHTML = selectedFiles.map(f => `<div><i class="fas fa-check" style="color:#00d2ff"></i> ${f.name}</div>`).join('');
-            document.getElementById('final-log').innerText = `${selectedFiles[0].name} iletilmeye hazır.`;
-        }
+// Dosya seçme hafızası onarıldı
+function updateFileList(files) {
+    selectedFiles = Array.from(files);
+    const list = document.getElementById('final-file-list');
+    if (selectedFiles.length > 0) {
+        list.innerHTML = `<span style="color:#72c6ef"><i class="fas fa-check"></i> ${selectedFiles[0].name} seçildi</span>`;
     }
+}
 
-    // --- ESKİ triggerInference YERİNE BU ÜÇLÜYÜ YAPIŞTIRIN ---
-
-// 1. Ana Analiz Butonu (Dosya Zorunlu)
+// 1. Ana Analiz (Dosya Zorunlu)
 async function triggerInference() {
     const emailInput = document.getElementById('final-email').value.trim();
     const log = document.getElementById('final-log');
     if (!emailInput || selectedFiles.length === 0) {
-        log.innerText = "Hata: Kurumsal e-posta ve döküman (log/şartname) gereklidir.";
+        log.innerText = "Hata: Kurumsal e-posta ve döküman gereklidir.";
         log.style.color = "#ff4444";
         return;
     }
     await sendDataToVault(emailInput, selectedFiles[0], "false");
 }
 
-// 2. GPU Denetim Butonu (Dosya İsteğe Bağlı)
+// 2. GPU Denetimi (Dosya İsteğe Bağlı)
 async function triggerGpuAudit() {
     const emailInput = document.getElementById('final-email').value.trim();
     const log = document.getElementById('final-log');
@@ -493,18 +489,26 @@ async function triggerGpuAudit() {
         usage: document.getElementById('audit-usage').value,
         privacy: document.getElementById('audit-privacy').value
     };
-    await sendDataToVault(emailInput, selectedFiles[0] || null, "true", auditData);
+    
+    // Dosya varsa gönder, yoksa null gönder (Hayalet dosya motoru devreye girecek)
+    const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
+    await sendDataToVault(emailInput, fileToSend, "true", auditData);
 }
 
-// 3. Veri İletim Motoru (Hayalet Dosya Üretici)
+// 3. İletim Motoru (Hayalet Dosya Teknolojisi)
 async function sendDataToVault(email, file, isAudit, auditData = null) {
     const log = document.getElementById('final-log');
     
-    // Kurumsal Mail Kontrolü
-    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com'];
+    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
     if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
         log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
         log.style.color = "#ffcc00";
+        return;
+    }
+
+    if (file && file.size > 4.5 * 1024 * 1024) {
+        log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
+        log.style.color = "#ff4444";
         return;
     }
 
@@ -518,7 +522,7 @@ async function sendDataToVault(email, file, isAudit, auditData = null) {
         formData.append('privacy', auditData.privacy);
     }
 
-    // KİLİT ÇÖZÜM: Dosya yoksa "Hayalet Dosya" oluştur
+    // Hayalet Dosya Koruması (FastAPI 422 Hatasını Önler)
     if (file) {
         formData.append('file', file);
     } else {
@@ -526,7 +530,7 @@ async function sendDataToVault(email, file, isAudit, auditData = null) {
         formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
     }
 
-    log.innerText = "Veriler İletiliyor...";
+    log.innerText = "Veriler Vault'a İletiliyor...";
     log.style.color = "#72c6ef";
 
     try {
@@ -535,11 +539,15 @@ async function sendDataToVault(email, file, isAudit, auditData = null) {
             body: formData
         });
         const data = await response.json();
+        
         if (data.status === "success") {
-            log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
+            log.innerText = "Başarılı! Talebiniz Atilla Yalçın'a iletildi.";
             log.style.color = "#00ff88";
+        } else if (data.status === "limit_reached") {
+            log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
+            log.style.color = "#ffcc00";
         } else {
-            log.innerText = "Hata: " + (data.message || "Bilinmeyen sunucu hatası.");
+            log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
             log.style.color = "#ff4444";
         }
     } catch (error) {
