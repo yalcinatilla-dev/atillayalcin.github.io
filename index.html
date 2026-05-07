@@ -446,7 +446,7 @@
         <option value="Dusuk">Gizlilik: Düşük (Public API)</option>
     </select>
 
-    <button class="submit-btn" onclick="triggerGpuAudit()" style="margin-top: 10px;">
+    <button class="submit-btn" onclick="triggerGpuAudit()" style="margin-top: 15px;">
     <i class="fas fa-chart-line"></i> DENETİMİ GÖNDER
 </button>
 </div>
@@ -467,19 +467,20 @@
 
     // --- ESKİ triggerInference YERİNE BU ÜÇLÜYÜ YAPIŞTIRIN ---
 
-// 1. Otonom Analiz Butonu İçin (Dosya Zorunlu)
+// 1. Ana Analiz Butonu (Dosya Zorunlu)
 async function triggerInference() {
     const emailInput = document.getElementById('final-email').value.trim();
     const log = document.getElementById('final-log');
     if (!emailInput || selectedFiles.length === 0) {
-        log.innerText = "Hata: Kurumsal e-posta ve döküman gereklidir.";
+        log.innerText = "Hata: Kurumsal e-posta ve döküman (log/şartname) gereklidir.";
         log.style.color = "#ff4444";
         return;
     }
-    await sendToVault(emailInput, selectedFiles[0], false);
+    // Veriyi 'false' (Anket değil) olarak gönderir
+    await sendDataToVault(emailInput, selectedFiles[0], "false");
 }
 
-// 2. GPU Denetim Butonu İçin (Dosya Opsiyonel)
+// 2. GPU Denetim Butonu (Dosya İsteğe Bağlı)
 async function triggerGpuAudit() {
     const emailInput = document.getElementById('final-email').value.trim();
     const log = document.getElementById('final-log');
@@ -493,17 +494,26 @@ async function triggerGpuAudit() {
         usage: document.getElementById('audit-usage').value,
         privacy: document.getElementById('audit-privacy').value
     };
-    // Dosya yoksa null gönderiyoruz, backend bunu artık kabul ediyor
-    await sendToVault(emailInput, selectedFiles[0] || null, true, auditData);
+    // Veriyi 'true' (Anket var) olarak gönderir, dosya varsa ekler yoksa null geçer
+    await sendDataToVault(emailInput, selectedFiles[0] || null, "true", auditData);
 }
 
-// 3. Ortak Gönderim Motoru (Burası Gizli Kahraman)
-async function sendToVault(email, file, isAudit, auditData = null) {
+// 3. Veri İletim Motoru
+async function sendDataToVault(email, file, isAudit, auditData = null) {
     const log = document.getElementById('final-log');
+    
+    // Kurumsal Mail Kontrolü
+    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com'];
+    if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
+        log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
+        log.style.color = "#ffcc00";
+        return;
+    }
+
     const formData = new FormData();
     formData.append('email', email);
     if (file) formData.append('file', file);
-    formData.append('is_audit', isAudit);
+    formData.append('is_audit', isAudit); // Backend'in okuyacağı kritik etiket
     
     if (auditData) {
         formData.append('model', auditData.model);
@@ -511,8 +521,8 @@ async function sendToVault(email, file, isAudit, auditData = null) {
         formData.append('privacy', auditData.privacy);
     }
 
-    log.innerText = "Veriler Vault'a İletiliyor...";
-    log.style.color = "#00d2ff";
+    log.innerText = "Veriler İletiliyor...";
+    log.style.color = "#72c6ef";
 
     try {
         const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
@@ -524,12 +534,10 @@ async function sendToVault(email, file, isAudit, auditData = null) {
             log.innerText = "Başarılı! Veriler iletildi. Atilla Yalçın bizzat dönüş yapacaktır.";
             log.style.color = "#00ff88";
         } else {
-            log.innerText = "Hata: " + (data.message || "İletim başarısız.");
-            log.style.color = "#ff4444";
+            log.innerText = "Hata: " + data.message;
         }
     } catch (error) {
         log.innerText = "Sistem Hatası: " + error.message;
-        log.style.color = "#ff4444";
     }
 }
     }
