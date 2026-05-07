@@ -549,30 +549,49 @@
         <div id="final-log"></div>
     </div>
 
-    <div class="card">
-        <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-fire" style="color: #ffcc00;"></i> GPU Verimlilik & Maliyet Denetimi
-        </h3>
+    <div class="card" id="gpu-card">
+    <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px; display: flex; align-items: center; gap: 10px;">
+        <i class="fas fa-fire" style="color: #ffcc00;"></i> GPU Verimlilik & Maliyet Denetimi
+    </h3>
+    
+    <div id="audit-step-1">
         <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
         
-        <select id="audit-model">
+        <select id="audit-model" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none;">
             <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
             <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral (Açık Kaynak)</option>
             <option value="Diger">Mevcut: Diğer / In-House</option>
         </select>
 
-        <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)">
+        <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
 
-        <select id="audit-privacy">
+        <select id="audit-privacy" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; outline: none;">
             <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise Gerekli)</option>
             <option value="Orta">Gizlilik: Orta (Hibrid Bulut)</option>
             <option value="Dusuk">Gizlilik: Düşük (Public API Yeterli)</option>
         </select>
 
-        <button class="submit-btn" onclick="triggerGpuAudit()">
-            <i class="fas fa-chart-line"></i> DENETİMİ GÖNDER
+        <button class="submit-btn" onclick="triggerGpuAuditStep1()">
+            <i class="fas fa-arrow-right"></i> SONRAKİ ADIM
         </button>
     </div>
+
+    <div id="audit-step-2" style="display: none; text-align: center;">
+        <i class="fas fa-cog fa-spin" style="font-size: 35px; color: #72c6ef; margin-bottom: 15px;"></i>
+        <h4 style="color: #00ff88; margin-top: 0; font-size: 18px;">Ön Veriler Analiz Ediliyor...</h4>
+        <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+            Size özel <strong style="color: #ffcc00;">Python Benchmark Script</strong>'ini hazırlayıp kendi altyapınızda test edebilmeniz için şu 2 opsiyonel detayı eklemek ister misiniz?
+        </p>
+
+        <input type="text" id="audit-budget" placeholder="Aylık Bulut/GPU Bütçeniz (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
+
+        <input type="text" id="audit-infra" placeholder="Altyapı Tipiniz (Örn: AWS, On-Prem) (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
+
+        <button class="submit-btn" onclick="submitFinalGpuAudit()">
+            <i class="fab fa-python"></i> BENCHMARK SCRIPT TALEP ET
+        </button>
+    </div>
+</div>
 
     <script>
         let selectedFiles = [];
