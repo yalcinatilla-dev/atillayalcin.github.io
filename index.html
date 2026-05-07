@@ -661,64 +661,74 @@ async function submitFinalGpuAudit() {
 }
 
         async function sendDataToVault(email, file, isAudit, auditData = null) {
-            const log = document.getElementById('final-log');
-            
-            const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
-            if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
-                log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
-                log.style.color = "#ffcc00";
-                return;
-            }
+    const log = document.getElementById('final-log');
+    
+    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
+    if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
+        log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
+        log.style.color = "#ffcc00";
+        return;
+    }
 
-            if (file && file.size > 4.5 * 1024 * 1024) {
-                log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
-                log.style.color = "#ff4444";
-                return;
-            }
+    if (file && file.size > 4.5 * 1024 * 1024) {
+        log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
+        log.style.color = "#ff4444";
+        return;
+    }
 
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('is_audit', isAudit);
-            
-            if (auditData) {
-                formData.append('model', auditData.model);
-                formData.append('usage', auditData.usage);
-                formData.append('privacy', auditData.privacy);
-            }
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('is_audit', isAudit);
+    
+    if (auditData) {
+        formData.append('model', auditData.model);
+        formData.append('usage', auditData.usage);
+        formData.append('privacy', auditData.privacy);
+        // EKSİK OLAN KARGO BAĞLANTILARI BURAYA EKLENDİ:
+        formData.append('budget', auditData.budget);
+        formData.append('infra', auditData.infra);
+    }
 
-            // Hayalet Dosya Koruması
-            if (file) {
-                formData.append('file', file);
-            } else {
-                const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
-                formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
-            }
+    // Hayalet Dosya Koruması
+    if (file) {
+        formData.append('file', file);
+    } else {
+        const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
+        formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
+    }
 
-            log.innerText = "Talebiniz İletiliyor, Lütfen Bekleyin...";
-            log.style.color = "#72c6ef";
+    log.innerText = "Talebiniz İletiliyor, Lütfen Bekleyin...";
+    log.style.color = "#72c6ef";
 
-            try {
-                const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await response.json();
-                
-                if (data.status === "success") {
-                    log.innerText = "Başarılı! Talebiniz Atilla Yalçın'a iletildi.";
-                    log.style.color = "#00ff88";
-                } else if (data.status === "limit_reached") {
-                    log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
-                    log.style.color = "#ffcc00";
-                } else {
-                    log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
-                    log.style.color = "#ff4444";
-                }
-            } catch (error) {
-                log.innerText = "Sistem Hatası: " + error.message;
-                log.style.color = "#ff4444";
+    try {
+        const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        
+        if (data.status === "success") {
+            // Butonun yeşile dönmesi için görseli koruyoruz
+            const btn = document.querySelector('#audit-step-2 .submit-btn');
+            if(btn) {
+                btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
+                btn.style.backgroundColor = "#00ff88";
+                btn.style.color = "#000";
             }
+            log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
+            log.style.color = "#00ff88";
+        } else if (data.status === "limit_reached") {
+            log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
+            log.style.color = "#ffcc00";
+        } else {
+            log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
+            log.style.color = "#ff4444";
         }
+    } catch (error) {
+        log.innerText = "Sistem Hatası: " + error.message;
+        log.style.color = "#ff4444";
+    }
+}
     </script>
 </body>
 </html>
