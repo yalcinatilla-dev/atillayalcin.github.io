@@ -428,6 +428,26 @@
                     style="background: #00d2ff; color: #000; font-weight: 800; padding: 18px 50px; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);">
                 <i class="fas fa-bolt"></i> OTONOM ANALİZİ BAŞLAT
             </button>
+            <div id="gpu-audit-section" style="margin-top: 30px; padding: 25px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 12px; text-align: left;">
+    <h4 style="color: #ffcc00; margin-top: 0;">🔥 GPU Verimlilik & Maliyet Denetimi</h4>
+    <p style="font-size: 0.8rem; color: #888;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
+    
+    <select id="audit-model" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #111; color: #fff; border: 1px solid #333;">
+        <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
+        <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral</option>
+        <option value="Diger">Diğer / In-House</option>
+    </select>
+
+    <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token)" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #111; color: #fff; border: 1px solid #333;">
+
+    <select id="audit-privacy" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid #333;">
+        <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise)</option>
+        <option value="Orta">Gizlilik: Orta (Hibrid)</option>
+        <option value="Dusuk">Gizlilik: Düşük (Public API)</option>
+    </select>
+
+    <button onclick="triggerInference(true)" style="width: 100%; padding: 12px; background: transparent; border: 1px solid #00d2ff; color: #00d2ff; font-weight: bold; cursor: pointer;">DENETİMİ GÖNDER</button>
+</div>
             <p id="final-log" style="margin-top: 25px; font-size: 0.95rem; font-weight: 600; color: #00d2ff; min-height: 20px;"></p>
         </div>
     </div>
