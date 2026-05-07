@@ -616,25 +616,49 @@
             await sendDataToVault(emailInput, selectedFiles[0], "false");
         }
 
-        async function triggerGpuAudit() {
-            const emailInput = document.getElementById('final-email').value.trim();
-            const log = document.getElementById('final-log');
-            
-            if (!emailInput) {
-                log.innerText = "Hata: Kurumsal e-posta adresiniz gereklidir.";
-                log.style.color = "#ff4444";
-                return;
-            }
-            
-            const auditData = {
-                model: document.getElementById('audit-model').value,
-                usage: document.getElementById('audit-usage').value,
-                privacy: document.getElementById('audit-privacy').value
-            };
-            
-            const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
-            await sendDataToVault(emailInput, fileToSend, "true", auditData);
-        }
+        // Adım 1: E-postayı kontrol eder ve 2. Adım ekranını şık bir şekilde açar
+async function triggerGpuAuditStep1() {
+    const emailInput = document.getElementById('final-email').value.trim();
+    const log = document.getElementById('final-log');
+    
+    if (!emailInput) {
+        log.innerText = "Hata: Lütfen önce yukarıdan kurumsal e-posta adresinizi giriniz.";
+        log.style.color = "#ff4444";
+        return;
+    }
+
+    // Görsel Geçiş
+    document.getElementById('audit-step-1').style.display = 'none';
+    document.getElementById('audit-step-2').style.display = 'block';
+    log.innerText = ""; // Varsa eski hataları temizle
+}
+
+// Adım 2: Tüm verileri (Adım 1 + Adım 2) toplar ve gönderir
+async function submitFinalGpuAudit() {
+    const emailInput = document.getElementById('final-email').value.trim();
+    
+    const auditData = {
+        model: document.getElementById('audit-model').value,
+        usage: document.getElementById('audit-usage').value,
+        privacy: document.getElementById('audit-privacy').value,
+        budget: document.getElementById('audit-budget').value || "Belirtilmedi",
+        infra: document.getElementById('audit-infra').value || "Belirtilmedi"
+    };
+    
+    // Görsel geri bildirim
+    const btn = document.querySelector('#audit-step-2 .submit-btn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GÖNDERİLİYOR...';
+    btn.style.opacity = "0.7";
+    btn.style.pointerEvents = "none";
+
+    const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
+    await sendDataToVault(emailInput, fileToSend, "true", auditData);
+
+    // İşlem bitince butonu yeşile çevir
+    btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
+    btn.style.backgroundColor = "#00ff88";
+    btn.style.color = "#000";
+}
 
         async function sendDataToVault(email, file, isAudit, auditData = null) {
             const log = document.getElementById('final-log');
