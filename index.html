@@ -476,7 +476,6 @@ async function triggerInference() {
         log.style.color = "#ff4444";
         return;
     }
-    // Veriyi 'false' (Anket değil) olarak gönderir
     await sendDataToVault(emailInput, selectedFiles[0], "false");
 }
 
@@ -494,11 +493,10 @@ async function triggerGpuAudit() {
         usage: document.getElementById('audit-usage').value,
         privacy: document.getElementById('audit-privacy').value
     };
-    // Veriyi 'true' (Anket var) olarak gönderir, dosya varsa ekler yoksa null geçer
     await sendDataToVault(emailInput, selectedFiles[0] || null, "true", auditData);
 }
 
-// 3. Veri İletim Motoru
+// 3. Veri İletim Motoru (Hayalet Dosya Üretici)
 async function sendDataToVault(email, file, isAudit, auditData = null) {
     const log = document.getElementById('final-log');
     
@@ -512,13 +510,20 @@ async function sendDataToVault(email, file, isAudit, auditData = null) {
 
     const formData = new FormData();
     formData.append('email', email);
-    if (file) formData.append('file', file);
-    formData.append('is_audit', isAudit); // Backend'in okuyacağı kritik etiket
+    formData.append('is_audit', isAudit);
     
     if (auditData) {
         formData.append('model', auditData.model);
         formData.append('usage', auditData.usage);
         formData.append('privacy', auditData.privacy);
+    }
+
+    // KİLİT ÇÖZÜM: Dosya yoksa "Hayalet Dosya" oluştur
+    if (file) {
+        formData.append('file', file);
+    } else {
+        const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
+        formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
     }
 
     log.innerText = "Veriler İletiliyor...";
@@ -531,13 +536,15 @@ async function sendDataToVault(email, file, isAudit, auditData = null) {
         });
         const data = await response.json();
         if (data.status === "success") {
-            log.innerText = "Başarılı! Veriler iletildi. Atilla Yalçın bizzat dönüş yapacaktır.";
+            log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
             log.style.color = "#00ff88";
         } else {
-            log.innerText = "Hata: " + data.message;
+            log.innerText = "Hata: " + (data.message || "Bilinmeyen sunucu hatası.");
+            log.style.color = "#ff4444";
         }
     } catch (error) {
         log.innerText = "Sistem Hatası: " + error.message;
+        log.style.color = "#ff4444";
     }
 }
     }
