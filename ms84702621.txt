@@ -1,5 +1,0 @@
-﻿{
-  "Description": "Web sitesi kökündeki Microsoft 365 - konumu için etki alanı sahipliği doğrulama dosyası",
-  "Domain": "atillayalcin.ai",
-  "Id": "4bbef600-8582-4372-a2de-22f20df93b11"
-}
