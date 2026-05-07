@@ -37,8 +37,8 @@ async def run_inference(
         """ if is_audit == "true" else ""
 
         resend.Emails.send({
-            "from": "ATILLAYALCIN_AI_OS <info@atillayalcin.ai>",
-            "to": "caio@atillayalcin.ai",
+            "from": "ATILLAYALCIN_AI_OS <contact@atillayalcin.ai>",
+            "to": "contact@atillayalcin.ai",
             "subject": subject,
             "html": f"""
             <h3>Yeni Talep Alındı</h3>
