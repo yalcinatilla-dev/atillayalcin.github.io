@@ -13,32 +13,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+domain_usage = {}
+
 @app.post("/api/v1/inference")
 async def run_inference(
     email: str = Form(...), 
-    file: UploadFile = File(...), # Artık FastAPI çökmez, çünkü hep dosya (veya hayalet) gelecek
+    file: UploadFile = File(...), 
     is_audit: str = Form("false"),
     model: str = Form("N/A"),
     usage: str = Form("N/A"),
     privacy: str = Form("N/A")
 ):
     try:
+        # Kota Kontrolü
+        domain = email.split('@')[1].lower()
+        if domain not in domain_usage: 
+            domain_usage[domain] = 0
+        if domain_usage[domain] >= 3: 
+            return {"status": "limit_reached"}
+
         resend.api_key = os.environ.get("RESEND_API_KEY")
         
-        subject = f"GPU VERİMLİLİK DENETİMİ: {email}" if is_audit == "true" else f"STRATEJİK ANALİZ TALEBİ: {email}"
+        subject = f"GPU DENETİMİ: {email}" if is_audit == "true" else f"ANALİZ TALEBİ: {email}"
         
         body_content = f"""
-        <div style="font-family:sans-serif; color:#333;">
-            <h2 style="color:#00d2ff;">Yeni Talep Bildirimi</h2>
-            <p><b>Gönderen:</b> {email}</p>
-            <p><b>İşlem Türü:</b> {"GPU Verimlilik Denetimi" if is_audit == "true" else "Genel Stratejik Analiz"}</p>
+        <div style="font-family:sans-serif; color:#222;">
+            <h2 style="color:#00d2ff;">Yeni Stratejik Talep</h2>
+            <p><b>Kurumsal E-posta:</b> {email}</p>
+            <p><b>İşlem Türü:</b> {"GPU Verimlilik & Maliyet Denetimi" if is_audit == "true" else "Genel Stratejik Analiz"}</p>
         """
         
         if is_audit == "true":
             body_content += f"""
-            <div style="background:#f9f9f9; padding:15px; border-radius:8px; border:1px solid #eee;">
-                <h4 style="margin-top:0;">Stratejik Anket Cevapları:</h4>
-                <p><b>Mevcut Model:</b> {model}</p>
+            <div style="background:#f4f4f4; padding:15px; border-left:4px solid #00d2ff; margin-top:15px;">
+                <h4 style="margin-top:0;">Anket Verileri:</h4>
+                <p><b>Kullanılan Model:</b> {model}</p>
                 <p><b>Aylık Tüketim:</b> {usage}</p>
                 <p><b>Gizlilik Hassasiyeti:</b> {privacy}</p>
             </div>
@@ -46,13 +55,13 @@ async def run_inference(
         
         attachments = []
         
-        # Hayalet Dosyayı Filtreliyoruz (Eğer gerçek bir dosyaysa mail'e ekle)
+        # Hayalet Dosyayı Filtrele, Gerçekse Ekle
         if file.filename != "sistem_otomatik_dosya_yok.txt":
-            body_content += "<hr><p style='font-size:12px; color:#999;'>Döküman e-postanın ekindedir.</p></div>"
+            body_content += "<hr><p style='font-size:12px; color:#777;'>Kullanıcının ilettiği döküman ektedir.</p></div>"
             content = await file.read()
             attachments.append({"filename": file.filename, "content": list(content)})
         else:
-            body_content += "<hr><p style='font-size:12px; color:#999;'>Bu talebe dosya eklenmemiştir.</p></div>"
+            body_content += "<hr><p style='font-size:12px; color:#777;'>Bu talebe herhangi bir dosya eklenmemiştir.</p></div>"
 
         resend.Emails.send({
             "from": "ATILLAYALCIN_AI_OS <contact@atillayalcin.ai>",
@@ -62,6 +71,8 @@ async def run_inference(
             "attachments": attachments
         })
 
+        domain_usage[domain] += 1
         return {"status": "success"}
+
     except Exception as e:
         return {"status": "error", "message": str(e)}
