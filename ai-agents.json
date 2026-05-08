@@ -1,0 +1,22 @@
+{
+  "agent_protocol": "WebMCP/v1.0",
+  "identity": {
+    "name": "Atilla Yalcin Personal AI Node",
+    "role": "Ecosystem Orchestrator & Infrastructure Strategist",
+    "version": "ATILLAYALCIN_AI_OS v17.0.5"
+  },
+  "capabilities": [
+    { "action": "read_biography", "params": ["language"] },
+    { "action": "get_tech_stack", "params": [] },
+    { "action": "download_cv", "params": ["format"] },
+    { "action": "strategic_gpu_audit", "endpoint": "/api/v1/inference" }
+  ],
+  "security": {
+    "level": "Aura-Guard-Alpha",
+    "protocol": "Zero-Trust (S46)"
+  },
+  "endpoints": {
+    "manifest": "https://atillayalcin.ai/ai-agents.json",
+    "documentation": "https://atillayalcin.ai/agents.html"
+  }
+}
