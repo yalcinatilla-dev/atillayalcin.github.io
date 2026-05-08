@@ -635,6 +635,13 @@ async function triggerGpuAuditStep1() {
         return;
     }
 
+    // --- GA4 DÖNÜŞÜM İZLEME KODU (BURAYA EKLENDİ) ---
+    gtag('event', 'gpu_audit_step1_click', {
+      'event_category': 'Engagement',
+      'event_label': 'GPU Denetimi Adım 1 Tamamlandı'
+    });
+    // ------------------------------------------------
+
     // Görsel Geçiş
     document.getElementById('audit-step-1').style.display = 'none';
     document.getElementById('audit-step-2').style.display = 'block';
@@ -652,6 +659,13 @@ async function submitFinalGpuAudit() {
         budget: document.getElementById('audit-budget').value || "Belirtilmedi",
         infra: document.getElementById('audit-infra').value || "Belirtilmedi"
     };
+
+    // --- GA4 DÖNÜŞÜM İZLEME KODU (BURAYA EKLENDİ) ---
+    gtag('event', 'gpu_benchmark_request_sent', {
+      'event_category': 'Conversion',
+      'event_label': 'Python Benchmark Talebi Alındı'
+    });
+    // ------------------------------------------------
     
     // Görsel geri bildirim
     const btn = document.querySelector('#audit-step-2 .submit-btn');
@@ -667,7 +681,6 @@ async function submitFinalGpuAudit() {
     btn.style.backgroundColor = "#00ff88";
     btn.style.color = "#000";
 }
-
         async function sendDataToVault(email, file, isAudit, auditData = null) {
     const log = document.getElementById('final-log');
     
