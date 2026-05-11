@@ -35,3 +35,23 @@ jobs:
           git add latest_audit.json
           git commit -m "Auto-Update: Strategic Report [skip ci]" || echo "No changes"
           git push
+
+          - name: Send Strategic Audit Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "[Sovereign Report] GPU Audit Complete: ${{ github.event.inputs.gpu_model }}"
+          to: atilla@atillayalcin.ai # Kendi mail adresinizi buraya yazın
+          from: ATILLAYALCIN_AI_OS
+          body: |
+            STRATEGIC AUDIT REPORT (v100.0.0)
+            ----------------------------------
+            Status: SUCCESS
+            Model: ${{ github.event.inputs.gpu_model }}
+            Nodes: ${{ github.event.inputs.node_count }}
+            Timestamp: ${{ github.event.repository.updated_at }}
+            
+            Analiz sonuçları atillayalcin.ai/analytics adresinde tescillenmiştir.
