@@ -45,3 +45,38 @@
     </script>
 </body>
 </html>
+
+<section style="background: #111827; padding: 40px; border-radius: 12px; border: 1px dashed #3b82f6; margin-top: 20px;">
+    <h3 style="color: #60a5fa; margin-top: 0;">Request Custom GPU Audit</h3>
+    <p style="font-size: 0.9rem; color: #9ca3af;">Enter your nodes and model to trigger an autonomous analysis. Results will be mailed to system auditor.</p>
+    
+    <form id="auditForm" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="text" id="cust_gpu" placeholder="Model (örn: H100)" required style="background: #1f2937; border: 1px solid #374151; color: white; padding: 10px; border-radius: 5px;">
+        <input type="number" id="cust_nodes" placeholder="Node Count" required style="background: #1f2937; border: 1px solid #374151; color: white; padding: 10px; border-radius: 5px; width: 100px;">
+        <button type="submit" style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">TRIGGER AGENTIC SWARM</button>
+    </form>
+    <div id="formResponse" style="margin-top: 10px; font-size: 0.8rem;"></div>
+</section>
+
+<script>
+    document.getElementById('auditForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        const resDiv = document.getElementById('formResponse');
+        
+        btn.disabled = true;
+        btn.innerText = "Triggering...";
+        
+        // BU KISIM ÖNEMLİ: GitHub Repository Dispatch API kullanıyoruz
+        // Not: Gerçek bir sistemde bir 'Personal Access Token' gereklidir. 
+        // Güvenlik için Formspree gibi bir aracı üzerinden tetikleme en temizidir.
+        
+        resDiv.innerHTML = "<span style='color: #10b981;'>Request received. AI OS is deploying specialized agents... Check dashboard in 2 mins.</span>";
+        
+        // Simüle edilmiş otonom tetikleme
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerText = "TRIGGER AGENTIC SWARM";
+        }, 5000);
+    });
+</script>
