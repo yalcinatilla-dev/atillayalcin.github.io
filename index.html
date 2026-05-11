@@ -1,3 +1,22 @@
+<div id="status-bar" style="background: #1e293b; color: #60a5fa; padding: 10px; text-align: center; font-family: monospace; border-bottom: 1px solid #3b82f6; font-size: 0.8rem;">
+    <span id="status-text">SYSTEM STATUS: ANALYZING...</span> | 
+    <span style="color: #10b981;">LIVE INFRASTRUCTURE AUDIT ENABLED</span>
+</div>
+
+<script>
+    async function updateStatusBar() {
+        try {
+            const resp = await fetch('latest_audit.json');
+            const data = await resp.json();
+            document.getElementById('status-text').innerText = `LAST AUDIT: ${new Date(data.timestamp).toLocaleTimeString()} [OS v100.0.0]`;
+        } catch (e) {
+            document.getElementById('status-text').innerText = "SYSTEM STATUS: MONITORING";
+        }
+    }
+    updateStatusBar();
+    setInterval(updateStatusBar, 60000); // Her dakika güncelle
+</script>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
