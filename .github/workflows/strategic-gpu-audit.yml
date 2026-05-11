@@ -25,6 +25,13 @@ jobs:
         run: |
           git config --global user.name "ATILLAYALCIN-AI-OS"
           git config --global user.email "ai-os@atillayalcin.ai"
-          git add -f reports/latest_audit.json # -f parametresi ile zorlayarak ekliyoruz
-          git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" || echo "No changes to commit"
-          git push
+          
+          # Dosyanın oluşup oluşmadığını kontrol et ve zorla ekle
+          if [ -f reports/latest_audit.json ]; then
+            git add -f reports/latest_audit.json
+            # Sadece değişiklik varsa commit et
+            git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" && git push)
+          else
+            echo "Error: reports/latest_audit.json not found!"
+            exit 1
+          fi
