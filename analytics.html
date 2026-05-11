@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign GPU Analytics | Atilla Yalcin</title>
+    <style>
+        body { background: #0b0f19; color: #e5e7eb; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #111827; border: 1px solid #1f2937; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); width: 100%; max-width: 450px; }
+        h1 { font-size: 1.25rem; color: #3b82f6; border-bottom: 1px solid #1f2937; padding-bottom: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .metric { margin-bottom: 1rem; display: flex; justify-content: space-between; }
+        .label { color: #9ca3af; font-size: 0.875rem; }
+        .value { font-weight: bold; color: #60a5fa; }
+        .progress-container { background: #1f2937; border-radius: 999px; height: 8px; margin-top: 0.5rem; }
+        .progress-bar { background: linear-gradient(90deg, #3b82f6, #60a5fa); height: 100%; border-radius: 999px; width: 0%; transition: width 1s ease-in-out; }
+        .status { font-size: 0.75rem; color: #10b981; margin-top: 1.5rem; text-align: center; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Latest Strategic GPU Audit</h1>
+        <div id="dashboard-content">Yükleniyor...</div>
+        <div class="status">● ATILLAYALCIN_AI_OS v100.0.0 Active</div>
+    </div>
+
+    <script>
+        async function fetchAudit() {
+            try {
+                const response = await fetch('latest_audit.json');
+                const data = await response.json();
+                
+                const content = document.getElementById('dashboard-content');
+                content.innerHTML = `
+                    <div class="metric"><span class="label">Model:</span><span class="value">${data.gpu_model}</span></div>
+                    <div class="metric"><span class="label">Nodes:</span><span class="value">${data.node_count}</span></div>
+                    <div class="metric"><span class="label">Efficiency Score:</span><span class="value">${data.efficiency_score}</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${data.efficiency_score}"></div></div>
+                    <div class="metric" style="margin-top:10px;"><span class="label">Timestamp:</span><span class="value" style="font-size:0.7rem;">${new Date(data.timestamp).toLocaleString()}</span></div>
+                `;
+            } catch (error) {
+                document.getElementById('dashboard-content').innerText = "Henüz bir analiz raporu oluşturulmadı.";
+            }
+        }
+        fetchAudit();
+    </script>
+</body>
+</html>
