@@ -12,6 +12,8 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
@@ -25,13 +27,6 @@ jobs:
         run: |
           git config --global user.name "ATILLAYALCIN-AI-OS"
           git config --global user.email "ai-os@atillayalcin.ai"
-          
-          # Dosyanın oluşup oluşmadığını kontrol et ve zorla ekle
-          if [ -f reports/latest_audit.json ]; then
-            git add -f reports/latest_audit.json
-            # Sadece değişiklik varsa commit et
-            git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" && git push)
-          else
-            echo "Error: reports/latest_audit.json not found!"
-            exit 1
-          fi
+          git add latest_audit.json
+          git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" || echo "No changes to commit"
+          git push
