@@ -15,7 +15,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,7 +29,7 @@ jobs:
           NODE_COUNT: ${{ github.event.inputs.node_count }}
         run: python gpu_engine.py
 
-      - name: Commit and Push
+      - name: Commit and Push Report
         run: |
           git config --global user.name "ATILLAYALCIN-AI-OS"
           git config --global user.email "ai-os@atillayalcin.ai"
@@ -36,22 +37,21 @@ jobs:
           git commit -m "Auto-Update: Strategic Report [skip ci]" || echo "No changes"
           git push
 
-          - name: Send Strategic Audit Notification
+      - name: Send Strategic Audit Notification
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "[Sovereign Report] GPU Audit Complete: ${{ github.event.inputs.gpu_model }}"
-          to: atilla@atillayalcin.ai # Kendi mail adresinizi buraya yazın
+          subject: "[Sovereign Report] GPU Audit Complete: ${ { github.event.inputs.gpu_model } }"
+          to: atilla@atillayalcin.ai
           from: ATILLAYALCIN_AI_OS
           body: |
             STRATEGIC AUDIT REPORT (v100.0.0)
             ----------------------------------
             Status: SUCCESS
-            Model: ${{ github.event.inputs.gpu_model }}
-            Nodes: ${{ github.event.inputs.node_count }}
-            Timestamp: ${{ github.event.repository.updated_at }}
+            Model: ${ { github.event.inputs.gpu_model } }
+            Nodes: ${ { github.event.inputs.node_count } }
             
             Analiz sonuçları atillayalcin.ai/analytics adresinde tescillenmiştir.
