@@ -16,21 +16,22 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Execute Sovereign Audit
-        uses: ./.github/actions/gpu-tco-audit
-        with:
-          gpu_model: ${{ github.event.inputs.gpu_model }}
-          node_count: ${{ github.event.inputs.node_count }}
 
-      - name: Commit and Push Report
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run GPU Engine
+        env:
+          GPU_MODEL: ${{ github.event.inputs.gpu_model }}
+          NODE_COUNT: ${{ github.event.inputs.node_count }}
+        run: python gpu_engine.py
+
+      - name: Commit and Push
         run: |
           git config --global user.name "ATILLAYALCIN-AI-OS"
           git config --global user.email "ai-os@atillayalcin.ai"
-          
-          # Dosyanın varlığını zorla kontrol et
-          ls -la latest_audit.json || (echo "FATAL: File not found!" && exit 1)
-          
           git add latest_audit.json
-          git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" || echo "No changes to commit"
+          git commit -m "Auto-Update: Strategic Report [skip ci]" || echo "No changes"
           git push
