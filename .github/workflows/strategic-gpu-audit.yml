@@ -44,14 +44,14 @@ jobs:
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "[Sovereign Report] GPU Audit Complete: ${ { github.event.inputs.gpu_model } }"
+          subject: "[Sovereign Report] GPU Audit Complete: ${{ github.event.inputs.gpu_model }}"
           to: atilla@atillayalcin.ai
           from: ATILLAYALCIN_AI_OS
           body: |
             STRATEGIC AUDIT REPORT (v100.0.0)
             ----------------------------------
             Status: SUCCESS
-            Model: ${{ github.event.inputs.gpu_model } }
-            Nodes: ${{ github.event.inputs.node_count } }
+            Model: ${{ github.event.inputs.gpu_model }}
+            Nodes: ${{ github.event.inputs.node_count }}
             
-            Analiz sonuçları atillayalcin.ai/analytics adresinde tescillenmiştir.
+            Analiz sonuçları https://www.atillayalcin.ai/analytics.html adresinde tescillenmiştir.
