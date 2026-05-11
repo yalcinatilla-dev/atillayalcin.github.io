@@ -14,8 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Execute Sovereign Audit
         uses: ./.github/actions/gpu-tco-audit
         with:
           gpu_model: ${{ github.event.inputs.gpu_model }}
           node_count: ${{ github.event.inputs.node_count }}
+
+      - name: Commit and Push Report
+        run: |
+          git config --global user.name "ATILLAYALCIN-AI-OS"
+          git config --global user.email "ai-os@atillayalcin.ai"
+          git add reports/latest_audit.json
+          git commit -m "Auto-Update: New Strategic GPU Audit Report [skip ci]" || echo "No changes to commit"
+          git push
