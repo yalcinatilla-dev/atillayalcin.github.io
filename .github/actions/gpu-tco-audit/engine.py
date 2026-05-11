@@ -17,11 +17,14 @@ def calculate_audit():
         "status": "Strategic Analysis Complete"
     }
 
-    # Dosyayı doğrudan ana dizine yaz
-    with open('latest_audit.json', 'w') as f:
+    # ÇALIŞMA DİZİNİNİ BELİRLE VE YAZ
+    workspace = os.getenv('GITHUB_WORKSPACE', '.')
+    file_path = os.path.join(workspace, 'latest_audit.json')
+    
+    with open(file_path, 'w') as f:
         json.dump(report_data, f, indent=4)
     
-    print("Report generated successfully as latest_audit.json")
+    print(f"Success: Report physically written to {file_path}")
 
 if __name__ == "__main__":
     calculate_audit()
