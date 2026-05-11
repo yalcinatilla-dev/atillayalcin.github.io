@@ -1,0 +1,21 @@
+name: "Strategic GPU Audit Tool"
+on: 
+  workflow_dispatch:
+    inputs:
+      gpu_model:
+        description: 'Model (H100, B200)'
+        default: 'H100'
+      node_count:
+        description: 'Node Count'
+        default: '1'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute Sovereign Audit
+        uses: ./.github/actions/gpu-tco-audit
+        with:
+          gpu_model: ${{ github.event.inputs.gpu_model }}
+          node_count: ${{ github.event.inputs.node_count }}
