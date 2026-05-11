@@ -40,13 +40,13 @@ jobs:
       - name: Send Strategic Audit Notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
+          server_address: smtp.office365.com # O365 Sunucusu
+          server_port: 587
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "[Sovereign Report] GPU Audit Complete: ${{ github.event.inputs.gpu_model }}"
           to: atilla@atillayalcin.ai
-          from: ATILLAYALCIN_AI_OS
+          from: contact@atillayalcin.ai
           body: |
             STRATEGIC AUDIT REPORT (v100.0.0)
             ----------------------------------
