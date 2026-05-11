@@ -51,7 +51,7 @@ jobs:
             STRATEGIC AUDIT REPORT (v100.0.0)
             ----------------------------------
             Status: SUCCESS
-            Model: ${ { github.event.inputs.gpu_model } }
-            Nodes: ${ { github.event.inputs.node_count } }
+            Model: ${{ github.event.inputs.gpu_model } }
+            Nodes: ${{ github.event.inputs.node_count } }
             
             Analiz sonuçları atillayalcin.ai/analytics adresinde tescillenmiştir.
