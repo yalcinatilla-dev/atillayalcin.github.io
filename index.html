@@ -80,8 +80,13 @@
             color: white;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
-            margin-left: 30px;
+            margin-left: 25px;
             text-decoration: none;
             color: var(--gray);
             font-size: 0.85rem;
@@ -93,6 +98,25 @@
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        /* Ürünler Butonu Özel Stili */
+        .nav-btn-product {
+            color: #00d2ff !important;
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: rgba(0, 210, 255, 0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn-product:hover {
+            background: rgba(0, 210, 255, 0.2) !important;
+            border-color: #00d2ff !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         /* HERO SECTION */
@@ -292,6 +316,7 @@
     <nav>
         <a href="#home" class="logo">ATILLA YALCIN</a>
         <div class="nav-links">
+            <a href="nemoclaw.html" class="nav-btn-product"><i class="fas fa-shield-halved"></i> Ürünler / NemoClaw AI Shield</a>
             <a href="#solutions">Çözümler</a>
             <a href="#about">Hakkında</a>
             <a href="#insights">Analizler</a>
@@ -432,350 +457,213 @@
     </div>
 </section>
 
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stratejik Veri Analiz Merkezi</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #050505;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-
-        .subtitle {
-            color: #888;
-            font-size: 16px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .card {
-            background-color: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            border-radius: 12px;
-            padding: 40px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-        }
-
-        input[type="email"], input[type="text"], select {
-            width: 100%;
-            background-color: #0f0f0f;
-            border: 1px solid #222;
-            color: #fff;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 15px;
-            margin-bottom: 25px;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        input[type="email"]::placeholder, input[type="text"]::placeholder {
-            color: #555;
-        }
-
-        .upload-area {
-            border: 1px dashed #333;
-            border-radius: 8px;
-            padding: 50px 20px;
-            text-align: center;
-            margin-bottom: 30px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .upload-area:hover {
-            border-color: #555;
-        }
-
-        .upload-icon {
-            color: #72c6ef;
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .upload-text {
-            color: #666;
-            font-size: 15px;
-        }
-
-        .upload-text span {
-            color: #72c6ef;
-        }
-
-        .submit-btn {
-            background-color: #72c6ef;
-            color: #000;
-            border: none;
-            width: 100%;
-            padding: 18px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 0 20px rgba(114, 198, 239, 0.4);
-            transition: all 0.2s;
-        }
-
-        .submit-btn:hover {
-            box-shadow: 0 0 30px rgba(114, 198, 239, 0.6);
-            transform: translateY(-1px);
-        }
-
-        #final-log {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            min-height: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Stratejik Veri Analiz Merkezi</h1>
-    <div class="subtitle">Otonom Ajanlar ve AI-Native Altyapılar Çağında, Kurumlar İçin Güven ve Maliyet Verimliliği İnşa Ediyorum.</div>
-    <div class="subtitle">Karmaşık veri setlerinizi otonom olarak analiz edelim.</div>
-    
-    <div class="card">
-        <input type="email" id="final-email" placeholder="Kurumsal E-posta Adresiniz">
+<section id="data-center-form" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
+        <h2 class="section-title" style="color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">Stratejik Veri Analiz Merkezi</h2>
+        <p style="color: #888; font-size: 1rem; margin-bottom: 10px;">Otonom Ajanlar ve AI-Native Altyapılar Çağında, Kurumlar İçin Güven ve Maliyet Verimliliği İnşa Ediyorum.</p>
+        <p style="color: #666; font-size: 0.95rem; margin-bottom: 40px;">Karmaşık veri setlerinizi otonom olarak analiz edelim.</p>
         
-        <div class="upload-area" onclick="document.getElementById('file-input').click()">
-            <i class="fas fa-file-arrow-up upload-icon"></i>
-            <div class="upload-text" id="final-file-list">Dosyaları buraya sürükleyin veya <span>tıklayarak seçin</span></div>
-            <input type="file" id="file-input" style="display:none" onchange="updateFileList(this.files)">
+        <div class="card" style="text-align: left; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px;">
+            <input type="email" id="final-email" placeholder="Kurumsal E-posta Adresiniz" style="width: 100%; background: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
+            
+            <div class="upload-area" onclick="document.getElementById('file-input').click()" style="border: 1px dashed #333; border-radius: 8px; padding: 40px 20px; text-align: center; margin-bottom: 30px; cursor: pointer; transition: all 0.2s;">
+                <i class="fas fa-file-arrow-up" style="color: #72c6ef; font-size: 40px; margin-bottom: 15px;"></i>
+                <div id="final-file-list" style="color: #666; font-size: 15px;">Dosyaları buraya sürükleyin veya <span style="color: #72c6ef;">tıklayarak seçin</span></div>
+                <input type="file" id="file-input" style="display:none" onchange="updateFileList(this.files)">
+            </div>
+
+            <button class="submit-btn" onclick="triggerInference()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 20px rgba(114, 198, 239, 0.4); transition: all 0.2s;">
+                <i class="fas fa-bolt"></i> OTONOM ANALİZİ BAŞLAT
+            </button>
+            
+            <div id="final-log" style="margin-top: 20px; text-align: center; font-size: 14px; min-height: 20px;"></div>
         </div>
 
-        <button class="submit-btn" onclick="triggerInference()">
-            <i class="fas fa-bolt"></i> OTONOM ANALİZİ BAŞLAT
-        </button>
-        
-        <div id="final-log"></div>
-    </div>
-
-    <div class="card" id="gpu-card">
-    <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-        <i class="fas fa-fire" style="color: #ffcc00;"></i> GPU Verimlilik & Maliyet Denetimi
-    </h3>
-    
-    <div id="audit-step-1">
-        <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
-        
-        <select id="audit-model" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none;">
-            <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
-            <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral (Açık Kaynak)</option>
-            <option value="Diger">Mevcut: Diğer / In-House</option>
-        </select>
-
-        <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
-
-        <select id="audit-privacy" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; outline: none;">
-            <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise Gerekli)</option>
-            <option value="Orta">Gizlilik: Orta (Hibrid Bulut)</option>
-            <option value="Dusuk">Gizlilik: Düşük (Public API Yeterli)</option>
-        </select>
-
-        <button class="submit-btn" onclick="triggerGpuAuditStep1()">
-            <i class="fas fa-arrow-right"></i> SONRAKİ ADIM
-        </button>
-    </div>
-
-    <div id="audit-step-2" style="display: none; text-align: center;">
-        <i class="fas fa-cog fa-spin" style="font-size: 35px; color: #72c6ef; margin-bottom: 15px;"></i>
-        <h4 style="color: #00ff88; margin-top: 0; font-size: 18px;">Ön Veriler Analiz Ediliyor...</h4>
-        <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
-            Size özel <strong style="color: #ffcc00;">Python Benchmark Script</strong>'ini hazırlayıp kendi altyapınızda test edebilmeniz için şu 2 opsiyonel detayı eklemek ister misiniz?
-        </p>
-
-        <input type="text" id="audit-budget" placeholder="Aylık Bulut/GPU Bütçeniz (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
-
-        <input type="text" id="audit-infra" placeholder="Altyapı Tipiniz (Örn: AWS, On-Prem) (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
-
-        <button class="submit-btn" onclick="submitFinalGpuAudit()">
-            <i class="fab fa-python"></i> BENCHMARK SCRIPT TALEP ET
-        </button>
-    </div>
-</div>
-
-    <script>
-        let selectedFiles = [];
-
-        function updateFileList(files) {
-            selectedFiles = Array.from(files);
-            const list = document.getElementById('final-file-list');
-            if (selectedFiles.length > 0) {
-                list.innerHTML = `<span style="color:#72c6ef"><i class="fas fa-check"></i> ${selectedFiles[0].name} seçildi</span>`;
-            }
-        }
-
-        async function triggerInference() {
-            const emailInput = document.getElementById('final-email').value.trim();
-            const log = document.getElementById('final-log');
+        <div class="card" id="gpu-card" style="text-align: left; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; margin-top: 30px;">
+            <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-fire" style="color: #ffcc00;"></i> GPU Verimlilik & Maliyet Denetimi
+            </h3>
             
-            if (!emailInput || selectedFiles.length === 0) {
-                log.innerText = "Hata: Kurumsal e-posta ve döküman gereklidir.";
-                log.style.color = "#ff4444";
-                return;
-            }
-            await sendDataToVault(emailInput, selectedFiles[0], "false");
+            <div id="audit-step-1">
+                <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
+                
+                <select id="audit-model" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none;">
+                    <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
+                    <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral (Açık Kaynak)</option>
+                    <option value="Diger">Mevcut: Diğer / In-House</option>
+                </select>
+
+                <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
+
+                <select id="audit-privacy" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; outline: none;">
+                    <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise Gerekli)</option>
+                    <option value="Orta">Gizlilik: Orta (Hibrid Bulut)</option>
+                    <option value="Dusuk">Gizlilik: Düşük (Public API Yeterli)</option>
+                </select>
+
+                <button class="submit-btn" onclick="triggerGpuAuditStep1()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-arrow-right"></i> SONRAKİ ADIM
+                </button>
+            </div>
+
+            <div id="audit-step-2" style="display: none; text-align: center;">
+                <i class="fas fa-cog fa-spin" style="font-size: 35px; color: #72c6ef; margin-bottom: 15px;"></i>
+                <h4 style="color: #00ff88; margin-top: 0; font-size: 18px;">Ön Veriler Analiz Ediliyor...</h4>
+                <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+                    Size özel <strong style="color: #ffcc00;">Python Benchmark Script</strong>'ini hazırlayıp kendi altyapınızda test edebilmeniz için şu 2 opsiyonel detayı eklemek ister misiniz?
+                </p>
+
+                <input type="text" id="audit-budget" placeholder="Aylık Bulut/GPU Bütçeniz (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
+
+                <input type="text" id="audit-infra" placeholder="Altyapı Tipiniz (Örn: AWS, On-Prem) (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
+
+                <button class="submit-btn" onclick="submitFinalGpuAudit()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fab fa-python"></i> BENCHMARK SCRIPT TALEP ET
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let selectedFiles = [];
+
+    function updateFileList(files) {
+        selectedFiles = Array.from(files);
+        const list = document.getElementById('final-file-list');
+        if (selectedFiles.length > 0) {
+            list.innerHTML = `<span style="color:#72c6ef"><i class="fas fa-check"></i> ${selectedFiles[0].name} seçildi</span>`;
+        }
+    }
+
+    async function triggerInference() {
+        const emailInput = document.getElementById('final-email').value.trim();
+        const log = document.getElementById('final-log');
+        
+        if (!emailInput || selectedFiles.length === 0) {
+            log.innerText = "Hata: Kurumsal e-posta ve döküman gereklidir.";
+            log.style.color = "#ff4444";
+            return;
+        }
+        await sendDataToVault(emailInput, selectedFiles[0], "false");
+    }
+
+    async function triggerGpuAuditStep1() {
+        const emailInput = document.getElementById('final-email').value.trim();
+        const log = document.getElementById('final-log');
+        
+        if (!emailInput) {
+            log.innerText = "Hata: Lütfen önce yukarıdan kurumsal e-posta adresinizi giriniz.";
+            log.style.color = "#ff4444";
+            return;
         }
 
-        // Adım 1: E-postayı kontrol eder ve 2. Adım ekranını şık bir şekilde açar
-async function triggerGpuAuditStep1() {
-    const emailInput = document.getElementById('final-email').value.trim();
-    const log = document.getElementById('final-log');
-    
-    if (!emailInput) {
-        log.innerText = "Hata: Lütfen önce yukarıdan kurumsal e-posta adresinizi giriniz.";
-        log.style.color = "#ff4444";
-        return;
-    }
-
-    // --- GA4 DÖNÜŞÜM İZLEME KODU (BURAYA EKLENDİ) ---
-    gtag('event', 'gpu_audit_step1_click', {
-      'event_category': 'Engagement',
-      'event_label': 'GPU Denetimi Adım 1 Tamamlandı'
-    });
-    // ------------------------------------------------
-
-    // Görsel Geçiş
-    document.getElementById('audit-step-1').style.display = 'none';
-    document.getElementById('audit-step-2').style.display = 'block';
-    log.innerText = ""; // Varsa eski hataları temizle
-}
-
-// Adım 2: Tüm verileri (Adım 1 + Adım 2) toplar ve gönderir
-async function submitFinalGpuAudit() {
-    const emailInput = document.getElementById('final-email').value.trim();
-    
-    const auditData = {
-        model: document.getElementById('audit-model').value,
-        usage: document.getElementById('audit-usage').value,
-        privacy: document.getElementById('audit-privacy').value,
-        budget: document.getElementById('audit-budget').value || "Belirtilmedi",
-        infra: document.getElementById('audit-infra').value || "Belirtilmedi"
-    };
-
-    // --- GA4 DÖNÜŞÜM İZLEME KODU (BURAYA EKLENDİ) ---
-    gtag('event', 'gpu_benchmark_request_sent', {
-      'event_category': 'Conversion',
-      'event_label': 'Python Benchmark Talebi Alındı'
-    });
-    // ------------------------------------------------
-    
-    // Görsel geri bildirim
-    const btn = document.querySelector('#audit-step-2 .submit-btn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GÖNDERİLİYOR...';
-    btn.style.opacity = "0.7";
-    btn.style.pointerEvents = "none";
-
-    const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
-    await sendDataToVault(emailInput, fileToSend, "true", auditData);
-
-    // İşlem bitince butonu yeşile çevir
-    btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
-    btn.style.backgroundColor = "#00ff88";
-    btn.style.color = "#000";
-}
-        async function sendDataToVault(email, file, isAudit, auditData = null) {
-    const log = document.getElementById('final-log');
-    
-    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
-    if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
-        log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
-        log.style.color = "#ffcc00";
-        return;
-    }
-
-    if (file && file.size > 4.5 * 1024 * 1024) {
-        log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
-        log.style.color = "#ff4444";
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('is_audit', isAudit);
-    
-    if (auditData) {
-        formData.append('model', auditData.model);
-        formData.append('usage', auditData.usage);
-        formData.append('privacy', auditData.privacy);
-        // EKSİK OLAN KARGO BAĞLANTILARI BURAYA EKLENDİ:
-        formData.append('budget', auditData.budget);
-        formData.append('infra', auditData.infra);
-    }
-
-    // Hayalet Dosya Koruması
-    if (file) {
-        formData.append('file', file);
-    } else {
-        const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
-        formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
-    }
-
-    log.innerText = "Talebiniz İletiliyor, Lütfen Bekleyin...";
-    log.style.color = "#72c6ef";
-
-    try {
-        const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-            method: 'POST',
-            body: formData
+        gtag('event', 'gpu_audit_step1_click', {
+          'event_category': 'Engagement',
+          'event_label': 'GPU Denetimi Adım 1 Tamamlandı'
         });
-        const data = await response.json();
+
+        document.getElementById('audit-step-1').style.display = 'none';
+        document.getElementById('audit-step-2').style.display = 'block';
+        log.innerText = "";
+    }
+
+    async function submitFinalGpuAudit() {
+        const emailInput = document.getElementById('final-email').value.trim();
         
-        if (data.status === "success") {
-            // Butonun yeşile dönmesi için görseli koruyoruz
-            const btn = document.querySelector('#audit-step-2 .submit-btn');
-            if(btn) {
-                btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
-                btn.style.backgroundColor = "#00ff88";
-                btn.style.color = "#000";
-            }
-            log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
-            log.style.color = "#00ff88";
-        } else if (data.status === "limit_reached") {
-            log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
+        const auditData = {
+            model: document.getElementById('audit-model').value,
+            usage: document.getElementById('audit-usage').value,
+            privacy: document.getElementById('audit-privacy').value,
+            budget: document.getElementById('audit-budget').value || "Belirtilmedi",
+            infra: document.getElementById('audit-infra').value || "Belirtilmedi"
+        };
+
+        gtag('event', 'gpu_benchmark_request_sent', {
+          'event_category': 'Conversion',
+          'event_label': 'Python Benchmark Talebi Alındı'
+        });
+        
+        const btn = document.querySelector('#audit-step-2 .submit-btn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GÖNDERİLİYOR...';
+        btn.style.opacity = "0.7";
+        btn.style.pointerEvents = "none";
+
+        const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
+        await sendDataToVault(emailInput, fileToSend, "true", auditData);
+
+        btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
+        btn.style.backgroundColor = "#00ff88";
+        btn.style.color = "#000";
+    }
+
+    async function sendDataToVault(email, file, isAudit, auditData = null) {
+        const log = document.getElementById('final-log');
+        
+        const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
+        if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
+            log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
             log.style.color = "#ffcc00";
+            return;
+        }
+
+        if (file && file.size > 4.5 * 1024 * 1024) {
+            log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
+            log.style.color = "#ff4444";
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('is_audit', isAudit);
+        
+        if (auditData) {
+            formData.append('model', auditData.model);
+            formData.append('usage', auditData.usage);
+            formData.append('privacy', auditData.privacy);
+            formData.append('budget', auditData.budget);
+            formData.append('infra', auditData.infra);
+        }
+
+        if (file) {
+            formData.append('file', file);
         } else {
-            log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
+            const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
+            formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
+        }
+
+        log.innerText = "Talebiniz İletiliyor, Lütfen Bekleyin...";
+        log.style.color = "#72c6ef";
+
+        try {
+            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            
+            if (data.status === "success") {
+                const btn = document.querySelector('#audit-step-2 .submit-btn');
+                if(btn) {
+                    btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
+                    btn.style.backgroundColor = "#00ff88";
+                    btn.style.color = "#000";
+                }
+                log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
+                log.style.color = "#00ff88";
+            } else if (data.status === "limit_reached") {
+                log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
+                log.style.color = "#ffcc00";
+            } else {
+                log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
+                log.style.color = "#ff4444";
+            }
+        } catch (error) {
+            log.innerText = "Sistem Hatası: " + error.message;
             log.style.color = "#ff4444";
         }
-    } catch (error) {
-        log.innerText = "Sistem Hatası: " + error.message;
-        log.style.color = "#ff4444";
     }
-}
-    </script>
-</body>
-</html>
 </script>
-</section>
 
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
