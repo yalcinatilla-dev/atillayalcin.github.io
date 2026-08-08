@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NemoClaw AI Shield | Atilla Yalçın</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #050505; color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .gradient-text { background: linear-gradient(90deg, #00d2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-border { border: 1px solid #1a1a1a; transition: all 0.3s ease; }
+        .card-border:hover { border-color: #00d2ff; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Nav -->
+    <header class="border-b border-gray-800/80 py-6 px-8 flex justify-between items-center max-w-7xl mx-auto w-full bg-[#050505]/90 backdrop-blur-md sticky top-0 z-50">
+        <a href="index.html" class="flex items-center space-x-3 text-white no-underline hover:opacity-80 transition">
+            <i class="fas fa-arrow-left text-sky-400"></i>
+            <span class="text-sm font-bold tracking-wider uppercase">ATILLA YALCIN | Ana Sayfaya Dön</span>
+        </a>
+        <div class="flex items-center space-x-3">
+            <span class="text-xs bg-sky-900/30 text-sky-400 px-3 py-1 rounded border border-sky-800/50 font-mono tracking-widest">v1.0.0 Open-Core</span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="max-w-5xl mx-auto px-6 py-20 text-center flex-grow flex flex-col justify-center">
+        <div class="inline-block mx-auto mb-6 bg-sky-950/40 border border-sky-800/60 px-5 py-2 rounded-full text-xs font-bold text-sky-400 uppercase tracking-widest shadow-[0_0_15px_rgba(0,210,255,0.2)]">
+            <i class="fas fa-shield-halved mr-2"></i> EU AI Act Madde 50 & NVIDIA NemoClaw Uyumlu
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-tight mb-8">
+            Kurumsal AI İçin <br>
+            <span class="gradient-text">Zero-Trust Güvenlik Kalkanı</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Şirketinizin veri sınırlarını otonom ajanlara karşı koruyun. 30 saniyede kurulabilen Rust/C++ destekli SIMD motoru ile PII (Kişisel Veri) sızıntılarını milisaniyenin altında engelleyin ve çıktılarınızı kriptografik olarak filigranlayın.
+        </p>
+
+        <!-- Waitlist Form -->
+        <div class="max-w-xl mx-auto w-full mb-16 bg-[#0a0a0a] p-6 rounded-xl border border-gray-800 shadow-2xl">
+            <h3 class="text-white font-semibold mb-4 text-left"><i class="fas fa-bolt text-sky-400 mr-2"></i> 48 Saatlik PoC / Erken Erişim Talebi</h3>
+            <form class="flex flex-col md:flex-row gap-3">
+                <input type="email" placeholder="Kurumsal E-posta Adresiniz" required class="bg-[#0f0f0f] border border-gray-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-sky-500 flex-grow text-white transition">
+                <a href="mailto:contact@atillayalcin.ai?subject=NemoClaw%20Erken%20Eri%C5%9Fim%20Talebi" class="bg-sky-500 hover:bg-sky-400 text-black font-bold text-sm px-8 py-3 rounded-lg transition shadow-[0_0_20px_rgba(0,210,255,0.3)] flex items-center justify-center gap-2">
+                    Talep Et <i class="fas fa-arrow-right"></i>
+                </a>
+            </form>
+            <p class="text-xs text-gray-500 mt-4 text-left">* Açık kaynak (Community) sürümü Docker ve Kubernetes için ücretsizdir.</p>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
+            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-sky-500"></div>
+                <div class="text-4xl font-black text-sky-400 mb-2">&lt; 0.18 ms</div>
+                <div class="text-lg font-bold text-gray-200 mb-3">Milisaniye Altı Gecikme</div>
+                <div class="text-sm text-gray-400 leading-relaxed">Python/Regex filtrelerinden 136 kat daha hızlı. C++/Rust SIMD rutinleri ile bellek seviyesinde anlık veri maskeleme (Zero-Copy).</div>
+            </div>
+            
+            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500"></div>
+                <div class="text-4xl font-black text-indigo-400 mb-2">Madde 50</div>
+                <div class="text-lg font-bold text-gray-200 mb-3">EU AI Act Tam Uyum</div>
+                <div class="text-sm text-gray-400 leading-relaxed">Otonom LLM çıktılarını kaynağında doğrulayan görünmez HMAC-SHA256 kriptografik etiketleme (Watermarking) mimarisi.</div>
+            </div>
+            
+            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-emerald-500"></div>
+                <div class="text-4xl font-black text-emerald-400 mb-2">1-Tıkla</div>
+                <div class="text-lg font-bold text-gray-200 mb-3">Docker & K8s Kurulum</div>
+                <div class="text-sm text-gray-400 leading-relaxed">Mevcut altyapınızı bozmadan, OpenAI, Anthropic veya yerel Llama modelleri ile API seviyesinde doğrudan "Plug-and-play" entegrasyon.</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 py-8 text-center bg-[#050505]">
+        <div class="text-gray-400 text-sm font-semibold tracking-wide mb-2">&copy; 2026 NemoClaw Enterprise Security</div>
+        <div class="text-gray-600 text-xs">Built by Atilla Yalçın | Powered by ATILLAYALCIN_AI_OS v300.0.0</div>
+    </footer>
+
+</body>
+</html>
