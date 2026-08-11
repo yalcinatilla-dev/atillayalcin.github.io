@@ -8,9 +8,9 @@
         try {
             const resp = await fetch('latest_audit.json');
             const data = await resp.json();
-            document.getElementById('status-text').innerText = `LAST AUDIT: ${new Date(data.timestamp).toLocaleTimeString()} [OS v100.0.0]`;
+            document.getElementById('status-text').innerText = `LAST AUDIT: ${new Date(data.timestamp).toLocaleTimeString()} [OS v300.0.0]`;
         } catch (e) {
-            document.getElementById('status-text').innerText = "SYSTEM STATUS: MONITORING";
+            document.getElementById('status-text').innerText = "SYSTEM STATUS: MONITORING [OS v300.0.0]";
         }
     }
     updateStatusBar();
@@ -32,8 +32,8 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atilla Yalçın | Ecosystem Orchestrator | Strategic Alliance Leader | Infrastructure Strategist</title>
-    <meta name="description" content="30 yıllık ticari olgunluk ve 17 yıllık BT uzmanlığıyla; global üretici vizyonunu saha gerçekleriyle buluşturan, karmaşık altyapıları kârlı iş modellerine dönüştüren bütünleşik mimari liderlik.">
+    <title>Atilla Yalçın | Kurumsal İnovasyon & Ar-Ge Laboratuvarı | Enterprise Leverage</title>
+    <meta name="description" content="Yapay zeka adaptasyonu, hiper-otonomi ve kurumsal teknoloji stratejileri üzerine konumlandırılmış Uygulamalı Ar-Ge Merkezi ve Kurumsal Kaldıraç platformu.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -317,11 +317,11 @@
         <a href="#home" class="logo">ATILLA YALCIN</a>
         <div class="nav-links">
             <a href="nemoclaw.html" class="nav-btn-product"><i class="fas fa-shield-halved"></i> Ürünler / NemoClaw AI Shield</a>
-            <a href="#solutions">Çözümler</a>
-            <a href="#about">Hakkında</a>
-            <a href="#insights">Analizler</a>
+            <a href="#solutions">Ar-Ge Odakları</a>
+            <a href="#about">Laboratuvar Hakkında</a>
+            <a href="#insights">Teknoloji Doğrulama (PoC)</a>
             <a href="https://linkedin.com/in/atilla-yalçın-03037672/" target="_blank">LinkedIn</a>
-            <a href="mailto:contact@atillayalcin.ai">İletişime Geç</a>
+            <a href="mailto:contact@atillayalcin.ai">Kurumsal Entegrasyon</a>
         </div>
     </nav>
 
@@ -331,81 +331,81 @@
         </video>
         
         <div class="hero-content">
-            <h1>Atilla Yalçın</h1>
-            <h2>Ecosystem Orchestrator | Strategic Alliance Leader | Infrastructure Strategist</h2>
+            <h1>Atilla Yalçın <br><span style="font-size: 0.5em; color: var(--primary); font-weight: 600; letter-spacing: 4px;">AR-GE & İNOVASYON LABORATUVARI</span></h1>
+            <h2>Kurumsal Kaldıraç | Yapay Zeka Adaptasyonu | Hiper-Otonomi</h2>
             <p>
-                30 yıllık ticari olgunluk ve 17 yıllık BT uzmanlığıyla; global üretici vizyonunu saha gerçekleriyle buluşturan, karmaşık altyapıları kârlı iş modellerine dönüştüren bütünleşik mimari liderlik.
+                ATILLAYALCIN_AI_OS mimarisi üzerinde inşa edilmiş bu platform; karmaşık kurumsal BT sorunlarının, yapay zeka ve otonom sistemlerle nasıl çözülebileceğine dair test edilmiş mimariler sunan bir Teknoloji Doğrulama (PoC) alanıdır. Hedef, bağlı bulunulan yapıları pazar lideri yapacak hazır teknolojik entegrasyonlar sağlamaktır.
             </p>
             <div class="cta-group">
-                <a href="#value-prop" class="btn-fill">Stratejik Ortaklık Modelini İncele</a>
-                <a href="mailto:contact@atillayalcin.ai" class="btn-outline">İletişime Geçin</a>
+                <a href="#value-prop" class="btn-fill">Ar-Ge Vizyonunu İncele</a>
+                <a href="mailto:contact@atillayalcin.ai" class="btn-outline">PoC Entegrasyonu İçin İletişime Geç</a>
             </div>
         </div>
     </section>
 
     <section id="solutions">
         <div class="container">
-            <h2 class="section-title">STRATEJİK ÇÖZÜMLER & UZMANLIK ALANLARI</h2>
+            <h2 class="section-title">TEKNOLOJİ DOĞRULAMA (PoC) & ARAŞTIRMA ALANLARI</h2>
             <div class="grid">
                 
                 <div class="card">
                     <i class="fas fa-microchip"></i>
-                    <h3>Compute & AI Infrastructure</h3>
-                    <p>GenAI ve derin öğrenme iş yükleri için optimize edilmiş, yüksek performanslı (HPC) hesaplama mimarilerinin tasarımı.</p>
+                    <h3>Compute & AI Infrastructure Lab</h3>
+                    <p>GenAI ve derin öğrenme iş yükleri için kurum mimarisine entegre edilebilir, test edilmiş yüksek performanslı (HPC) hesaplama stratejileri.</p>
                 </div>
                 
                 <div class="card">
                     <i class="fas fa-database"></i>
-                    <h3>Intelligent Storage & Data</h3>
-                    <p>Veri güvenliği, felaket kurtarma (DR) ve iş sürekliliği odaklı akıllı depolama ekosistemleri.</p>
+                    <h3>Intelligent Storage & Data Automation</h3>
+                    <p>İnsan müdahalesinden bağımsız, otonom felaket kurtarma (DR) ve iş sürekliliği sağlayan akıllı veri ekosistemlerinin tasarımı.</p>
                 </div>
                 
                 <div class="card">
                     <i class="fas fa-network-wired"></i>
-                    <h3>Adaptive Networking & Security</h3>
-                    <p>Zero-Trust (Sıfır Güven) mimarisi altında birleşen, yazılım tanımlı (SDN) güvenli ağ yapıları.</p>
+                    <h3>Zero-Trust Edge & Networking</h3>
+                    <p>Sıfır Güven (S46) otonom denetim protokolleriyle korunan, kurum içi veri sızıntılarını engelleyen yazılım tanımlı (SDN) ağ yapıları araştırmaları.</p>
                 </div>
 
                 <div class="card">
                     <i class="fas fa-cloud"></i>
-                    <h3>Hybrid Cloud & Software</h3>
-                    <p>Sanallaştırma geçişlerinde kompleks lisanslama ve TCO optimizasyonu sağlayan yazılım stratejileri.</p>
+                    <h3>Hybrid Cloud Architecture (TCO-Crusher)</h3>
+                    <p>Sanallaştırma geçişlerinde kompleks lisanslama maliyetlerini (TCO) minimize eden yenilikçi yazılım senaryolarının doğrulama testleri.</p>
                 </div>
 
                 <div class="card">
                     <i class="fas fa-project-diagram"></i>
-                    <h3>Strategic Solution & BoM Engineering</h3>
-                    <p>Çok paydaşlı şartnamelerin analizi; üretici ve kanal verimliliğini artıran, Part Number (P/N) seviyesinde optimize edilmiş Master Kitlist (BoM) tasarımı.</p>
+                    <h3>Autonomous BoM Engineering</h3>
+                    <p>ATILLAYALCIN_AI_OS üzerinden şartnameleri analiz ederek; %0 konfigürasyon hatası ile kurum için anında üretilebilir Master Kitlist (BoM) üretim teknolojisi.</p>
                 </div>
 
                 <div class="card">
-                    <i class="fas fa-headset"></i>
-                    <h3>Executive Advisory & Online Support</h3>
-                    <p>Proje tıkanıklıkları, acil altyapı sorunları (Troubleshooting) ve teknoloji yatırımları için anında erişilebilir, birebir (1-on-1) stratejik ve teknik destek seansları.</p>
+                    <i class="fas fa-brain"></i>
+                    <h3>CAIO Path & Corporate Integration</h3>
+                    <p>Kurumların yapay zeka stratejilerini yönetecek organizasyonel adaptasyon modelleri ve iş akışlarına entegre "Ajanik Orkestrasyon" tasarımları.</p>
                 </div>
     </div>
 </section>
 
 <section id="solutions-matrix" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">STRATEJİK ÇÖZÜM VE ETKİ MATRİSİ</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 50px; font-size: 1.1rem;">ATILLAYALCIN_AI_OS'un ekosistem paydaşlarına ve endüstrilere özel otonom çıktıları.</p>
+        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">KURUMSAL ETKİ MATRİSİ</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 50px; font-size: 1.1rem;">Ar-Ge Merkezimizin Kurumsal İş Ortaklarına Sağladığı Otonom Çıktılar.</p>
 
         <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
             <button class="tab-btn active" onclick="openTab(event, 'ecosystem-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); font-size: 1rem;">
-                <i class="fas fa-network-wired"></i> BT Ekosistemi (Bayi & Üretici)
+                <i class="fas fa-network-wired"></i> Teknoloji İş Ortakları (Vendor & Kanal)
             </button>
             <button class="tab-btn" onclick="openTab(event, 'enterprise-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid #444; color: #aaa; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
-                <i class="fas fa-building"></i> Kurumsal BT & Endüstri
+                <i class="fas fa-building"></i> Kurumsal & Endüstriyel Entegrasyon
             </button>
         </div>
 
         <div id="ecosystem-tab" class="tab-content" style="display: block; animation: fadeIn 0.5s;">
             <div style="background: linear-gradient(90deg, rgba(0, 210, 255, 0.1) 0%, rgba(0,0,0,0) 100%); border-left: 4px solid var(--primary); padding: 40px; margin-bottom: 30px; border-radius: 0 8px 8px 0;">
                 <h3 style="color: #fff; margin-top: 0; display: flex; align-items: center; gap: 15px; font-size: 1.5rem;">
-                    <i class="fas fa-rocket" style="color: var(--primary);"></i> Özel "Partner Leverage" Paketi
+                    <i class="fas fa-rocket" style="color: var(--primary);"></i> Kurumsal İnovasyon Paketi
                 </h3>
-                <p style="color: #bbb; line-height: 1.8; margin-bottom: 0; font-size: 1.1rem;">Distribütörler ve entegratörler için tasarlanmış özel otonom hizmet. Üretici vizyonunu saha gerçekleriyle hizalayarak, P/N seviyesinde hatasız BoM tasarımı yapar. Deal Registration süreçlerini hızlandırır ve kanal kârlılığını maksimize eder. <strong style="color: var(--primary);">Sonuç: %0 Konfigürasyon Hatası.</strong></p>
+                <p style="color: #bbb; line-height: 1.8; margin-bottom: 0; font-size: 1.1rem;">Birlikte çalıştığımız kurumlar için tasarlanmış entegre sistem. İşveren kurumun pazar dinamiklerini, en güncel Ar-Ge verilerimizle hizalayarak teknik konfigürasyon (BoM) süreçlerini tamamen otonomlaştırır. Rekabet avantajını merkeze alır. <strong style="color: var(--primary);">Sonuç: Teknolojik Üstünlük ve Hız.</strong></p>
             </div>
         </div>
 
@@ -415,39 +415,39 @@
                     <thead>
                         <tr style="border-bottom: 2px solid var(--primary); background: rgba(0, 210, 255, 0.05);">
                             <th style="padding: 20px; color: var(--primary); width: 25%;">Odak Alanı</th>
-                            <th style="padding: 20px; color: #fff; width: 45%;">ATILLAYALCIN_AI_OS Ne Yapar?</th>
-                            <th style="padding: 20px; color: #fff; width: 30%;">Somut Çıktı (Value Prop)</th>
+                            <th style="padding: 20px; color: #fff; width: 45%;">Laboratuvar Çıktısı (Ar-Ge)</th>
+                            <th style="padding: 20px; color: #fff; width: 30%;">Kurumsal Kaldıraç Etkisi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid #222;">
                             <td style="padding: 20px;"><strong>Kurumsal BT (Uçtan Uca)</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Ağ (Network), Siber Güvenlik, Veri Yedekleme (DR), İşletim Sistemi ve Sanallaştırma Lisanslamasından; Hibrit Bulut ve AI altyapılarına kadar tam entegre, bağımsız stratejik mimari kurgu.</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Ağ (Network), Siber Güvenlik, Veri Yedekleme (DR), İşletim Sistemi ve Sanallaştırma Lisanslamasından; Hibrit Bulut ve AI altyapılarına kadar test edilmiş bağımsız mimariler.</td>
                             <td style="padding: 20px; color: #ccc;">%40'a varan TCO avantajı ve bağımsız üretici yönetimi.</td>
                         </tr>
                         <tr style="border-bottom: 1px solid #222;">
                             <td style="padding: 20px;"><strong>İnşaat & Altyapı</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Büyük projelerde karmaşık donanım metraj (BoM) listelerinin ve tekrar eden operasyonel alışkanlıkların otonom analizi ile sağlıklı veri çıkarımı.</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Büyük projelerde karmaşık donanım metraj (BoM) listelerinin otonom analizi ile hatasız veri çıkarım algoritmaları.</td>
                             <td style="padding: 20px; color: #ccc;">%100 ihale uyumu, malzeme israfında %15 azalma.</td>
                         </tr>
                         <tr style="border-bottom: 1px solid #222;">
                             <td style="padding: 20px;"><strong>Enerji & Şebeke</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Tüketim alışkanlıkları ve şebeke paternleri üzerinden 'sağlıklı veri' üreterek donanım ihtiyacı tespiti; regülasyonlara otonom uyum.</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Tüketim alışkanlıkları ve şebeke paternleri üzerinden yapay zeka ile veri üreterek donanım optimizasyon testleri.</td>
                             <td style="padding: 20px; color: #ccc;">Dinamik yük dengeleme, karbon/maliyet optimizasyonu.</td>
                         </tr>
                         <tr style="border-bottom: 1px solid #222;">
                             <td style="padding: 20px;"><strong>Sağlık & Operasyon</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Hasta/personel davranışları ve loglar üzerinden karmaşık veriyi 'sağlıklı kararlara' dönüştüren analiz (Zero-Trust Inference).</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Karmaşık veriyi 'sağlıklı kararlara' dönüştüren analiz modellerinin Zero-Trust prensibiyle geliştirilmesi.</td>
                             <td style="padding: 20px; color: #ccc;">Verimlilikte %30 artış ve veri gizliliği garantisi.</td>
                         </tr>
                         <tr style="border-bottom: 1px solid #222;">
                             <td style="padding: 20px;"><strong>Perakende & Lojistik</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Müşteri davranışları, satın alma alışkanlıkları ve tedarik zinciri loglarından anlamlı veri (Inference) üreterek otonom rota/stok orkestrasyonu.</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Müşteri davranışları ve tedarik zinciri loglarından anlamlı veri (Inference) üreterek otonom stok optimizasyonu modellemesi.</td>
                             <td style="padding: 20px; color: #ccc;">Nokta atışı envanter, lojistikte %18 maliyet avantajı.</td>
                         </tr>
                         <tr>
                             <td style="padding: 20px;"><strong>Kurumsal Yönetişim</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Kurum politikalarının ve KVKK/GDPR regülasyonlarının otonom entegrasyonu ile veri temizliği.</td>
+                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Kurum politikalarının ve KVKK/GDPR regülasyonlarının 'Kod Olarak Yönetişim (S70)' prensibiyle simülasyonu.</td>
                             <td style="padding: 20px; color: #ccc;">Otonom denetim hazırlığı ve teknolojik risk yönetimi.</td>
                         </tr>
                     </tbody>
@@ -881,163 +881,131 @@
                 <div class="container" style="max-width: 1000px; margin: 0 auto;">
                     
                     <div style="text-align: center; margin-bottom: 40px;">
-                        <h4 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px;">
-                            <i class="fas fa-network-wired"></i> Proprietary Cognitive Engine
-                        </h4>
-                        <h3 id="os-title" style="color: #fff; font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; transition: color 0.5s;">ATILLAYALCIN_AI_OS</h3>
-                        
-                        <div style="display: inline-flex; align-items: center; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 50px;">
-                            <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; display: inline-block; margin-right: 10px; animation: pulse 1.5s infinite;"></span>
-                            <span style="color: #ddd; font-size: 0.9rem; font-weight: 600;">Sistem Durumu: Dinamik Öğrenme Aktif | Kapasite: 65 Modül (Genişliyor)</span>
-                        </div>
-                    </div>
+    <h4 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px;">
+        <i class="fas fa-network-wired"></i> Proprietary Cognitive Engine
+    </h4>
+    <h3 id="os-title" style="color: #fff; font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; transition: color 0.5s;">ATILLAYALCIN_AI_OS</h3>
+    
+    <div style="display: inline-flex; align-items: center; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 50px;">
+        <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; display: inline-block; margin-right: 10px; animation: pulse 1.5s infinite;"></span>
+        <span style="color: #ddd; font-size: 0.9rem; font-weight: 600;">Sistem Durumu: Dinamik Öğrenme Aktif | Kapasite: 88 Modül (Hiper-Otonomi Aktif)</span>
+    </div>
+</div>
 
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222; margin-bottom: 30px;">
-                        
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Overseer-OS Odağı</span>
-                            <label style="position: relative; display: inline-block; width: 50px; height: 26px;">
-                                <input type="checkbox" id="overseer-toggle" style="opacity: 0; width: 0; height: 0;" onchange="toggleOverseer()">
-                                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 34px;" id="toggle-bg">
-                                    <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%;" id="toggle-knob"></span>
-                                </span>
-                            </label>
-                        </div>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222; margin-bottom: 30px;">
+    
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Overseer-OS Odağı</span>
+        <label style="position: relative; display: inline-block; width: 50px; height: 26px;">
+            <input type="checkbox" id="overseer-toggle" style="opacity: 0; width: 0; height: 0;" onchange="toggleOverseer()">
+            <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 34px;" id="toggle-bg">
+                <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%;" id="toggle-knob"></span>
+            </span>
+        </label>
+    </div>
 
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Hiyerarşi Filtresi:</span>
-                            <select id="category-filter" onchange="filterModules()" style="background: #111; color: #fff; border: 1px solid #444; padding: 8px 15px; border-radius: 6px; font-family: 'Inter', sans-serif; outline: none;">
-                                <option value="all">Tüm Modüller (65)</option>
-                                <option value="core">Çekirdek & Operasyon</option>
-                                <option value="tech">Mühendislik & Veri</option>
-                                <option value="strategy">Strateji & Liderlik</option>
-                                <option value="gov">Yönetişim & Güvenlik</option>
-                            </select>
-                        </div>
-                    </div>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <span style="color: #aaa; font-weight: 600; font-size: 0.95rem;">Hiyerarşi Filtresi:</span>
+        <select id="category-filter" onchange="filterModules()" style="background: #111; color: #fff; border: 1px solid #444; padding: 8px 15px; border-radius: 6px; font-family: 'Inter', sans-serif; outline: none;">
+            <option value="all">Tüm Modüller (88)</option>
+            <option value="core">Çekirdek & Operasyon</option>
+            <option value="tech">Mühendislik & Veri</option>
+            <option value="strategy">Strateji & Liderlik</option>
+            <option value="gov">Yönetişim & Güvenlik</option>
+        </select>
+    </div>
+</div>
 
-                    <div id="module-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 12px; justify-items: center; padding: 20px;">
-                        </div>
-                    
-                    <p style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 20px;">
-                        * Planner – Executor – Auditor hiyerarşisiyle çalışan bilişsel devreler.
-                    </p>
+<div id="module-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 12px; justify-items: center; padding: 20px;">
+</div>
 
-                </div>
-            </div>
+<script>
+    // 88 Modülün v300.0.0 matrisine göre tam kategorizasyonu
+    const categories = {
+        core: [1,4,5,10,16,18,20,29,47, 57, 58, 59],
+        tech: [2,3,7,11,12,13,14,15,27,28,30,37,44,45,49,51,52,54, 60, 61, 66, 67, 71, 72, 73, 76, 79, 80, 81, 82, 86],
+        strategy: [8,9,17,19,21,22,23,25,26,31,39,42,43, 62, 63, 77, 83, 88],
+        gov: [46,48,50,53,55,56,64,65, 6,24,32,33,34,35,36,38,40,41, 68, 69, 70, 74, 75, 78, 84, 85, 87]
+    };
 
-            <style>
-                /* Yanıp sönen ışık animasyonu */
-                @keyframes pulse {
-                    0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.7); }
-                    70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
-                    100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
-                }
-                .module-node {
-                    width: 50px; height: 50px; border-radius: 50%; 
-                    display: flex; align-items: center; justify-content: center;
-                    font-size: 0.8rem; font-weight: bold; color: #fff;
-                    transition: all 0.4s ease; cursor: crosshair;
-                    border: 2px solid transparent;
-                }
-                .node-active { transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
-                .node-inactive { opacity: 0.15; transform: scale(0.9); background: #222 !important; color: #555 !important; }
-            </style>
+    const colors = {
+        core: '#3b82f6', 
+        tech: '#06b6d4', 
+        strategy: '#8b5cf6', 
+        gov: '#10b981', 
+        overseer: '#00f2ff' 
+    };
 
-            <script>
-                // 65 Modülün tam kategorizasyonu
-                const categories = {
-                    core: [1,4,5,10,16,18,20,29,47, 57, 58, 59],
-                    tech: [2,3,7,11,12,13,14,15,27,28,30,37,44,45,49,51,52,54, 60, 61],
-                    strategy: [8,9,17,19,21,22,23,25,26,31,39,42,43, 62, 63],
-                    gov: [46,48,50,53,55,56,64,65, 6,24,32,33,34,35,36,38,40,41] // Yönetişim ve Bilişsel birleşik
-                };
+    let isOverseerActive = false;
 
-                // Renk Paleti
-                const colors = {
-                    core: '#3b82f6', // Mavi
-                    tech: '#06b6d4', // Cyan
-                    strategy: '#8b5cf6', // Mor
-                    gov: '#10b981', // Yeşil
-                    overseer: '#00f2ff' // Neon Mavi (Tüm sistem için)
-                };
+    function initModules() {
+        const grid = document.getElementById('module-grid');
+        grid.innerHTML = '';
+        
+        // Döngü 65'ten 88'e çıkarıldı.
+        for(let i=1; i<=88; i++) {
+            let cat = 'gov'; 
+            if(categories.core.includes(i)) cat = 'core';
+            else if(categories.tech.includes(i)) cat = 'tech';
+            else if(categories.strategy.includes(i)) cat = 'strategy';
 
-                let isOverseerActive = false;
+            const node = document.createElement('div');
+            node.className = `module-node node-${cat}`;
+            node.id = `mod-${i}`;
+            node.innerText = `S${i}`;
+            node.style.background = colors[cat];
+            node.setAttribute('data-cat', cat);
+            node.title = `Modül S${i} - Aktif (v300.0.0)`;
+            
+            grid.appendChild(node);
+        }
+    }
 
-                // Modülleri Ekrana Çizme
-                function initModules() {
-                    const grid = document.getElementById('module-grid');
-                    grid.innerHTML = '';
-                    
-                    for(let i=1; i<=65; i++) {
-                        let cat = 'gov'; // Varsayılan
-                        if(categories.core.includes(i)) cat = 'core';
-                        else if(categories.tech.includes(i)) cat = 'tech';
-                        else if(categories.strategy.includes(i)) cat = 'strategy';
+    function filterModules() {
+        const selected = document.getElementById('category-filter').value;
+        const nodes = document.querySelectorAll('.module-node');
 
-                        const node = document.createElement('div');
-                        node.className = `module-node node-${cat}`;
-                        node.id = `mod-${i}`;
-                        node.innerText = `S${i}`;
-                        node.style.background = colors[cat];
-                        node.setAttribute('data-cat', cat);
-                        
-                        // Hover efekti (İsteğe bağlı tooltip eklenebilir)
-                        node.title = `Modül S${i} - Aktif`;
-                        
-                        grid.appendChild(node);
-                    }
-                }
+        nodes.forEach(node => {
+            const cat = node.getAttribute('data-cat');
+            if(selected === 'all' || cat === selected) {
+                node.classList.remove('node-inactive');
+                node.classList.add('node-active');
+                node.style.background = isOverseerActive ? colors.overseer : colors[cat];
+                node.style.color = isOverseerActive ? '#000' : '#fff';
+            } else {
+                node.classList.remove('node-active');
+                node.classList.add('node-inactive');
+            }
+        });
+    }
 
-                // Filtreleme Mantığı
-                function filterModules() {
-                    const selected = document.getElementById('category-filter').value;
-                    const nodes = document.querySelectorAll('.module-node');
+    function toggleOverseer() {
+        isOverseerActive = document.getElementById('overseer-toggle').checked;
+        const title = document.getElementById('os-title');
+        const toggleBg = document.getElementById('toggle-bg');
+        const toggleKnob = document.getElementById('toggle-knob');
 
-                    nodes.forEach(node => {
-                        const cat = node.getAttribute('data-cat');
-                        if(selected === 'all' || cat === selected) {
-                            node.classList.remove('node-inactive');
-                            node.classList.add('node-active');
-                            // Eğer Overseer kapalıysa kendi rengine dön, açıksa overseer rengine
-                            node.style.background = isOverseerActive ? colors.overseer : colors[cat];
-                            node.style.color = isOverseerActive ? '#000' : '#fff';
-                        } else {
-                            node.classList.remove('node-active');
-                            node.classList.add('node-inactive');
-                        }
-                    });
-                }
+        if(isOverseerActive) {
+            title.innerText = "OVERSEER-OS MİMARİSİ";
+            title.style.color = colors.overseer;
+            title.style.textShadow = "0 0 20px rgba(0, 242, 255, 0.5)";
+            toggleBg.style.backgroundColor = colors.overseer;
+            toggleKnob.style.transform = "translateX(24px)";
+        } else {
+            title.innerText = "ATILLAYALCIN_AI_OS";
+            title.style.color = "#fff";
+            title.style.textShadow = "none";
+            toggleBg.style.backgroundColor = "#333";
+            toggleKnob.style.transform = "translateX(0)";
+        }
+        filterModules();
+    }
 
-                // Overseer-OS Geçişi
-                function toggleOverseer() {
-                    isOverseerActive = document.getElementById('overseer-toggle').checked;
-                    const title = document.getElementById('os-title');
-                    const toggleBg = document.getElementById('toggle-bg');
-                    const toggleKnob = document.getElementById('toggle-knob');
-
-                    if(isOverseerActive) {
-                        title.innerText = "OVERSEER-OS MİMARİSİ";
-                        title.style.color = colors.overseer;
-                        title.style.textShadow = "0 0 20px rgba(0, 242, 255, 0.5)";
-                        toggleBg.style.backgroundColor = colors.overseer;
-                        toggleKnob.style.transform = "translateX(24px)";
-                    } else {
-                        title.innerText = "ATILLAYALCIN_AI_OS";
-                        title.style.color = "#fff";
-                        title.style.textShadow = "none";
-                        toggleBg.style.backgroundColor = "#333";
-                        toggleKnob.style.transform = "translateX(0)";
-                    }
-                    filterModules(); // Renkleri güncellemek için filtreyi yeniden tetikle
-                }
-
-                // Sayfa yüklendiğinde çalıştır
-                document.addEventListener("DOMContentLoaded", () => {
-                    initModules();
-                    setTimeout(filterModules, 500); // Hafif bir gecikmeyle animasyonlu açılış
-                });
-            </script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initModules();
+        setTimeout(filterModules, 500); 
+    });
+</script>
             
             <div style="background: #050505; border: 1px solid #1a1a1a; border-radius: 12px; padding: 60px 40px; margin: 80px auto; max-width: 1000px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden;">
     
@@ -1350,4 +1318,3 @@
 
 </body>
 </html>
-
