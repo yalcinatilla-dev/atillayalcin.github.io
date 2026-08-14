@@ -8,9 +8,9 @@
         try {
             const resp = await fetch('latest_audit.json');
             const data = await resp.json();
-            document.getElementById('status-text').innerText = `LAST AUDIT: ${new Date(data.timestamp).toLocaleTimeString()} [OS v300.0.0]`;
+            document.getElementById('status-text').innerText = `LAST AUDIT: ${new Date(data.timestamp).toLocaleTimeString()} [OS v310.0.0]`;
         } catch (e) {
-            document.getElementById('status-text').innerText = "SYSTEM STATUS: MONITORING [OS v300.0.0]";
+            document.getElementById('status-text').innerText = "SYSTEM STATUS: MONITORING [OS v310.0.0]";
         }
     }
     updateStatusBar();
@@ -718,7 +718,7 @@
 <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">FAQ / SIKÇA SORULAN SORULAR</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">ATILLAYALCIN_AI_OS v300.0.0 mimarisi, kurumsal entegrasyon ve otonom işbirliği modelleri.</p>
+        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">ATILLAYALCIN_AI_OS v310.0.0 mimarisi, kurumsal entegrasyon ve otonom işbirliği modelleri.</p>
 
         <div class="faq-container" style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #222;">
             
@@ -728,7 +728,7 @@
                     <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
                 </button>
                 <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>ATILLAYALCIN_AI_OS (v300.0.0 - Hiper-Otonomi), 30 yıllık profesyonel BT tecrübesinin tam kapasiteli 88 otonom ajanla birleştiği bir "Bilişsel İşletim Sistemi"dir. Görevi; sadece donanım (BoM) listelerini değil, kurumların Ağ (Network), Siber Güvenlik, DR ve kullanıcı davranış alışkanlıklarını analiz etmektir. Operasyonel ve sistemsel tekrar eden işlemlerden <strong>'sağlıklı veri'</strong> (Inference) üreterek, uçtan uca bağımsız mimari kurgular ve %0 hata payı ile kurumunuza pazar liderliği sağlayacak teknolojik kaldıracı inşa eder.</p>
+                    <p>ATILLAYALCIN_AI_OS v310.0.0 (Hiper-Otonomi & Omni-Matris), 30 yıllık profesyonel BT tecrübesinin tam kapasiteli 88 otonom ajanla birleştiği bir "Bilişsel İşletim Sistemi"dir. Görevi; sadece donanım (BoM) listelerini değil, kurumların Ağ (Network), Siber Güvenlik, DR ve kullanıcı davranış alışkanlıklarını analiz etmektir. Operasyonel ve sistemsel tekrar eden işlemlerden <strong>'sağlıklı veri'</strong> (Inference) üreterek, uçtan uca bağımsız mimari kurgular ve %0 hata payı ile kurumunuza pazar liderliği sağlayacak teknolojik kaldıracı inşa eder.</p>
                 </div>
             </div>
 
@@ -758,7 +758,7 @@
                     <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
                 </button>
                 <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>88 ajanlı yeni Hiper-Otonomi mimarisi (v300.0.0); Planner, Executor, Auditor ve Otonom Yönetişim hiyerarşisinde çalışır. Kimi ajan siber güvenlik regülasyonlarını denetlerken, kimi personel/sistem alışkanlıklarını analiz eder. AGENT.md protokolü yetki sınırlarını çizer. <strong>S53: Supervisor Agent</strong> ve yeni nesil <strong>Otonom İş Geliştirme İkizi (S88)</strong> verileri birleştirip 4'lü çapraz doğrulama yaparak yapay zeka halüsinasyonlarını sıfıra indirir.</p>
+                    <p>88 ajanlı yeni Hiper-Otonomi ve Omni-Matris mimarisi (v310.0.0); Planner, Executor, Auditor ve Otonom Yönetişim hiyerarşisinde çalışır. Kimi ajan siber güvenlik regülasyonlarını denetlerken, kimi personel/sistem alışkanlıklarını analiz eder. AGENT.md protokolü yetki sınırlarını çizer. <strong>S53: Supervisor Agent</strong> ve yeni nesil <strong>Otonom İş Geliştirme İkizi (S88)</strong> verileri birleştirip 4'lü çapraz doğrulama yaparak yapay zeka halüsinasyonlarını sıfıra indirir.</p>
                 </div>
             </div>
 
@@ -995,7 +995,7 @@
             </style>
 
             <script>
-                // 88 Modülün v300.0.0 matrisine göre tam kategorizasyonu
+                // 88 Modülün v310.0.0 matrisine göre tam kategorizasyonu
                 const categories = {
                     core: [1,4,5,10,16,18,20,29,47, 57, 58, 59],
                     tech: [2,3,7,11,12,13,14,15,27,28,30,37,44,45,49,51,52,54, 60, 61, 66, 67, 71, 72, 73, 76, 79, 80, 81, 82, 86],
@@ -1033,7 +1033,7 @@
                         node.setAttribute('data-cat', cat);
                         
                         // Hover efekti (İsteğe bağlı tooltip eklenebilir)
-                        node.title = `Modül S${i} - Aktif (v300.0.0)`;
+                        node.title = `Modül S${i} - Aktif (v310.0.0)`;
                         
                         grid.appendChild(node);
                     }
@@ -1297,7 +1297,7 @@
             
             <div class="insight-card">
                 <span class="insight-date">AĞUSTOS 2026</span>
-                <h3 class="insight-title">Hiper-Otonomi (v300.0.0) ve Kurumsal Kaldıraç</h3>
+                <h3 class="insight-title">Hiper-Otonomi ve Omni-Matris mimarisi (v310.0.0) ve Kurumsal Kaldıraç</h3>
                 <p class="insight-desc">Büyük veriyi ve karmaşık BT mimarilerini 88 ajanlı otonom bir Ar-Ge laboratuvarı ile yöneterek kurumlara nasıl sürdürülebilir pazar liderliği kazandırıyoruz?</p>
                 <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
             </div>
