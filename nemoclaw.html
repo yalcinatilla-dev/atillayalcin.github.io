@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemoClaw AI Shield | Atilla Yalçın</title>
+    <title>NemoClaw AI Shield | Enterprise AI Security & SOC Automation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body { background-color: #050505; color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         .gradient-text { background: linear-gradient(90deg, #00d2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-border { border: 1px solid #1a1a1a; transition: all 0.3s ease; }
-        .card-border:hover { border-color: #00d2ff; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
+        .card-border:hover { border-color: #00d2ff; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
+        .code-font { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -22,64 +23,184 @@
             <span class="text-sm font-bold tracking-wider uppercase">ATILLA YALCIN | Ana Sayfaya Dön</span>
         </a>
         <div class="flex items-center space-x-3">
-            <span class="text-xs bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded border border-emerald-800/50 font-mono tracking-widest"><i class="fas fa-circle text-[8px] mr-1 animate-pulse"></i> LIVE ON GITHUB</span>
-            <span class="text-xs bg-sky-900/30 text-sky-400 px-3 py-1 rounded border border-sky-800/50 font-mono tracking-widest">v1.0.0 Open-Core</span>
+            <span class="text-xs bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded border border-emerald-800/50 font-mono tracking-widest flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> LIVE ON GITHUB
+            </span>
+            <span class="text-xs bg-sky-900/30 text-sky-400 px-3 py-1 rounded border border-sky-800/50 font-mono tracking-widest">v310.0.0 Open-Core</span>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <main class="max-w-5xl mx-auto px-6 py-20 text-center flex-grow flex flex-col justify-center">
-        <div class="inline-block mx-auto mb-6 bg-sky-950/40 border border-sky-800/60 px-5 py-2 rounded-full text-xs font-bold text-sky-400 uppercase tracking-widest shadow-[0_0_15px_rgba(0,210,255,0.2)]">
-            <i class="fas fa-shield-halved mr-2"></i> EU AI Act Madde 50 & NVIDIA NemoClaw Uyumlu
-        </div>
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-16 flex-grow flex flex-col">
         
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-tight mb-8">
-            Kurumsal AI İçin <br>
-            <span class="gradient-text">Zero-Trust Güvenlik Kalkanı</span>
-        </h1>
-        
-        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Şirketinizin veri sınırlarını otonom ajanlara karşı koruyun. 30 saniyede kurulabilen Rust/C++ destekli SIMD motoru ile PII (Kişisel Veri) sızıntılarını milisaniyenin altında engelleyin ve çıktılarınızı kriptografik olarak filigranlayın.
-        </p>
-
-        <!-- Live Demo & CTA -->
-        <div class="max-w-3xl mx-auto w-full mb-16">
-            <img src="Animation.gif" alt="NemoClaw Zero-Trust Demonstration" class="w-full rounded-xl border border-gray-800 shadow-[0_0_30px_rgba(0,210,255,0.15)] mb-8">
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="https://github.com/yalcinatilla-dev/nemoclaw-in-a-box" target="_blank" class="bg-[#0f0f0f] border border-gray-700 hover:border-sky-500 text-white font-bold text-sm px-8 py-4 rounded-lg transition shadow-lg flex items-center justify-center gap-2">
-                    <i class="fab fa-github text-lg"></i> View on GitHub (Open-Core)
-                </a>
-                <a href="https://www.producthunt.com/products/nemoclaw-ai-shield?utm_source=other&utm_medium=social" target="_blank" class="bg-[#da552f] hover:bg-[#ff6138] text-white font-bold text-sm px-8 py-4 rounded-lg transition shadow-[0_0_20px_rgba(218,85,47,0.3)] flex items-center justify-center gap-2">
-                    <i class="fab fa-product-hunt text-lg"></i> Support on Product Hunt
-                </a>
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <div class="inline-block mx-auto mb-6 bg-sky-950/40 border border-sky-800/60 px-5 py-2 rounded-full text-xs font-bold text-sky-400 uppercase tracking-widest shadow-[0_0_15px_rgba(0,210,255,0.2)]">
+                <i class="fas fa-shield-halved mr-2"></i> EU AI Act Madde 50 & Zero-Trust Architecture
             </div>
-            <p class="text-xs text-gray-500 mt-6 text-center">* Açık kaynak (Community) sürümü Docker ve Kubernetes için tamamen ücretsizdir.</p>
+            
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+                Kurumsal AI & SOC İçin <br>
+                <span class="gradient-text">Zero-Trust Güvenlik Kalkanı</span>
+            </h1>
+            
+            <p class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Şirketinizin veri sınırlarını otonom ajanlara ve kontrolsüz LLM veri sızıntılarına karşı koruyun. Rust/C++ SIMD motoru ile PII maskelemesini 0.18ms altında tamamlayın, SOC triyajını güvenli otonom müdahaleye dönüştürün.
+            </p>
+
+            <!-- Live GIF Demo & Action Buttons -->
+            <div class="max-w-3xl mx-auto w-full mb-12">
+                <img src="Animation.gif" alt="NemoClaw Zero-Trust Demonstration" class="w-full rounded-xl border border-gray-800 shadow-[0_0_30px_rgba(0,210,255,0.15)] mb-8">
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://github.com/yalcinatilla-dev/nemoclaw-in-a-box" target="_blank" class="bg-[#0f0f0f] border border-gray-700 hover:border-sky-500 text-white font-bold text-sm px-8 py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-github text-lg"></i> View on GitHub (Open-Core)
+                    </a>
+                    <a href="https://www.producthunt.com/@yalcinatilla_dev" target="_blank" class="bg-[#da552f] hover:bg-[#ff6138] text-white font-bold text-sm px-8 py-3.5 rounded-lg transition shadow-[0_0_20px_rgba(218,85,47,0.3)] flex items-center justify-center gap-2">
+                        <i class="fab fa-product-hunt text-lg"></i> Support on Product Hunt
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Metric Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
-            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-20">
+            <div class="bg-[#0a0a0a] card-border p-7 rounded-xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-sky-500"></div>
-                <div class="text-4xl font-black text-sky-400 mb-2">&lt; 0.18 ms</div>
-                <div class="text-lg font-bold text-gray-200 mb-3"><strong>&lt; 0.18ms Latency</strong></div>
-                <div class="text-sm text-gray-400 leading-relaxed">Python/Regex filtrelerinden 136 kat daha hızlı. C++/Rust SIMD rutinleri ile bellek seviyesinde anlık veri maskeleme (Zero-Copy).</div>
+                <div class="text-3xl font-black text-sky-400 mb-2">&lt; 0.18 ms</div>
+                <div class="text-base font-bold text-gray-200 mb-2">Zero-Copy Maskeleme</div>
+                <div class="text-xs text-gray-400 leading-relaxed">C++/Rust SIMD rutinleriyle RAM üzerinde in-place maskeleme; geleneksel regex filtrelerine oranla radikal hız avantajı.</div>
             </div>
             
-            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+            <div class="bg-[#0a0a0a] card-border p-7 rounded-xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500"></div>
-                <div class="text-4xl font-black text-indigo-400 mb-2">Madde 50</div>
-                <div class="text-lg font-bold text-gray-200 mb-3"><strong>EU AI Act Article 50 Compliant</strong></div>
-                <div class="text-sm text-gray-400 leading-relaxed">Otonom LLM çıktılarını kaynağında doğrulayan görünmez HMAC-SHA256 kriptografik etiketleme (Watermarking) mimarisi.</div>
+                <div class="text-3xl font-black text-indigo-400 mb-2">Madde 50</div>
+                <div class="text-base font-bold text-gray-200 mb-2">EU AI Act Tam Uyum</div>
+                <div class="text-xs text-gray-400 leading-relaxed">Otonom LLM ve ajan çıktılarını kaynağında doğrulayan görünmez HMAC-SHA256 kriptografik damgalama ve denetim izi.</div>
             </div>
             
-            <div class="bg-[#0a0a0a] card-border p-8 rounded-xl relative overflow-hidden">
+            <div class="bg-[#0a0a0a] card-border p-7 rounded-xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-emerald-500"></div>
-                <div class="text-4xl font-black text-emerald-400 mb-2">1-Tıkla</div>
-                <div class="text-lg font-bold text-gray-200 mb-3"><strong>Vendor-Agnostic Proxy</strong></div>
-                <div class="text-sm text-gray-400 leading-relaxed">Mevcut altyapınızı bozmadan, OpenAI, Anthropic veya yerel Llama modelleri ile API seviyesinde doğrudan "Plug-and-play" Docker/K8s entegrasyonu.</div>
+                <div class="text-3xl font-black text-emerald-400 mb-2">Vendor-Free</div>
+                <div class="text-base font-bold text-gray-200 mb-2">Plug-and-Play Entegrasyon</div>
+                <div class="text-xs text-gray-400 leading-relaxed">OpenAI, Anthropic, yerel LLaMA veya SIEM/SOAR araçlarıyla Docker seviyesinde doğrudan tak-çalıştır mimari.</div>
             </div>
         </div>
+
+        <!-- Case Study Section (CISO / SOC Technical Deep-Dive) -->
+        <section class="border-t border-gray-800/80 pt-16 mb-16">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/30 font-bold uppercase tracking-wider">
+                    Kurumsal Vaka Analizi (Case Study)
+                </span>
+                <span class="text-xs text-gray-500 font-mono">SOC & IR Architecture</span>
+            </div>
+            
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4">
+                Ajanik Sistemlerde SIEM/SOC Entegrasyonu ve Otonom Olay Müdahalesi (IR)
+            </h2>
+            <p class="text-gray-400 text-sm md:text-base mb-10 leading-relaxed">
+                Klasik SOAR playbook'larının katı if-else kuralları, modern çok vektörlü saldırı hızına yetişememektedir. Saldırganların lateral movement süresini 48 dakikanın altına indirdiği tehdit ortamında, MTTR (Çözüm Süresi) ortalamasını 70 dakikadan 3 dakikaya düşüren <strong>Autonomous Investigation with Guarded Response</strong> mimarisi.
+            </p>
+
+            <!-- SOAR vs. Agentic IR Table -->
+            <div class="overflow-x-auto bg-[#0a0a0a] border border-gray-800 rounded-xl mb-12 shadow-xl">
+                <table class="w-full text-left text-sm text-gray-300">
+                    <thead class="bg-gray-900/60 text-xs uppercase tracking-wider text-sky-400 border-b border-gray-800 font-mono">
+                        <tr>
+                            <th class="p-4">Parametre</th>
+                            <th class="p-4">Klasik SOAR Playbook</th>
+                            <th class="p-4">Agentic SOC (NemoClaw Destekli)</th>
+                            <th class="p-4">CISO Operasyonel Çıktısı</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60">
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="p-4 font-semibold text-white">Karar Mekanizması</td>
+                            <td class="p-4 text-gray-400">Katı if-else / Kural Ağacı</td>
+                            <td class="p-4 text-emerald-400 font-medium">Stateful Reasoning (Durum Farkındalığı)</td>
+                            <td class="p-4 text-gray-300">Bilinmeyen varyasyonlarda kural kırılması sıfırlanır.</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="p-4 font-semibold text-white">Triyaj Kapsamı</td>
+                            <td class="p-4 text-gray-400">Sadece önceden tanımlı alarmlar</td>
+                            <td class="p-4 text-emerald-400 font-medium">%100 Telemetri & Çapraz Korelasyon</td>
+                            <td class="p-4 text-gray-300">İncelenmemiş alarm oranı (%40-60) sıfıra iner.</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="p-4 font-semibold text-white">MTTR (Çözüm Süresi)</td>
+                            <td class="p-4 text-rose-400 font-mono">45 - 90 Dakika (Analist Bağımlı)</td>
+                            <td class="p-4 text-emerald-400 font-mono font-bold">&lt; 3 - 5 Dakika (Otonom)</td>
+                            <td class="p-4 text-gray-300">Olay müdahale hızı ~15x artar.</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="p-4 font-semibold text-white">Yetki & Erişim Riski</td>
+                            <td class="p-4 text-gray-400">Statik Servis Hesapları (Geniş Yetki)</td>
+                            <td class="p-4 text-emerald-400 font-medium">Just-in-Time (JIT) / Ephemeral Token</td>
+                            <td class="p-4 text-gray-300">Ajan üzerinden yetki yükseltme engellenir.</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="p-4 font-semibold text-white">Maliyet Modeli (TCO)</td>
+                            <td class="p-4 text-gray-400">Alarm/Log Başına Lisanslama</td>
+                            <td class="p-4 text-emerald-400 font-medium">On-Prem/Edge SLM + Sabit Kaynak</td>
+                            <td class="p-4 text-gray-300">Öngörülebilir bütçe ve %40 altyapı tasarrufu.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Guarded Architecture Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-[#0a0a0a] p-6 rounded-xl border border-gray-800">
+                    <div class="text-sky-400 font-mono text-xs font-bold uppercase mb-2">Aşama 1: Giriş İzolasyonu</div>
+                    <h3 class="text-white font-bold text-base mb-3">Zero-Copy PII Sanitization</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">SIEM/XDR'dan gelen ham loglar LLM ajanına girmeden önce bellek seviyesinde taranır. TCKN, kullanıcı kimlikleri ve iç IP blokları 0.18ms altında maskelenir.</p>
+                </div>
+
+                <div class="bg-[#0a0a0a] p-6 rounded-xl border border-gray-800">
+                    <div class="text-indigo-400 font-mono text-xs font-bold uppercase mb-2">Aşama 2: Adli Korelasyon</div>
+                    <h3 class="text-white font-bold text-base mb-3">Forensic Knowledge Graph</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">EDR, IAM ve Bulut denetim izleri ilişkisel graf üzerinde birleştirilir. Saldırganın giriş noktası (Initial Access) ve etki alanı 30 saniyede kronolojik rapora dönüşür.</p>
+                </div>
+
+                <div class="bg-[#0a0a0a] p-6 rounded-xl border border-gray-800">
+                    <div class="text-emerald-400 font-mono text-xs font-bold uppercase mb-2">Aşama 3: Kademeli Müdahale</div>
+                    <h3 class="text-white font-bold text-base mb-3">Guarded Response Limits</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Seviye 1 (TI zenginleştirme) tam otonom yürütülürken; Seviye 2/3 (kullanıcı bloklama, ağ izolasyonu) Supervisor onay kapılarına (Human-in-the-Loop) bağlanır.</p>
+                </div>
+            </div>
+
+            <!-- 90-Day Implementation Roadmap -->
+            <div class="bg-[#0a0a0a] p-8 rounded-xl border border-gray-800">
+                <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+                    <i class="fas fa-route text-sky-400"></i> Güvenlik Ekipleri İçin 90 Günlük Uygulama Yol Haritası
+                </h3>
+                <div class="space-y-4 text-xs md:text-sm text-gray-300">
+                    <div class="flex items-start gap-4">
+                        <span class="bg-sky-950 text-sky-400 border border-sky-800 px-3 py-1 rounded font-mono font-bold text-xs shrink-0">Gün 1 - 30</span>
+                        <p><strong class="text-white">Gölge Modu & Read-Only Gözlem:</strong> Ajanik motoru mevcut SIEM/XDR üzerine bağlayın. Üretilen triyaj kararlarını L2/L3 analist çıktılarıyla paralel çalıştırarak %95+ doğruluk kalibrasyonu sağlayın.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="bg-indigo-950 text-indigo-400 border border-indigo-800 px-3 py-1 rounded font-mono font-bold text-xs shrink-0">Gün 31 - 60</span>
+                        <p><strong class="text-white">Düşük Riskli Otonomi:</strong> Seviye 1 eylemlerini (zenginleştirme, bilet açma/kapama, bilinen yanlış pozitifleri eleme) tam otonomlaştırarak analist alarm yorgunluğunu %60 hafifletin.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 px-3 py-1 rounded font-mono font-bold text-xs shrink-0">Gün 61 - 90</span>
+                        <p><strong class="text-white">Sıkılaştırılmış Zero-Trust & Müdahale:</strong> Just-in-Time PAM yetkileri tanımlayın. Ağ izolasyonu ve kimlik bloklama adımlarını Supervisor onay kapıları ile canlıya alın.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PoC Request CTA -->
+        <div class="max-w-xl mx-auto w-full bg-[#0a0a0a] p-8 rounded-xl border border-gray-800 text-center shadow-2xl">
+            <h3 class="text-white font-bold text-lg mb-2">48 Saatlik Kurumsal PoC Talebi</h3>
+            <p class="text-xs text-gray-400 mb-6">Kurumunuza özel SIEM/SOC veri akışlarında veya LLM projelerinizde NemoClaw kalkanını test edin.</p>
+            <a href="mailto:contact@atillayalcin.ai?subject=NemoClaw%20Kurumsal%20PoC%20Talebi" class="bg-sky-500 hover:bg-sky-400 text-black font-bold text-sm px-8 py-3.5 rounded-lg transition inline-flex items-center gap-2 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
+                PoC Başlat <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
     </main>
 
     <!-- Footer -->
