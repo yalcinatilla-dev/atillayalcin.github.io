@@ -919,187 +919,193 @@ Hedefim: Birlikte çalıştığım kurumsal organizasyonlara; donanım, lisans v
     </section>
 
     <section id="impact-analysis" style="background: #050505; border-top: 1px solid #222; border-bottom: 1px solid #222;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 100px 20px;">
-            <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">OPERASYONEL ETKİ: GELENEKSEL VS. AI-OS</h2>
-            <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Karmaşık kurumsal projelerde laboratuvarımızın kuruma kattığı zaman, doğruluk ve kârlılık kaldıracı.</p>
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 100px 20px;">
+        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">OPERASYONEL ETKİ: GELENEKSEL BT VS. ANALİTİK KARAR MİMARİSİ</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Büyük ölçekli kurumsal altyapı, teknik satınalma ve ihale süreçlerinde masaya kazandırdığımız zaman, TCO tasarrufu ve finansal arbitraj kaldıracı.</p>
 
-            <style>
-                .ai-os-scenario-card {
-                    background: #0a0a0a;
-                    border: 1px solid #1a1a1a;
-                    border-left: 4px solid var(--primary, #00d2ff);
-                    border-radius: 8px;
-                    padding: 30px;
-                    margin-bottom: 30px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    align-items: center;
-                    transition: all 0.3s ease;
-                }
-                .ai-os-scenario-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.08);
-                    border-color: #222;
-                    border-left-color: var(--primary, #00d2ff);
-                    background: #0d0d0d;
-                }
-                .scenario-badge {
-                    background: rgba(0, 210, 255, 0.1); 
-                    color: var(--primary); 
-                    padding: 5px 12px; 
-                    border-radius: 4px; 
-                    font-size: 0.75rem; 
-                    font-weight: 600;
-                    border: 1px solid rgba(0, 210, 255, 0.2);
-                }
-                .bar-bg { width: 100%; background: #222; border-radius: 4px; height: 8px; overflow: hidden; }
-            </style>
+        <style>
+            .ai-os-scenario-card {
+                background: #0a0a0a;
+                border: 1px solid #1a1a1a;
+                border-left: 4px solid var(--primary, #00d2ff);
+                border-radius: 8px;
+                padding: 30px;
+                margin-bottom: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.3s ease;
+            }
+            .ai-os-scenario-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 210, 255, 0.08);
+                border-color: #222;
+                border-left-color: var(--primary, #00d2ff);
+                background: #0d0d0d;
+            }
+            .scenario-badge {
+                background: rgba(0, 210, 255, 0.1); 
+                color: var(--primary); 
+                padding: 5px 12px; 
+                border-radius: 4px; 
+                font-size: 0.75rem; 
+                font-weight: 600;
+                border: 1px solid rgba(0, 210, 255, 0.2);
+            }
+            .bar-bg { width: 100%; background: #222; border-radius: 4px; height: 8px; overflow: hidden; }
+        </style>
 
-            <div class="grid" style="display: flex; flex-direction: column;">
+        <div class="grid" style="display: flex; flex-direction: column;">
 
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Çok Lokasyonlu Altyapı Modernizasyonu</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">300 Personel | 5 Lokasyon | Storage & Siber Güvenlik Mimari Tasarımı</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Mevcut sistemlerin analizi, veri trafiği risklerinin tespiti ve Zero-Trust siber güvenlik mimarisinin kurum içine uçtan uca kurgulanması.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
-                            <span class="scenario-badge">S46: Zero-Trust Security</span>
-                            <span class="scenario-badge">S53: Supervisor Agent</span>
-                        </div>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">14+ Gün</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">4-6 Saat</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
+            <!-- Senaryo 1: Veri Merkezi & Şartname Denetimi -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Şartname Deşifre & Lock-In Denetimi</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">120+ Sayfalık Veri Merkezi Şartnamesi & Over-Provisioning Analizi</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Şartnamedeki marka kilitlerinin (vendor lock-in), şişirilmiş vCPU/RAM taleplerinin ve gizli çekirdek lisans tuzaklarının analitik denetimle anında filtrelenmesi.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">Zero-Trust Spec Audit</span>
+                        <span class="scenario-badge">Lock-in Disruption</span>
+                        <span class="scenario-badge">Technical Procurement</span>
                     </div>
                 </div>
-
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Teknik BoM & Konfigürasyon Giydirme</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Mevcut Şartname Üzerinden Çözüm, Marka ve Model Belirleme</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Teknik gereksinimlerin vendor standartlarıyla eşleştirilmesi ve P/N seviyesinde hatasız Kitlist (BoM) tasarımı ile kuruma zaman kazandırma.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S6: Text Refinement</span>
-                            <span class="scenario-badge">S42: Proposal Engineering</span>
-                            <span class="scenario-badge">S27: Procurement Advisor</span>
-                        </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Mühendislik</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">7-10 Gün</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
                     </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">15-30 Dakika</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">15-30 Dakika</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
                     </div>
                 </div>
-
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Teknik Şartname (RFP) Hazırlanması</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Sıfırdan Üretici Standartlarına Uygun RFP Yazımı</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kurumun iş hedefleriyle uyumlu, regülasyonlara (KVKK/GDPR) tam entegre profesyonel şartname dökümantasyonunun otonom üretimi.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S3: Technical Reporting</span>
-                            <span class="scenario-badge">S48: Compliance Guard</span>
-                            <span class="scenario-badge">S19: Corporate Diplomacy</span>
-                        </div>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">7-10 Gün</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">2 Saat</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">10.000+ Satırlık Kompleks BoM ve Üretici Kârlılık Optimizasyonu</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Devasa donanım şartnamelerinin; anlık döviz riski, global stok durumu ve üretici indirim (Deal Reg) matrislerine göre laboratuvarımızda 'Arbitraj' yapılarak kuruma en kârlı senaryonun sunulması.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S43: Strategic Arbitrage</span>
-                            <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
-                            <span class="scenario-badge">S8: Market Trend Analysis</span>
-                        </div>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">6-8 Saat</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 15%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Kurumsal GenAI (Büyük Dil Modeli) ve HPC Kurgusu</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kuruma özel yapay zeka sunucularının; termal soğutma, enerji tüketimi, GPU veri yolu hesaplamaları ve 5 yıllık bağımsız TCO projeksiyonunun laboratuvarımızda otonom tasarlanması.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S58: Predictive Compute</span>
-                            <span class="scenario-badge">S27: GPU Procurement</span>
-                            <span class="scenario-badge">S13: AI Architecture</span>
-                        </div>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ai-os-scenario-card">
-                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</span>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Dağınık Kurumsal Loglardan 'Sağlıklı Veri' Üretimi</h3>
-                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Yapılandırılmamış (Unstructured) kurumsal verilerin Zero-Trust mantığıyla incelenmesi, operasyonel darboğazların tespiti ve kurum yöneticileri (C-Level) için otonom karar destek sistemine dönüştürülmesi.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <span class="scenario-badge">S1: Data Orchestration</span>
-                            <span class="scenario-badge">S2: Analytical Synthesis</span>
-                            <span class="scenario-badge">S54: Self-Healing</span>
-                        </div>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                        <div style="margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Ay</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
-                            <div class="bar-bg"><div style="height: 100%; width: 12%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
 
+            <!-- Senaryo 2: Çok Katmanlı TCO/BOM Modellemesi -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Çok Katmanlı TCO/BOM Modellemesi</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Tier-1 Donanım vs. Açık Kaynak Destekli Hibrit Mimariler</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">VMware, Tier-1 SAN ve kapalı ağ anahtarlarına karşı kurumsal Proxmox/KVM, Ceph/SDS ve Whitebox topolojileriyle 3-5 yıllık CapEx/OpEx maliyetlerinin %35+ kırılması.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">TCO-Crusher (S83)</span>
+                        <span class="scenario-badge">BOM Refinement</span>
+                        <span class="scenario-badge">Hybrid Infrastructure</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Hafta</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">1-2 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 8%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senaryo 3: Enterprise İhale & Satış Stratejisi -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Büyük Ölçekli İhale (RFQ) & Çözüm Mimarisi</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Karmaşık Kurumsal Tekliflerde Kazanma Oranının Maksimizasyonu</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Müşterinin teknik altyapı darboğazlarını ilk temasta çözen, rakip entegratör tekliflerini hem teknik hem bütçe derinliğinde geride bırakan asimetrik satış tasarımı.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">Enterprise Sales</span>
+                        <span class="scenario-badge">RFQ Win-Rate Optimization</span>
+                        <span class="scenario-badge">C-Level Value Selling</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Satış Döngüsü</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senaryo 4: Tedarikçi Pazarlığı & Arbitraj -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 4: TEDARİKÇİ SIKIŞTIRMA & TİCARİ ARBİTRAJ</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Distribütör / Vendor Marj Analizi ve İhale Masası Pazarlık Üstünlüğü</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Üretici özel indirim (Deal Reg/OPA) matrisleri ve kurumsal satınalma marjlarının simüle edilmesi; satınalma ekiplerine net indirim eşiklerinin kazandırılması.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">Procurement Negotiation</span>
+                        <span class="scenario-badge">Margin Arbitrage</span>
+                        <span class="scenario-badge">Vendor Ecosystem</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Hafta</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">4-6 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 12%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senaryo 5: Kurumsal AI, HPC & Donanım TCO -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 5: KURUMSAL AI & GPU/HPC ALTYAPI TASARIMI</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Kuruma Özel GenAI Sunucuları & 5 Yıllık Enerji/TCO Hesaplaması</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kurum içi LLM/AI iş yükleri için termal soğutma, enerji tüketimi, GPU veri yolu ve bant genişliği gereksinimlerinin hatasız BOM listesine dönüştürülmesi.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">AI Infrastructure</span>
+                        <span class="scenario-badge">GPU Sizing & BOM</span>
+                        <span class="scenario-badge">5-Year Energy TCO</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Danışmanlık</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senaryo 6: NemoClaw ile Regülasyon ve PII Güvenliği -->
+            <div class="ai-os-scenario-card">
+                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 6: REGÜLASYON VE PII GÜVENLİK KALKANI</span>
+                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">EU AI Act Madde 50 & KVKK Uyumlu Yerel Veri Anonimizasyonu</h3>
+                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">NemoClaw AI Shield mimarisi ile kurumsal hassas verilerin yerel katmanda korunması, veri sızıntılarının engellenmesi ve yasal ceza risklerinin sıfırlanması.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="scenario-badge">NemoClaw AI Shield</span>
+                        <span class="scenario-badge">EU AI Act Compliance</span>
+                        <span class="scenario-badge">PII Sanitization</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Denetim</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">Analitik Karar Mimarisi</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">Anlık / Sıfır Gecikme</span></div>
+                        <div class="bar-bg"><div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
     <section id="insights" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">VİZYONER MAKALELER & ANALİZLER</h2>
