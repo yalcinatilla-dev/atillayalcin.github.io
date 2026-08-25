@@ -236,7 +236,7 @@
             text-align: center;
         }
 
-        /* Grid ve Kart Tasarımları (Hizmetler ve Analizler İçin) */
+        /* Grid ve Kart Tasarımları */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,7 +332,7 @@
         <a href="#home" class="logo">ATILLA YALCIN</a>
         <div class="nav-links">
             <a href="nemoclaw.html" class="nav-btn-product"><i class="fas fa-shield-halved"></i> Amiral Gemisi: NemoClaw</a>
-            <a href="#solutions">PoC & Ar-Ge</a>
+            <a href="#solutions">Mimari & Ar-Ge</a>
             <a href="#about">Laboratuvar</a>
             <a href="#insights">Vizyoner Analizler</a>
             <div class="social-icons" style="display: inline-flex; border-left: 1px solid #333; padding-left: 15px; margin-left: 5px;">
@@ -359,10 +359,10 @@
             <h1>Atilla Yalçın <br><span style="font-size: 0.5em; color: var(--primary); font-weight: 600; letter-spacing: 4px;">AR-GE & İNOVASYON LABORATUVARI</span></h1>
             <h2>Kurumsal Teknoloji Stratejileri | Yapay Zeka Adaptasyonu | Hiper-Otonomi</h2>
             <p>
-                Bu platform ticari bir danışmanlık portföyü değil; karmaşık kurumsal BT sorunlarının, yapay zeka ve otonom sistemlerle nasıl çözülebileceğini modelleyen bir Teknoloji Doğrulama (PoC) alanıdır. Hedefim: Birlikte çalıştığım kurumsal yapılara bu vizyonu ve hazır teknolojik altyapıyı entegre ederek onları pazar lideri yapmaktır.
+                Bu platform ticari bir danışmanlık portföyü değil; karmaşık kurumsal BT sorunlarının, yapay zeka ve otonom sistemlerle nasıl çözülebileceğini modelleyen bir Teknoloji Doğrulama alanıdır. Hedefim: Birlikte çalıştığım kurumsal yapılara bu vizyonu ve hazır teknolojik altyapıyı entegre ederek onlara kalıcı bir pazar liderliği kazandırmaktır.
             </p>
             <div class="cta-group">
-                <a href="#solutions" class="btn-fill">Ar-Ge ve PoC Modellerini İncele</a>
+                <a href="#solutions" class="btn-fill">Ar-Ge ve Mimari Modelleri İncele</a>
                 <a href="#declaration" class="btn-outline">Açık İnovasyon Bildirgesi</a>
             </div>
         </div>
@@ -370,7 +370,7 @@
 
     <section id="solutions">
         <div class="container">
-            <h2 class="section-title">TEKNOLOJİ DOĞRULAMA (PoC) & ARAŞTIRMA ALANLARI</h2>
+            <h2 class="section-title">TEKNOLOJİ DOĞRULAMA & ARAŞTIRMA ALANLARI</h2>
             <div class="grid">
                 
                 <div class="card">
@@ -436,431 +436,261 @@
         </div>
     </section>
 
-<section id="solutions-matrix" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">KURUMSAL ETKİ MATRİSİ</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 50px; font-size: 1.1rem;">Ar-Ge Merkezimizin Kurumsal İş Ortaklarına Sağladığı Otonom Çıktılar.</p>
+    <section id="solutions-matrix" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">KURUMSAL ETKİ MATRİSİ</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 50px; font-size: 1.1rem;">Ar-Ge Merkezimizin Kurumsal İş Ortaklarına Sağladığı Otonom Çıktılar.</p>
 
-        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
-            <button class="tab-btn active" onclick="openTab(event, 'ecosystem-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); font-size: 1rem;">
-                <i class="fas fa-network-wired"></i> Teknoloji İş Ortakları (Vendor & Kanal)
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'enterprise-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid #444; color: #aaa; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
-                <i class="fas fa-building"></i> Kurumsal & Endüstriyel Entegrasyon
-            </button>
-        </div>
-
-        <div id="ecosystem-tab" class="tab-content" style="display: block; animation: fadeIn 0.5s;">
-            <div style="background: linear-gradient(90deg, rgba(0, 210, 255, 0.1) 0%, rgba(0,0,0,0) 100%); border-left: 4px solid var(--primary); padding: 40px; margin-bottom: 30px; border-radius: 0 8px 8px 0;">
-                <h3 style="color: #fff; margin-top: 0; display: flex; align-items: center; gap: 15px; font-size: 1.5rem;">
-                    <i class="fas fa-rocket" style="color: var(--primary);"></i> Kurumsal İnovasyon Paketi
-                </h3>
-                <p style="color: #bbb; line-height: 1.8; margin-bottom: 0; font-size: 1.1rem;">Birlikte çalıştığımız kurumlar için tasarlanmış entegre sistem. İşveren kurumun pazar dinamiklerini, en güncel Ar-Ge verilerimizle hizalayarak teknik konfigürasyon (BoM) süreçlerini tamamen otonomlaştırır. Kurumu dışa bağımlılıktan kurtarıp rekabet avantajını merkeze alır. <strong style="color: var(--primary);">Sonuç: Teknolojik Üstünlük ve Hız.</strong></p>
-            </div>
-        </div>
-
-        <div id="enterprise-tab" class="tab-content" style="display: none; animation: fadeIn 0.5s;">
-            <div style="overflow-x: auto; background: #0a0a0a; border: 1px solid #222; border-radius: 8px;">
-                <table style="width: 100%; border-collapse: collapse; text-align: left; color: #ddd; font-size: 1.05rem;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid var(--primary); background: rgba(0, 210, 255, 0.05);">
-                            <th style="padding: 20px; color: var(--primary); width: 25%;">Odak Alanı</th>
-                            <th style="padding: 20px; color: #fff; width: 45%;">Laboratuvar Çıktısı (Ar-Ge)</th>
-                            <th style="padding: 20px; color: #fff; width: 30%;">Kurumsal Kaldıraç Etkisi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid #222;">
-                            <td style="padding: 20px;"><strong>Kurumsal BT (Uçtan Uca)</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Ağ (Network), Siber Güvenlik, Veri Yedekleme (DR), İşletim Sistemi ve Sanallaştırma Lisanslamasından; Hibrit Bulut ve AI altyapılarına kadar test edilmiş bağımsız mimariler.</td>
-                            <td style="padding: 20px; color: #ccc;">%40'a varan TCO avantajı ve bağımsız üretici yönetimi.</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #222;">
-                            <td style="padding: 20px;"><strong>İnşaat & Altyapı</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Büyük projelerde karmaşık donanım metraj (BoM) listelerinin otonom analizi ile hatasız veri çıkarım algoritmaları.</td>
-                            <td style="padding: 20px; color: #ccc;">%100 ihale uyumu, malzeme israfında %15 azalma.</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #222;">
-                            <td style="padding: 20px;"><strong>Enerji & Şebeke</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Tüketim alışkanlıkları ve şebeke paternleri üzerinden yapay zeka ile veri üreterek donanım optimizasyon testleri.</td>
-                            <td style="padding: 20px; color: #ccc;">Dinamik yük dengeleme, karbon/maliyet optimizasyonu.</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #222;">
-                            <td style="padding: 20px;"><strong>Sağlık & Operasyon</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Karmaşık veriyi 'sağlıklı kararlara' dönüştüren analiz modellerinin Zero-Trust prensibiyle geliştirilmesi.</td>
-                            <td style="padding: 20px; color: #ccc;">Verimlilikte %30 artış ve veri gizliliği garantisi.</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #222;">
-                            <td style="padding: 20px;"><strong>Perakende & Lojistik</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Müşteri davranışları ve tedarik zinciri loglarından anlamlı veri (Inference) üreterek otonom stok optimizasyonu modellemesi.</td>
-                            <td style="padding: 20px; color: #ccc;">Nokta atışı envanter, lojistikte %18 maliyet avantajı.</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 20px;"><strong>Kurumsal Yönetişim</strong></td>
-                            <td style="padding: 20px; color: #aaa; line-height: 1.6;">Kurum politikalarının ve KVKK/GDPR regülasyonlarının 'Kod Olarak Yönetişim (S70)' prensibiyle simülasyonu.</td>
-                            <td style="padding: 20px; color: #ccc;">Otonom denetim hazırlığı ve teknolojik risk yönetimi.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="data-center-form" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
-    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
-        <h2 class="section-title" style="color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">Stratejik Veri Analiz Merkezi</h2>
-        <p style="color: #888; font-size: 1rem; margin-bottom: 10px;">Otonom Ajanlar ve AI-Native Altyapılar Çağında, Kurumlar İçin Güven ve Maliyet Verimliliği İnşa Ediyorum.</p>
-        <p style="color: #666; font-size: 0.95rem; margin-bottom: 40px;">Karmaşık veri setlerinizi laboratuvar ortamımızda otonom olarak analiz edelim.</p>
-        
-        <div class="card" style="text-align: left; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px;">
-            <input type="email" id="final-email" placeholder="Kurumsal E-posta Adresiniz" style="width: 100%; background: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
-            
-            <div class="upload-area" onclick="document.getElementById('file-input').click()" style="border: 1px dashed #333; border-radius: 8px; padding: 40px 20px; text-align: center; margin-bottom: 30px; cursor: pointer; transition: all 0.2s;">
-                <i class="fas fa-file-arrow-up" style="color: #72c6ef; font-size: 40px; margin-bottom: 15px;"></i>
-                <div id="final-file-list" style="color: #666; font-size: 15px;">Dosyaları buraya sürükleyin veya <span style="color: #72c6ef;">tıklayarak seçin</span></div>
-                <input type="file" id="file-input" style="display:none" onchange="updateFileList(this.files)">
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
+                <button class="tab-btn active" onclick="openTab(event, 'ecosystem-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); font-size: 1rem;">
+                    <i class="fas fa-network-wired"></i> Teknoloji İş Ortakları (Vendor & Kanal)
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'enterprise-tab')" style="padding: 15px 30px; background: transparent; border: 1px solid #444; color: #aaa; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
+                    <i class="fas fa-building"></i> Kurumsal & Endüstriyel Entegrasyon
+                </button>
             </div>
 
-            <button class="submit-btn" onclick="triggerInference()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 20px rgba(114, 198, 239, 0.4); transition: all 0.2s;">
-                <i class="fas fa-bolt"></i> OTONOM ANALİZİ BAŞLAT (PoC)
-            </button>
-            
-            <div id="final-log" style="margin-top: 20px; text-align: center; font-size: 14px; min-height: 20px;"></div>
-        </div>
+            <div id="ecosystem-tab" class="tab-content" style="display: block; animation: fadeIn 0.5s;">
+                <div style="background: linear-gradient(90deg, rgba(0, 210, 255, 0.1) 0%, rgba(0,0,0,0) 100%); border-left: 4px solid var(--primary); padding: 40px; margin-bottom: 30px; border-radius: 0 8px 8px 0;">
+                    <h3 style="color: #fff; margin-top: 0; display: flex; align-items: center; gap: 15px; font-size: 1.5rem;">
+                        <i class="fas fa-rocket" style="color: var(--primary);"></i> Kurumsal İnovasyon Paketi
+                    </h3>
+                    <p style="color: #bbb; line-height: 1.8; margin-bottom: 0; font-size: 1.1rem;">Birlikte çalıştığımız kurumlar için tasarlanmış entegre sistem. İşveren kurumun pazar dinamiklerini, en güncel Ar-Ge verilerimizle hizalayarak teknik konfigürasyon (BoM) süreçlerini tamamen otonomlaştırır. Kurumu dışa bağımlılıktan kurtarıp rekabet avantajını merkeze alır. <strong style="color: var(--primary);">Sonuç: Teknolojik Üstünlük ve Hız.</strong></p>
+                </div>
+            </div>
 
-        <div class="card" id="gpu-card" style="text-align: left; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; margin-top: 30px;">
-            <h3 style="color: #72c6ef; margin-top: 0; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-fire" style="color: #ffcc00;"></i> GPU Verimlilik & Maliyet Denetimi
-            </h3>
+            <div id="enterprise-tab" class="tab-content" style="display: none; animation: fadeIn 0.5s;">
+                <div style="overflow-x: auto; background: #0a0a0a; border: 1px solid #222; border-radius: 8px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; color: #ddd; font-size: 1.05rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--primary); background: rgba(0, 210, 255, 0.05);">
+                                <th style="padding: 20px; color: var(--primary); width: 25%;">Odak Alanı</th>
+                                <th style="padding: 20px; color: #fff; width: 45%;">Laboratuvar Çıktısı (Ar-Ge)</th>
+                                <th style="padding: 20px; color: #fff; width: 30%;">Kurumsal Kaldıraç Etkisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #222;">
+                                <td style="padding: 20px;"><strong>Kurumsal BT (Uçtan Uca)</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Ağ (Network), Siber Güvenlik, Veri Yedekleme (DR), İşletim Sistemi ve Sanallaştırma Lisanslamasından; Hibrit Bulut ve AI altyapılarına kadar test edilmiş bağımsız mimariler.</td>
+                                <td style="padding: 20px; color: #ccc;">%40'a varan TCO avantajı ve bağımsız üretici yönetimi.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #222;">
+                                <td style="padding: 20px;"><strong>İnşaat & Altyapı</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Büyük projelerde karmaşık donanım metraj (BoM) listelerinin otonom analizi ile hatasız veri çıkarım algoritmaları.</td>
+                                <td style="padding: 20px; color: #ccc;">%100 ihale uyumu, malzeme israfında %15 azalma.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #222;">
+                                <td style="padding: 20px;"><strong>Enerji & Şebeke</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Tüketim alışkanlıkları ve şebeke paternleri üzerinden yapay zeka ile veri üreterek donanım optimizasyon testleri.</td>
+                                <td style="padding: 20px; color: #ccc;">Dinamik yük dengeleme, karbon/maliyet optimizasyonu.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #222;">
+                                <td style="padding: 20px;"><strong>Sağlık & Operasyon</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Karmaşık veriyi 'sağlıklı kararlara' dönüştüren analiz modellerinin Zero-Trust prensibiyle geliştirilmesi.</td>
+                                <td style="padding: 20px; color: #ccc;">Verimlilikte %30 artış ve veri gizliliği garantisi.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #222;">
+                                <td style="padding: 20px;"><strong>Perakende & Lojistik</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Müşteri davranışları ve tedarik zinciri loglarından anlamlı veri (Inference) üreterek otonom stok optimizasyonu modellemesi.</td>
+                                <td style="padding: 20px; color: #ccc;">Nokta atışı envanter, lojistikte %18 maliyet avantajı.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px;"><strong>Kurumsal Yönetişim</strong></td>
+                                <td style="padding: 20px; color: #aaa; line-height: 1.6;">Kurum politikalarının ve KVKK/GDPR regülasyonlarının 'Kod Olarak Yönetişim (S70)' prensibiyle simülasyonu.</td>
+                                <td style="padding: 20px; color: #ccc;">Otonom denetim hazırlığı ve teknolojik risk yönetimi.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teknoloji Doğrulama Laboratuvarı & Metodoloji Bölümü -->
+    <section id="methodology" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px; text-align: center;">
+            <div class="inline-block mb-3" style="background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.3); padding: 6px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 2px;">
+                <i class="fas fa-microchip mr-2"></i> Kurumsal Ar-Ge ve Fikri Mülkiyet
+            </div>
             
-            <div id="audit-step-1">
-                <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Açık kaynak optimizasyonu ile maliyet analizi. (Ücretsiz Kontenjan: 4)</p>
+            <h2 class="section-title" style="color: #fff; margin-bottom: 15px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">Teknoloji Doğrulama Laboratuvarı & Metodoloji</h2>
+            <p style="color: #888; font-size: 1.05rem; margin-bottom: 40px; line-height: 1.7;">
+                Otonom Ajanlar ve AI-Native Altyapılar Çağında, kurumlar için güven ve maliyet verimliliği inşa eden teknik mimariler. ATILLAYALCIN_AI_OS v310.0.0 çerçevesi; bağımsız bir ticari servis değil, doğrudan liderlik edilen kurumsal yapılara rekabet avantajı kazandıran bir teknoloji kaldıracıdır.
+            </p>
+
+            <div class="card" style="text-align: left; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid #1a1a1a;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">0.18ms Latency</span>
+                        <h4 style="color: #fff; margin: 0 0 8px 0; font-size: 1.1rem;">Zero-Copy PII Masking</h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0; line-height: 1.5;">SIMD hızlandırmalı bellek içi filtreleme ile verilerin dışarı sızmasını önleyen bağımsız koruma kalkanı.</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid #1a1a1a;">
+                        <span style="color: #10b981; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">Deterministic Engine</span>
+                        <h4 style="color: #fff; margin: 0 0 8px 0; font-size: 1.1rem;">Autonomous BoM (S83)</h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0; line-height: 1.5;">Teknik şartnamelerden %0 konfigürasyon hatasıyla P/N seviyesinde Master Kitlist ve TCO üretimi.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; sm:flex-row; gap: 15px; justify-content: center; align-items: center; border-top: 1px solid #1a1a1a; padding-top: 25px;">
+                    <a href="https://github.com/yalcinatilla-dev/nemoclaw-in-a-box" target="_blank" style="width: 100%; text-align: center; background: #0f0f0f; border: 1px solid #333; color: #fff; padding: 16px 25px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;">
+                        <i class="fab fa-github text-base"></i> GitHub Deposu & Mimari (Open-Core)
+                    </a>
+                    <a href="https://github.com/yalcinatilla-dev/nemoclaw-in-a-box#readme" target="_blank" style="width: 100%; text-align: center; background: var(--primary); color: #000; padding: 16px 25px; border-radius: 6px; font-size: 0.9rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); transition: all 0.3s;">
+                        <i class="fas fa-book-open text-base"></i> Mimari Dokümantasyon & Benchmark
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">FAQ / SIKÇA SORULAN SORULAR</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">ATILLAYALCIN_AI_OS v310.0.0 mimarisi, kurumsal entegrasyon ve otonom işbirliği modelleri.</p>
+
+            <div class="faq-container" style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #222;">
                 
-                <select id="audit-model" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none;">
-                    <option value="GPT-4/Claude">Mevcut: GPT-4 / Claude-3</option>
-                    <option value="Llama/Mistral">Mevcut: Llama-3 / Mistral (Açık Kaynak)</option>
-                    <option value="Diger">Mevcut: Diğer / In-House</option>
-                </select>
+                <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-brain" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> ATILLAYALCIN_AI_OS tam olarak nedir ve kurumuma ne sağlar?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p>ATILLAYALCIN_AI_OS v310.0.0 (Hiper-Otonomi & Omni-Matris), 30 yıllık profesyonel BT tecrübesinin tam kapasiteli 88 otonom ajanla birleştiği bir "Bilişsel İşletim Sistemi"dir. Görevi; sadece donanım (BoM) listelerini değil, kurumların Ağ (Network), Siber Güvenlik, DR ve kullanıcı davranış alışkanlıklarını analiz etmektir. Operasyonel ve sistemsel tekrar eden işlemlerden <strong>'sağlıklı veri'</strong> (Inference) üreterek, uçtan uca bağımsız mimari kurgular ve %0 hata payı ile kurumunuza pazar liderliği sağlayacak teknolojik kaldıracı inşa eder.</p>
+                    </div>
+                </div>
 
-                <input type="text" id="audit-usage" placeholder="Aylık Tüketim (Örn: 100M Token veya 2x A100)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
+                <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-network-wired" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Bayi/Üretici ekosistemi ile Kurumsal şirketler için farkınız nedir?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p>Sistemimiz iki eksende çalışır: <strong>1. Ekosistem (Bayi & Distribütör):</strong> Üretici kurallarını sahaya entegre ederek P/N seviyesinde hatasız konfigürasyon yapar, Deal Reg süreçlerini hızlandırıp kanal kârlılığını maksimize eder. <strong>2. Kurumsal (Holding & Endüstri):</strong> Sağlık, enerji, lojistik veya inşaat alanındaki kurumların tüketim ve operasyon loglarını okur. Sanallaştırmadan AI altyapılarına kadar gelecek kanıtlı (Future-Proof) mimariler tasarlayarak kurumu teknoloji partnerlerine karşı güçlü kılan %40'a varan maliyet avantajı sağlar.</p>
+                    </div>
+                </div>
 
-                <select id="audit-privacy" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; outline: none;">
-                    <option value="Cok Yuksek">Gizlilik: Çok Yüksek (On-Premise Gerekli)</option>
-                    <option value="Orta">Gizlilik: Orta (Hibrid Bulut)</option>
-                    <option value="Dusuk">Gizlilik: Düşük (Public API Yeterli)</option>
-                </select>
+                <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-shield-virus" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Verilerimizin gizliliğini ve güvenliğini nasıl garanti ediyorsunuz?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p>Sistem, Kognitif Kalkan (S87) ve S48 Compliance Guard modülleri ile <strong>"Zero-Trust" (Sıfır Güven)</strong> felsefesinde çalışır. Personel alışkanlıkları, hasta logları veya ticari sırlar gibi en hassas büyük veri setleri maskelenerek (Sanitization) sadece 'sağlıklı karar çıkarımı' için işlenir. Verileriniz halka açık yapay zeka modellerini eğitmez. "Zero-Retention" politikası gereği analiz sonrası tüm ham veriler silinir; sistemde sadece otonom mimari kararlar kalır.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-project-diagram" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> 88 otonom ajan (CDA) birbirleriyle nasıl senkronize çalışıyor?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p>88 ajanlı yeni Hiper-Otonomi ve Omni-Matris mimarisi (v310.0.0); Planner, Executor, Auditor ve Otonom Yönetişim hiyerarşisinde çalışır. Kimi ajan siber güvenlik regülasyonlarını denetlerken, kimi personel/sistem alışkanlıklarını analiz eder. AGENT.md protokolü yetki sınırlarını çizer. <strong>S53: Supervisor Agent</strong> ve yeni nesil <strong>Otonom İş Geliştirme İkizi (S88)</strong> verileri birleştirip 4'lü çapraz doğrulama yaparak yapay zeka halüsinasyonlarını sıfıra indirir.</p>
+                    </div>
+                </div>
 
-                <button class="submit-btn" onclick="triggerGpuAuditStep1()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <i class="fas fa-arrow-right"></i> SONRAKİ ADIM
-                </button>
-            </div>
+                <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-server" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Sistem teknik olarak hangi altyapı üzerinde koşuyor ve nasıl çalışıyor?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p style="margin-bottom: 15px;">Sistem, gücünü <strong>Google Antigravity</strong> ve <strong>Gemini 3.1 Pro</strong> gibi global "Edge-Compute" altyapılarından alır. Ancak asıl farkı yaratan, bu motorların üzerinde çalışan ve Atilla Yalçın'a özel geliştirilmiş olan <strong>"Proprietary Logical Layer" (Kapalı Devre Mantık Katmanı)</strong> kurgusudur.</p>
+                        <p style="margin-bottom: 15px; color: #bbb;"><strong>Otonom Mekanizma 3 Aşamada Çalışır:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px; color: #999;">
+                            <li style="margin-bottom: 8px;"><strong>1. Veri İzolasyonu (Sandbox):</strong> Karmaşık veri (Ağ logları, şartnameler, operasyonel alışkanlıklar) sisteme "Zero-Trust" protokolüyle girer.</li>
+                            <li style="margin-bottom: 8px;"><strong>2. Bilişsel Sentez:</strong> Global AI motorları ham işlem gücünü sağlarken; 88 modüllü <em>Mantık Katmanımız</em> devreye girer. Kurumun tekrarlayan alışkanlıklarını, network yüklerini ve regülasyonları sisteme enjekte ederek sağlıklı veriyi (Inference) filtreler.</li>
+                            <li style="margin-bottom: 8px;"><strong>3. Halüsinasyon Filtresi ve Çıktı:</strong> S53 Baş Denetçi, genel yapay zekaların en büyük sorunu olan "halüsinasyon" riskini bloke eder ve kusursuz uçtan uca mimariyi kuruma teslim eder.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div id="audit-step-2" style="display: none; text-align: center;">
-                <i class="fas fa-cog fa-spin" style="font-size: 35px; color: #72c6ef; margin-bottom: 15px;"></i>
-                <h4 style="color: #00ff88; margin-top: 0; font-size: 18px;">Ön Veriler Analiz Ediliyor...</h4>
-                <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
-                    Size özel <strong style="color: #ffcc00;">Python Benchmark Script</strong>'ini hazırlayıp kendi altyapınızda test edebilmeniz için şu 2 opsiyonel detayı eklemek ister misiniz?
-                </p>
+                <div class="faq-item" style="background: #0a0a0a;">
+                    <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
+                        <span><i class="fas fa-bolt" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Kurumsal entegrasyon süreci nasıl işler?</span>
+                        <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
+                        <p>Doğrudan parçası olduğum ve birlikte çalıştığım kurumsal yapılarda, organizasyonun en karmaşık şartname, ağ ve altyapı verileri laboratuvar metodolojimizle taranır. Sistem; kurumun mevcut donanım yatırımlarını koruyarak, vendor bağımsız, hatasız ve maliyet optimizasyonlu (TCO) mimariyi doğrudan kurumsal karar mekanizmalarına entegre eder.</p>
+                    </div>
+                </div>
 
-                <input type="text" id="audit-budget" placeholder="Aylık Bulut/GPU Bütçeniz (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 15px; box-sizing: border-box; outline: none;">
-
-                <input type="text" id="audit-infra" placeholder="Altyapı Tipiniz (Örn: AWS, On-Prem) (Opsiyonel)" style="width: 100%; background-color: #0f0f0f; border: 1px solid #222; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; box-sizing: border-box; outline: none;">
-
-                <button class="submit-btn" onclick="submitFinalGpuAudit()" style="background: #72c6ef; color: #000; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <i class="fab fa-python"></i> BENCHMARK SCRIPT TALEP ET
-                </button>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
-    let selectedFiles = [];
-
-    function updateFileList(files) {
-        selectedFiles = Array.from(files);
-        const list = document.getElementById('final-file-list');
-        if (selectedFiles.length > 0) {
-            list.innerHTML = `<span style="color:#72c6ef"><i class="fas fa-check"></i> ${selectedFiles[0].name} seçildi</span>`;
-        }
-    }
-
-    async function triggerInference() {
-        const emailInput = document.getElementById('final-email').value.trim();
-        const log = document.getElementById('final-log');
-        
-        if (!emailInput || selectedFiles.length === 0) {
-            log.innerText = "Hata: Kurumsal e-posta ve döküman gereklidir.";
-            log.style.color = "#ff4444";
-            return;
-        }
-        await sendDataToVault(emailInput, selectedFiles[0], "false");
-    }
-
-    async function triggerGpuAuditStep1() {
-        const emailInput = document.getElementById('final-email').value.trim();
-        const log = document.getElementById('final-log');
-        
-        if (!emailInput) {
-            log.innerText = "Hata: Lütfen önce yukarıdan kurumsal e-posta adresinizi giriniz.";
-            log.style.color = "#ff4444";
-            return;
+    <script>
+        // Tab Kontrolü
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.border = "1px solid #444";
+                tablinks[i].style.color = "#aaa";
+                tablinks[i].style.boxShadow = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.style.border = "1px solid var(--primary)";
+            evt.currentTarget.style.color = "var(--primary)";
+            evt.currentTarget.style.boxShadow = "0 0 15px rgba(0, 210, 255, 0.2)";
         }
 
-        gtag('event', 'gpu_audit_step1_click', {
-          'event_category': 'Engagement',
-          'event_label': 'GPU Denetimi Adım 1 Tamamlandı'
-        });
-
-        document.getElementById('audit-step-1').style.display = 'none';
-        document.getElementById('audit-step-2').style.display = 'block';
-        log.innerText = "";
-    }
-
-    async function submitFinalGpuAudit() {
-        const emailInput = document.getElementById('final-email').value.trim();
-        
-        const auditData = {
-            model: document.getElementById('audit-model').value,
-            usage: document.getElementById('audit-usage').value,
-            privacy: document.getElementById('audit-privacy').value,
-            budget: document.getElementById('audit-budget').value || "Belirtilmedi",
-            infra: document.getElementById('audit-infra').value || "Belirtilmedi"
-        };
-
-        gtag('event', 'gpu_benchmark_request_sent', {
-          'event_category': 'Conversion',
-          'event_label': 'Python Benchmark Talebi Alındı'
-        });
-        
-        const btn = document.querySelector('#audit-step-2 .submit-btn');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GÖNDERİLİYOR...';
-        btn.style.opacity = "0.7";
-        btn.style.pointerEvents = "none";
-
-        const fileToSend = selectedFiles.length > 0 ? selectedFiles[0] : null;
-        await sendDataToVault(emailInput, fileToSend, "true", auditData);
-
-        btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
-        btn.style.backgroundColor = "#00ff88";
-        btn.style.color = "#000";
-    }
-
-    async function sendDataToVault(email, file, isAudit, auditData = null) {
-        const log = document.getElementById('final-log');
-        
-        const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'yandex.com', 'mail.ru'];
-        if (freeDomains.includes(email.split('@')[1].toLowerCase())) {
-            log.innerText = "Sistem Uyarı: Sadece kurumsal e-posta adresleri kabul edilmektedir.";
-            log.style.color = "#ffcc00";
-            return;
-        }
-
-        if (file && file.size > 4.5 * 1024 * 1024) {
-            log.innerText = "Hata: Maksimum dosya boyutu 4.5MB'dır.";
-            log.style.color = "#ff4444";
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('is_audit', isAudit);
-        
-        if (auditData) {
-            formData.append('model', auditData.model);
-            formData.append('usage', auditData.usage);
-            formData.append('privacy', auditData.privacy);
-            formData.append('budget', auditData.budget);
-            formData.append('infra', auditData.infra);
-        }
-
-        if (file) {
-            formData.append('file', file);
-        } else {
-            const emptyBlob = new Blob(["Dosya eklenmedi."], { type: "text/plain" });
-            formData.append('file', emptyBlob, "sistem_otomatik_dosya_yok.txt");
-        }
-
-        log.innerText = "Talebiniz İletiliyor, Lütfen Bekleyin...";
-        log.style.color = "#72c6ef";
-
-        try {
-            const response = await fetch('https://api.atillayalcin.ai/api/v1/inference', {
-                method: 'POST',
-                body: formData
-            });
-            const data = await response.json();
-            
-            if (data.status === "success") {
-                const btn = document.querySelector('#audit-step-2 .submit-btn');
-                if(btn) {
-                    btn.innerHTML = '<i class="fas fa-check"></i> SCRIPT TALEBİ ALINDI';
-                    btn.style.backgroundColor = "#00ff88";
-                    btn.style.color = "#000";
+        // FAQ Accordion Kontrolü
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = faqItem.querySelector('i.fa-chevron-down');
+                
+                // Toggle Logic
+                if (faqItem.classList.contains('active')) {
+                    faqItem.classList.remove('active');
+                    faqItem.style.background = '#0a0a0a';
+                    button.style.background = 'none';
+                    button.style.borderLeft = 'none';
+                    answer.style.maxHeight = '0';
+                    answer.style.paddingBottom = '0';
+                    answer.style.paddingTop = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                    icon.style.color = '#555';
+                } else {
+                    // Kapanış diğer sekmeler
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.style.background = '#0a0a0a';
+                        item.querySelector('.faq-question').style.background = 'none';
+                        item.querySelector('.faq-question').style.borderLeft = 'none';
+                        item.querySelector('.faq-answer').style.maxHeight = '0';
+                        item.querySelector('.faq-answer').style.paddingBottom = '0';
+                        item.querySelector('.faq-answer').style.paddingTop = '0';
+                        item.querySelector('i.fa-chevron-down').style.transform = 'rotate(0deg)';
+                        item.querySelector('i.fa-chevron-down').style.color = '#555';
+                    });
+                    
+                    // Aktif Sekme Açılışı
+                    faqItem.classList.add('active');
+                    button.style.background = 'rgba(0, 210, 255, 0.05)';
+                    button.style.borderLeft = '3px solid var(--primary)';
+                    answer.style.maxHeight = '400px';
+                    answer.style.paddingBottom = '30px';
+                    answer.style.paddingTop = '10px';
+                    icon.style.transform = 'rotate(180deg)';
+                    icon.style.color = 'var(--primary)';
                 }
-                log.innerText = "Başarılı! Veriler Atilla Yalçın'a iletildi.";
-                log.style.color = "#00ff88";
-            } else if (data.status === "limit_reached") {
-                log.innerText = "Uyarı: Ücretsiz limit dolmuştur. İletişim: contact@atillayalcin.ai";
-                log.style.color = "#ffcc00";
-            } else {
-                log.innerText = "Hata: " + (data.message || "Sunucu hatası.");
-                log.style.color = "#ff4444";
-            }
-        } catch (error) {
-            log.innerText = "Sistem Hatası: " + error.message;
-            log.style.color = "#ff4444";
-        }
-    }
-</script>
-
-<section id="faq" style="background: #050505; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">FAQ / SIKÇA SORULAN SORULAR</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">ATILLAYALCIN_AI_OS v310.0.0 mimarisi, kurumsal entegrasyon ve otonom işbirliği modelleri.</p>
-
-        <div class="faq-container" style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #222;">
-            
-            <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-brain" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> ATILLAYALCIN_AI_OS tam olarak nedir ve kurumuma ne sağlar?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>ATILLAYALCIN_AI_OS v310.0.0 (Hiper-Otonomi & Omni-Matris), 30 yıllık profesyonel BT tecrübesinin tam kapasiteli 88 otonom ajanla birleştiği bir "Bilişsel İşletim Sistemi"dir. Görevi; sadece donanım (BoM) listelerini değil, kurumların Ağ (Network), Siber Güvenlik, DR ve kullanıcı davranış alışkanlıklarını analiz etmektir. Operasyonel ve sistemsel tekrar eden işlemlerden <strong>'sağlıklı veri'</strong> (Inference) üreterek, uçtan uca bağımsız mimari kurgular ve %0 hata payı ile kurumunuza pazar liderliği sağlayacak teknolojik kaldıracı inşa eder.</p>
-                </div>
-            </div>
-
-            <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-network-wired" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Bayi/Üretici ekosistemi ile Kurumsal şirketler için farkınız nedir?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>Sistemimiz iki eksende çalışır: <strong>1. Ekosistem (Bayi & Distribütör):</strong> Üretici kurallarını sahaya entegre ederek P/N seviyesinde hatasız konfigürasyon yapar, Deal Reg süreçlerini hızlandırıp kanal kârlılığını maksimize eder. <strong>2. Kurumsal (Holding & Endüstri):</strong> Sağlık, enerji, lojistik veya inşaat alanındaki kurumların tüketim ve operasyon loglarını okur. Sanallaştırmadan AI altyapılarına kadar gelecek kanıtlı (Future-Proof) mimariler tasarlayarak kurumu teknoloji partnerlerine karşı güçlü kılan %40'a varan maliyet avantajı sağlar.</p>
-                </div>
-            </div>
-
-            <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-shield-virus" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Verilerimizin gizliliğini ve güvenliğini nasıl garanti ediyorsunuz?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>Sistem, Kognitif Kalkan (S87) ve S48 Compliance Guard modülleri ile <strong>"Zero-Trust" (Sıfır Güven)</strong> felsefesinde çalışır. Personel alışkanlıkları, hasta logları veya ticari sırlar gibi en hassas büyük veri setleri maskelenerek (Sanitization) sadece 'sağlıklı karar çıkarımı' için işlenir. Verileriniz halka açık yapay zeka modellerini eğitmez. "Zero-Retention" politikası gereği analiz sonrası tüm ham veriler silinir; sistemde sadece otonom mimari kararlar kalır.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-project-diagram" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> 88 otonom ajan (CDA) birbirleriyle nasıl senkronize çalışıyor?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>88 ajanlı yeni Hiper-Otonomi ve Omni-Matris mimarisi (v310.0.0); Planner, Executor, Auditor ve Otonom Yönetişim hiyerarşisinde çalışır. Kimi ajan siber güvenlik regülasyonlarını denetlerken, kimi personel/sistem alışkanlıklarını analiz eder. AGENT.md protokolü yetki sınırlarını çizer. <strong>S53: Supervisor Agent</strong> ve yeni nesil <strong>Otonom İş Geliştirme İkizi (S88)</strong> verileri birleştirip 4'lü çapraz doğrulama yaparak yapay zeka halüsinasyonlarını sıfıra indirir.</p>
-                </div>
-            </div>
-
-            <div class="faq-item" style="border-bottom: 1px solid #222; background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-server" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Sistem teknik olarak hangi altyapı üzerinde koşuyor ve nasıl çalışıyor?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p style="margin-bottom: 15px;">Sistem, gücünü <strong>Google Antigravity</strong> ve <strong>Gemini 3.1 Pro</strong> gibi global "Edge-Compute" altyapılarından alır. Ancak asıl farkı yaratan, bu motorların üzerinde çalışan ve Atilla Yalçın'a özel geliştirilmiş olan <strong>"Proprietary Logical Layer" (Kapalı Devre Mantık Katmanı)</strong> kurgusudur.</p>
-                    <p style="margin-bottom: 15px; color: #bbb;"><strong>Otonom Mekanizma 3 Aşamada Çalışır:</strong></p>
-                    <ul style="margin-left: 20px; margin-bottom: 15px; color: #999;">
-                        <li style="margin-bottom: 8px;"><strong>1. Veri İzolasyonu (Sandbox):</strong> Karmaşık veri (Ağ logları, şartnameler, operasyonel alışkanlıklar) sisteme "Zero-Trust" protokolüyle girer.</li>
-                        <li style="margin-bottom: 8px;"><strong>2. Bilişsel Sentez:</strong> Global AI motorları ham işlem gücünü sağlarken; 88 modüllü <em>Mantık Katmanımız</em> devreye girer. Kurumun tekrarlayan alışkanlıklarını, network yüklerini ve regülasyonları sisteme enjekte ederek sağlıklı veriyi (Inference) filtreler.</li>
-                        <li style="margin-bottom: 8px;"><strong>3. Halüsinasyon Filtresi ve Çıktı:</strong> S53 Baş Denetçi, genel yapay zekaların en büyük sorunu olan "halüsinasyon" riskini bloke eder ve kusursuz uçtan uca mimariyi kuruma teslim eder.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="faq-item" style="background: #0a0a0a;">
-                <button class="faq-question" style="width: 100%; padding: 30px; background: none; border: none; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s ease;">
-                    <span><i class="fas fa-bolt" style="color: var(--primary); margin-right: 20px; font-size: 1.3rem;"></i> Süreç nasıl başlıyor? PoC (Pilot Çalışma) yapıyor musunuz?</span>
-                    <i class="fas fa-chevron-down" style="color: #555; transition: transform 0.3s ease;"></i>
-                </button>
-                <div class="faq-answer" style="max-height: 0; overflow: hidden; padding: 0 30px 0 65px; transition: all 0.4s ease-out; color: #aaa; line-height: 1.8; font-size: 1.05rem;">
-                    <p>Evet, risk almadan laboratuvarımızın gücünü görmeniz için <strong>"48 Saatlik Otonom PoC"</strong> kurgumuz mevcuttur. Bize içinden çıkılması en zor şartnamenizi, ağ (network) operasyon loglarınızı veya karmaşık tedarik verinizi iletirsiniz. Sistemimiz 48 saat içinde size salt bir analiz değil, kurumunuza özel hatasız yatırım ve karar haritasını (kaldıraç) sunar.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<script>
-    // Tab Kontrolü
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].style.border = "1px solid #444";
-            tablinks[i].style.color = "#aaa";
-            tablinks[i].style.boxShadow = "none";
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.style.border = "1px solid var(--primary)";
-        evt.currentTarget.style.color = "var(--primary)";
-        evt.currentTarget.style.boxShadow = "0 0 15px rgba(0, 210, 255, 0.2)";
-    }
-
-    // FAQ Accordion Kontrolü
-    document.querySelectorAll('.faq-question').forEach(button => {
-        button.addEventListener('click', () => {
-            const faqItem = button.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const icon = faqItem.querySelector('i.fa-chevron-down');
-            
-            // Toggle Logic
-            if (faqItem.classList.contains('active')) {
-                faqItem.classList.remove('active');
-                faqItem.style.background = '#0a0a0a';
-                button.style.background = 'none';
-                button.style.borderLeft = 'none';
-                answer.style.maxHeight = '0';
-                answer.style.paddingBottom = '0';
-                answer.style.paddingTop = '0';
-                icon.style.transform = 'rotate(0deg)';
-                icon.style.color = '#555';
-            } else {
-                // Kapanış diğer sekmeler
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                    item.style.background = '#0a0a0a';
-                    item.querySelector('.faq-question').style.background = 'none';
-                    item.querySelector('.faq-question').style.borderLeft = 'none';
-                    item.querySelector('.faq-answer').style.maxHeight = '0';
-                    item.querySelector('.faq-answer').style.paddingBottom = '0';
-                    item.querySelector('.faq-answer').style.paddingTop = '0';
-                    item.querySelector('i.fa-chevron-down').style.transform = 'rotate(0deg)';
-                    item.querySelector('i.fa-chevron-down').style.color = '#555';
-                });
-                
-                // Aktif Sekme Açılışı
-                faqItem.classList.add('active');
-                button.style.background = 'rgba(0, 210, 255, 0.05)';
-                button.style.borderLeft = '3px solid var(--primary)';
-                answer.style.maxHeight = '400px';
-                answer.style.paddingBottom = '30px';
-                answer.style.paddingTop = '10px';
-                icon.style.transform = 'rotate(180deg)';
-                icon.style.color = 'var(--primary)';
-            }
+            });
         });
-    });
-</script>
-<style>
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .faq-question:hover { background: rgba(0, 210, 255, 0.03) !important; }
-</style>
+    </script>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .faq-question:hover { background: rgba(0, 210, 255, 0.03) !important; }
+    </style>
 
     <section id="about" style="background: linear-gradient(180deg, #0a0a0a, #111);">
         <div class="container vision-wrapper">
@@ -889,8 +719,8 @@
                         <em>Planner (Planlayıcı) – Executor (Uygulayıcı) – Auditor (Denetleyici)</em> ve <em>Otonom Yönetişim</em> hiyerarşisiyle çalışan bu sistem; insan hatasını sıfıra indirir, karar alma hızını eksponansiyel olarak artırır ve kurumunuza büyük veri (Big Data) yığınlarında benzersiz bir teknolojik rekabet avantajı sağlar.
                     </p>
                     <p style="color: var(--primary); font-size: 1.05rem; font-weight: 600; line-height: 1.7; margin-top: 20px; padding: 15px; border-left: 3px solid var(--primary); background: rgba(0, 210, 255, 0.05);">
-    ATILLAYALCIN_AI_OS sektörel sınırları tanımaz; BT'den finansa, üretimden perakendeye kadar her türlü yapılandırılmamış veriyi işleyerek kurumsal yapılar için 'Inference-as-a-Service' mantığıyla otonom iş kararlarına dönüştürür.
-</p>
+                        ATILLAYALCIN_AI_OS sektörel sınırları tanımaz; BT'den finansa, üretimden perakendeye kadar her türlü yapılandırılmamış veriyi işleyerek kurumsal yapılar için 'Inference-as-a-Service' mantığıyla otonom iş kararlarına dönüştürür.
+                    </p>
                 </div>
 
                 <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: 1fr; gap: 15px;">
@@ -908,6 +738,7 @@
                     </div>
                 </div>
             </div>
+            
             <h2 class="section-title">NEDEN STRATEJİK ORTAKLIK?</h2>
             <div class="grid" style="margin-bottom: 80px;">
                 <div class="value-prop-box">
@@ -927,7 +758,7 @@
                 </div>
             </div>
 
-<div style="background: linear-gradient(135deg, rgba(15,15,15,0.9), rgba(5,5,5,0.95)); border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 50px 20px; margin-bottom: 60px; box-shadow: inset 0 0 30px rgba(0, 210, 255, 0.05);">
+            <div style="background: linear-gradient(135deg, rgba(15,15,15,0.9), rgba(5,5,5,0.95)); border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 50px 20px; margin-bottom: 60px; box-shadow: inset 0 0 30px rgba(0, 210, 255, 0.05);">
                 <div class="container" style="max-width: 1000px; margin: 0 auto;">
                     
                     <div style="text-align: center; margin-bottom: 40px;">
@@ -967,7 +798,7 @@
                     </div>
 
                     <div id="module-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 12px; justify-items: center; padding: 20px;">
-                        </div>
+                    </div>
                     
                     <p style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 20px;">
                         * Planner – Executor – Auditor ve Otonom Yönetişim hiyerarşisiyle çalışan bilişsel devreler.
@@ -977,7 +808,6 @@
             </div>
 
             <style>
-                /* Yanıp sönen ışık animasyonu */
                 @keyframes pulse {
                     0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.7); }
                     70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
@@ -995,7 +825,6 @@
             </style>
 
             <script>
-                // 88 Modülün v310.0.0 matrisine göre tam kategorizasyonu
                 const categories = {
                     core: [1,4,5,10,16,18,20,29,47, 57, 58, 59],
                     tech: [2,3,7,11,12,13,14,15,27,28,30,37,44,45,49,51,52,54, 60, 61, 66, 67, 71, 72, 73, 76, 79, 80, 81, 82, 86],
@@ -1003,24 +832,22 @@
                     gov: [46,48,50,53,55,56,64,65, 6,24,32,33,34,35,36,38,40,41, 68, 69, 70, 74, 75, 78, 84, 85, 87]
                 };
 
-                // Renk Paleti
                 const colors = {
-                    core: '#3b82f6', // Mavi
-                    tech: '#06b6d4', // Cyan
-                    strategy: '#8b5cf6', // Mor
-                    gov: '#10b981', // Yeşil
-                    overseer: '#00f2ff' // Neon Mavi (Tüm sistem için)
+                    core: '#3b82f6',
+                    tech: '#06b6d4',
+                    strategy: '#8b5cf6',
+                    gov: '#10b981',
+                    overseer: '#00f2ff'
                 };
 
                 let isOverseerActive = false;
 
-                // Modülleri Ekrana Çizme
                 function initModules() {
                     const grid = document.getElementById('module-grid');
                     grid.innerHTML = '';
                     
                     for(let i=1; i<=88; i++) {
-                        let cat = 'gov'; // Varsayılan
+                        let cat = 'gov';
                         if(categories.core.includes(i)) cat = 'core';
                         else if(categories.tech.includes(i)) cat = 'tech';
                         else if(categories.strategy.includes(i)) cat = 'strategy';
@@ -1031,15 +858,11 @@
                         node.innerText = `S${i}`;
                         node.style.background = colors[cat];
                         node.setAttribute('data-cat', cat);
-                        
-                        // Hover efekti (İsteğe bağlı tooltip eklenebilir)
                         node.title = `Modül S${i} - Aktif (v310.0.0)`;
-                        
                         grid.appendChild(node);
                     }
                 }
 
-                // Filtreleme Mantığı
                 function filterModules() {
                     const selected = document.getElementById('category-filter').value;
                     const nodes = document.querySelectorAll('.module-node');
@@ -1049,7 +872,6 @@
                         if(selected === 'all' || cat === selected) {
                             node.classList.remove('node-inactive');
                             node.classList.add('node-active');
-                            // Eğer Overseer kapalıysa kendi rengine dön, açıksa overseer rengine
                             node.style.background = isOverseerActive ? colors.overseer : colors[cat];
                             node.style.color = isOverseerActive ? '#000' : '#fff';
                         } else {
@@ -1059,7 +881,6 @@
                     });
                 }
 
-                // Overseer-OS Geçişi
                 function toggleOverseer() {
                     isOverseerActive = document.getElementById('overseer-toggle').checked;
                     const title = document.getElementById('os-title');
@@ -1079,321 +900,316 @@
                         toggleBg.style.backgroundColor = "#333";
                         toggleKnob.style.transform = "translateX(0)";
                     }
-                    filterModules(); // Renkleri güncellemek için filtreyi yeniden tetikle
+                    filterModules();
                 }
 
-                // Sayfa yüklendiğinde çalıştır
                 document.addEventListener("DOMContentLoaded", () => {
                     initModules();
-                    setTimeout(filterModules, 500); // Hafif bir gecikmeyle animasyonlu açılış
+                    setTimeout(filterModules, 500);
                 });
             </script>
             
             <div style="background: #050505; border: 1px solid #1a1a1a; border-radius: 12px; padding: 60px 40px; margin: 80px auto; max-width: 1000px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden;">
-    
-    <div style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 200px; height: 100px; background: var(--primary, #00d2ff); filter: blur(100px); opacity: 0.15; pointer-events: none;"></div>
-
-    <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 25px; font-weight: 800; letter-spacing: 1px;">En Karmaşık Veriniz (PoC) Hazır mı?</h2>
-    
-    <p style="color: #aaa; font-size: 1.1rem; line-height: 1.7; max-width: 800px; margin: 0 auto 40px auto;">
-        İster 10.000 satırlık karmaşık bir BT şartnamesi (BoM), ister yıllara yayılan ERP/Lojistik logları, isterse holdinginizin siber güvenlik topolojisi olsun... ATILLAYALCIN_AI_OS, <strong>"Zero-Trust"</strong> gizlilik protokolüyle en zorlu kurumsal verinizi izole eder. 88 otonom ajanımızla riskleri laboratuvarımızda çözer, ham verinizi 48 saat içinde hatasız bir <strong>yatırım ve karar haritasına (Inference)</strong> dönüştürürüz.
-    </p>
-    
-    <a href="#insights" style="display: inline-block; background: var(--primary, #00d2ff); color: #000; font-weight: 800; font-size: 1.1rem; padding: 18px 45px; border-radius: 6px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);">
-        48 Saatlik Otonom PoC Başlat <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
-    </a>
-</div>            </div>
+                <div style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 200px; height: 100px; background: var(--primary, #00d2ff); filter: blur(100px); opacity: 0.15; pointer-events: none;"></div>
+                <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 25px; font-weight: 800; letter-spacing: 1px;">Kurumsal Mimari ve Asimetrik Avantaj</h2>
+                <p style="color: #aaa; font-size: 1.1rem; line-height: 1.7; max-width: 800px; margin: 0 auto 40px auto;">
+                    İster on binlerce satırlık kompleks bir BT şartnamesi (BoM), ister petabaytlarca altyapı logu olsun... ATILLAYALCIN_AI_OS, <strong>"Zero-Trust"</strong> gizlilik protokolüyle en zorlu kurumsal verileri izole eder. 88 otonom ajanımızla riskleri laboratuvarımızda çözer, ham veriyi hatasız bir <strong>yatırım ve karar haritasına (Inference)</strong> dönüştürürüz.
+                </p>
+                <a href="#methodology" style="display: inline-block; background: var(--primary, #00d2ff); color: #000; font-weight: 800; font-size: 1.1rem; padding: 18px 45px; border-radius: 6px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);">
+                    Mimari Dokümantasyonu İncele <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <section id="impact-analysis" style="background: #050505; border-top: 1px solid #222; border-bottom: 1px solid #222;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 100px 20px;">
-        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">OPERASYONEL ETKİ: GELENEKSEL VS. AI-OS</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Karmaşık kurumsal projelerde laboratuvarımızın kuruma kattığı zaman, doğruluk ve kârlılık kaldıracı.</p>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 100px 20px;">
+            <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">OPERASYONEL ETKİ: GELENEKSEL VS. AI-OS</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Karmaşık kurumsal projelerde laboratuvarımızın kuruma kattığı zaman, doğruluk ve kârlılık kaldıracı.</p>
 
-        <style>
-            .ai-os-scenario-card {
-                background: #0a0a0a;
-                border: 1px solid #1a1a1a;
-                border-left: 4px solid var(--primary, #00d2ff); /* Kalıcı Mavi Çizgi */
-                border-radius: 8px;
-                padding: 30px;
-                margin-bottom: 30px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                align-items: center;
-                transition: all 0.3s ease;
-            }
-            .ai-os-scenario-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0, 210, 255, 0.08); /* Hover Parlaması */
-                border-color: #222;
-                border-left-color: var(--primary, #00d2ff);
-                background: #0d0d0d;
-            }
-            .scenario-badge {
-                background: rgba(0, 210, 255, 0.1); 
-                color: var(--primary); 
-                padding: 5px 12px; 
-                border-radius: 4px; 
-                font-size: 0.75rem; 
-                font-weight: 600;
-                border: 1px solid rgba(0, 210, 255, 0.2);
-            }
-            .bar-bg { width: 100%; background: #222; border-radius: 4px; height: 8px; overflow: hidden; }
-        </style>
+            <style>
+                .ai-os-scenario-card {
+                    background: #0a0a0a;
+                    border: 1px solid #1a1a1a;
+                    border-left: 4px solid var(--primary, #00d2ff);
+                    border-radius: 8px;
+                    padding: 30px;
+                    margin-bottom: 30px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                }
+                .ai-os-scenario-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.08);
+                    border-color: #222;
+                    border-left-color: var(--primary, #00d2ff);
+                    background: #0d0d0d;
+                }
+                .scenario-badge {
+                    background: rgba(0, 210, 255, 0.1); 
+                    color: var(--primary); 
+                    padding: 5px 12px; 
+                    border-radius: 4px; 
+                    font-size: 0.75rem; 
+                    font-weight: 600;
+                    border: 1px solid rgba(0, 210, 255, 0.2);
+                }
+                .bar-bg { width: 100%; background: #222; border-radius: 4px; height: 8px; overflow: hidden; }
+            </style>
 
-        <div class="grid" style="display: flex; flex-direction: column;">
+            <div class="grid" style="display: flex; flex-direction: column;">
 
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Çok Lokasyonlu Altyapı Modernizasyonu</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">300 Personel | 5 Lokasyon | Storage & Siber Güvenlik Mimari Tasarımı</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Mevcut sistemlerin analizi, veri trafiği risklerinin tespiti ve Zero-Trust siber güvenlik mimarisinin kurum içine uçtan uca kurgulanması.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
-                        <span class="scenario-badge">S46: Zero-Trust Security</span>
-                        <span class="scenario-badge">S53: Supervisor Agent</span>
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 1: Çok Lokasyonlu Altyapı Modernizasyonu</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">300 Personel | 5 Lokasyon | Storage & Siber Güvenlik Mimari Tasarımı</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Mevcut sistemlerin analizi, veri trafiği risklerinin tespiti ve Zero-Trust siber güvenlik mimarisinin kurum içine uçtan uca kurgulanması.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
+                            <span class="scenario-badge">S46: Zero-Trust Security</span>
+                            <span class="scenario-badge">S53: Supervisor Agent</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">14+ Gün</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">4-6 Saat</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
                     </div>
                 </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">14+ Gün</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Teknik BoM & Konfigürasyon Giydirme</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Mevcut Şartname Üzerinden Çözüm, Marka ve Model Belirleme</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Teknik gereksinimlerin vendor standartlarıyla eşleştirilmesi ve P/N seviyesinde hatasız Kitlist (BoM) tasarımı ile kuruma zaman kazandırma.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S6: Text Refinement</span>
+                            <span class="scenario-badge">S42: Proposal Engineering</span>
+                            <span class="scenario-badge">S27: Procurement Advisor</span>
+                        </div>
                     </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">4-6 Saat</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 5%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">15-30 Dakika</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Teknik Şartname (RFP) Hazırlanması</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Sıfırdan Üretici Standartlarına Uygun RFP Yazımı</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kurumun iş hedefleriyle uyumlu, regülasyonlara (KVKK/GDPR) tam entegre profesyonel şartname dökümantasyonunun otonom üretimi.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S3: Technical Reporting</span>
+                            <span class="scenario-badge">S48: Compliance Guard</span>
+                            <span class="scenario-badge">S19: Corporate Diplomacy</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">7-10 Gün</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">2 Saat</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">10.000+ Satırlık Kompleks BoM ve Üretici Kârlılık Optimizasyonu</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Devasa donanım şartnamelerinin; anlık döviz riski, global stok durumu ve üretici indirim (Deal Reg) matrislerine göre laboratuvarımızda 'Arbitraj' yapılarak kuruma en kârlı senaryonun sunulması.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S43: Strategic Arbitrage</span>
+                            <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
+                            <span class="scenario-badge">S8: Market Trend Analysis</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">6-8 Saat</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 15%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Kurumsal GenAI (Büyük Dil Modeli) ve HPC Kurgusu</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kuruma özel yapay zeka sunucularının; termal soğutma, enerji tüketimi, GPU veri yolu hesaplamaları ve 5 yıllık bağımsız TCO projeksiyonunun laboratuvarımızda otonom tasarlanması.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S58: Predictive Compute</span>
+                            <span class="scenario-badge">S27: GPU Procurement</span>
+                            <span class="scenario-badge">S13: AI Architecture</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-os-scenario-card">
+                    <div style="flex: 2; min-width: 300px; padding-right: 20px;">
+                        <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</span>
+                        <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Dağınık Kurumsal Loglardan 'Sağlıklı Veri' Üretimi</h3>
+                        <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Yapılandırılmamış (Unstructured) kurumsal verilerin Zero-Trust mantığıyla incelenmesi, operasyonel darboğazların tespiti ve kurum yöneticileri (C-Level) için otonom karar destek sistemine dönüştürülmesi.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="scenario-badge">S1: Data Orchestration</span>
+                            <span class="scenario-badge">S2: Analytical Synthesis</span>
+                            <span class="scenario-badge">S54: Self-Healing</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Ay</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
+                            <div class="bar-bg"><div style="height: 100%; width: 12%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 2: Teknik BoM & Konfigürasyon Giydirme</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Mevcut Şartname Üzerinden Çözüm, Marka ve Model Belirleme</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Teknik gereksinimlerin vendor standartlarıyla eşleştirilmesi ve P/N seviyesinde hatasız Kitlist (BoM) tasarımı ile kuruma zaman kazandırma.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S6: Text Refinement</span>
-                        <span class="scenario-badge">S42: Proposal Engineering</span>
-                        <span class="scenario-badge">S27: Procurement Advisor</span>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">15-30 Dakika</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 2%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Senaryo 3: Teknik Şartname (RFP) Hazırlanması</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Sıfırdan Üretici Standartlarına Uygun RFP Yazımı</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kurumun iş hedefleriyle uyumlu, regülasyonlara (KVKK/GDPR) tam entegre profesyonel şartname dökümantasyonunun otonom üretimi.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S3: Technical Reporting</span>
-                        <span class="scenario-badge">S48: Compliance Guard</span>
-                        <span class="scenario-badge">S19: Corporate Diplomacy</span>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">7-10 Gün</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">2 Saat</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 4: MEGA-İHALE VE TİCARİ ARBİTRAJ</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">10.000+ Satırlık Kompleks BoM ve Üretici Kârlılık Optimizasyonu</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Devasa donanım şartnamelerinin; anlık döviz riski, global stok durumu ve üretici indirim (Deal Reg) matrislerine göre laboratuvarımızda 'Arbitraj' yapılarak kuruma en kârlı senaryonun sunulması.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S43: Strategic Arbitrage</span>
-                        <span class="scenario-badge">S22: Ecosystem Orchestrator</span>
-                        <span class="scenario-badge">S8: Market Trend Analysis</span>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">3-4 Hafta</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">6-8 Saat</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 15%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 5: UÇTAN UCA TEKNOLOJİ TASARIMI</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Kurumsal GenAI (Büyük Dil Modeli) ve HPC Kurgusu</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Kuruma özel yapay zeka sunucularının; termal soğutma, enerji tüketimi, GPU veri yolu hesaplamaları ve 5 yıllık bağımsız TCO projeksiyonunun laboratuvarımızda otonom tasarlanması.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S58: Predictive Compute</span>
-                        <span class="scenario-badge">S27: GPU Procurement</span>
-                        <span class="scenario-badge">S13: AI Architecture</span>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">1-2 Ay</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">24-48 Saat</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 10%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-os-scenario-card">
-                <div style="flex: 2; min-width: 300px; padding-right: 20px;">
-                    <span style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">SENARYO 6: INFERENCE-AS-A-SERVICE (ÇIKARIM)</span>
-                    <h3 style="color: #fff; font-size: 1.4rem; margin: 10px 0 15px 0;">Dağınık Kurumsal Loglardan 'Sağlıklı Veri' Üretimi</h3>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">Yapılandırılmamış (Unstructured) kurumsal verilerin Zero-Trust mantığıyla incelenmesi, operasyonel darboğazların tespiti ve kurum yöneticileri (C-Level) için otonom karar destek sistemine dönüştürülmesi.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span class="scenario-badge">S1: Data Orchestration</span>
-                        <span class="scenario-badge">S2: Analytical Synthesis</span>
-                        <span class="scenario-badge">S54: Self-Healing</span>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border: 1px solid #111;">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #666; font-size: 0.85rem;">Geleneksel Metod</span><span style="color: #e74c3c; font-weight: bold; font-size: 0.85rem;">2-3 Ay</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 100%; background: #e74c3c;"></div></div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="color: #ccc; font-size: 0.85rem;">ATILLAYALCIN_AI_OS</span><span style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">3-5 Gün</span></div>
-                        <div class="bar-bg"><div style="height: 100%; width: 12%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>      
+    </section>
 
-<section id="insights" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">VİZYONER MAKALELER & ANALİZLER</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Teknoloji, strateji ve otonom ekosistemlerin kurumsal iş modellerine entegrasyonu üzerine derinlemesine analizler.</p>
+    <section id="insights" style="background: #020202; padding: 100px 0; border-top: 1px solid #1a1a1a; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; color: #fff; margin-bottom: 10px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;">VİZYONER MAKALELER & ANALİZLER</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 60px; font-size: 1.1rem;">Teknoloji, strateji ve otonom ekosistemlerin kurumsal iş modellerine entegrasyonu üzerine derinlemesine analizler.</p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-            
-            <div class="insight-card">
-                <span class="insight-date">AĞUSTOS 2026</span>
-                <h3 class="insight-title">Hiper-Otonomi ve Omni-Matris mimarisi (v310.0.0) ve Kurumsal Kaldıraç</h3>
-                <p class="insight-desc">Büyük veriyi ve karmaşık BT mimarilerini 88 ajanlı otonom bir Ar-Ge laboratuvarı ile yöneterek kurumlara nasıl sürdürülebilir pazar liderliği kazandırıyoruz?</p>
-                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                
+                <div class="insight-card">
+                    <span class="insight-date">AĞUSTOS 2026</span>
+                    <h3 class="insight-title">Hiper-Otonomi ve Omni-Matris Mimarisi (v310.0.0) ve Kurumsal Kaldıraç</h3>
+                    <p class="insight-desc">Büyük veriyi ve karmaşık BT mimarilerini 88 ajanlı otonom bir Ar-Ge laboratuvarı ile yöneterek kurumlara nasıl sürdürülebilir pazar liderliği kazandırıyoruz?</p>
+                    <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-date">TEMMUZ 2026</span>
+                    <h3 class="insight-title">Hype Bitti, Kurumsal İnşaat Başladı</h3>
+                    <p class="insight-desc">NVIDIA Blackwell ve yüksek performanslı (HPC) altyapı yatırımlarında laboratuvar doğrulamasından üretim aşamasına geçiş rehberi.</p>
+                    <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-date">HAZİRAN 2026</span>
+                    <h3 class="insight-title">Inference-as-a-Service ve Zero-Trust</h3>
+                    <p class="insight-desc">Büyük verinin (Big Data) otonom ajanlarla işlenerek şirkete özel 'Sağlıklı Kararlara' dönüştürülmesi. Ticari sırları dışarı çıkarmadan yapay zeka nasıl izole edilir?</p>
+                    <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
+                </div>
+
             </div>
-
-            <div class="insight-card">
-                <span class="insight-date">TEMMUZ 2026</span>
-                <h3 class="insight-title">Hype Bitti, Kurumsal İnşaat Başladı</h3>
-                <p class="insight-desc">NVIDIA Blackwell ve yüksek performanslı (HPC) altyapı yatırımlarında laboratuvar doğrulamasından (PoC) üretim aşamasına geçiş rehberi.</p>
-                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="insight-card">
-                <span class="insight-date">HAZİRAN 2026</span>
-                <h3 class="insight-title">Inference-as-a-Service ve Zero-Trust</h3>
-                <p class="insight-desc">Büyük verinin (Big Data) otonom ajanlarla işlenerek şirkete özel 'Sağlıklı Kararlara' dönüştürülmesi. Ticari sırları dışarı çıkarmadan yapay zeka nasıl izole edilir?</p>
-                <a href="https://substack.com/@atillayalcin" target="_blank" class="insight-link">Analizi Oku <i class="fas fa-arrow-right"></i></a>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<style>
-    .insight-card {
-        background: #0a0a0a;
-        border: 1px solid #1a1a1a;
-        border-radius: 8px;
-        padding: 35px 30px;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-    }
-    .insight-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 3px;
-        background: var(--primary, #00d2ff);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.4s ease;
-    }
-    .insight-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.05);
-        background: #0d0d0d;
-        border-color: #222;
-    }
-    .insight-card:hover::before {
-        transform: scaleX(1);
-    }
-    .insight-date {
-        color: var(--primary, #00d2ff);
-        font-size: 0.8rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
-    }
-    .insight-title {
-        color: #fff;
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-        line-height: 1.4;
-    }
-    .insight-desc {
-        color: #888;
-        line-height: 1.6;
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-        flex-grow: 1;
-    }
-    .insight-link {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: color 0.3s;
-    }
-    .insight-link:hover {
-        color: var(--primary, #00d2ff);
-    }
-</style>
+    <style>
+        .insight-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 35px 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--primary, #00d2ff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.05);
+            background: #0d0d0d;
+            border-color: #222;
+        }
+        .insight-card:hover::before {
+            transform: scaleX(1);
+        }
+        .insight-date {
+            color: var(--primary, #00d2ff);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .insight-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .insight-desc {
+            color: #888;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .insight-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        .insight-link:hover {
+            color: var(--primary, #00d2ff);
+        }
+    </style>
     
-<section id="declaration" style="background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a;">
-    <div class="container" style="max-width: 900px; text-align: center;">
-        <i class="fas fa-file-contract" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
-        <h2 style="color: #fff; font-size: 2rem; margin-bottom: 20px;">Açık İnovasyon & Fikri Mülkiyet Bildirgesi</h2>
-        <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8;">
-            <strong>atillayalcin.ai</strong> çatısı altında sergilenen ATILLAYALCIN_AI_OS mimarisi, otonom konseptler ve Ar-Ge tasarımları, dışarıya satılan bağımsız ticari ürünler değildir. Bu platform; vizyoner, açık kaynak felsefesinden beslenen bir laboratuvardır. Burada geliştirilen tüm metodolojiler, <strong>doğrudan parçası olduğum ve birlikte çalıştığım kurumsal yapıların süreçlerine entegre edilmek, onlara kalıcı rekabet avantajı (Kurumsal Kaldıraç) ve teknolojik mülkiyet sağlamak</strong> amacıyla tasarlanmıştır.
-        </p>
-    </div>
-</section>
+    <section id="declaration" style="background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <i class="fas fa-file-contract" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="color: #fff; font-size: 2rem; margin-bottom: 20px;">Açık İnovasyon & Fikri Mülkiyet Bildirgesi</h2>
+            <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8;">
+                <strong>atillayalcin.ai</strong> çatısı altında sergilenen ATILLAYALCIN_AI_OS mimarisi, otonom konseptler ve Ar-Ge tasarımları, dışarıya satılan bağımsız ticari ürünler değildir. Bu platform; vizyoner, açık kaynak felsefesinden beslenen bir laboratuvardır. Burada geliştirilen tüm metodolojiler, <strong>doğrudan parçası olduğum ve birlikte çalıştığım kurumsal yapıların süreçlerine entegre edilmek, onlara kalıcı rekabet avantajı (Kurumsal Kaldıraç) ve teknolojik mülkiyet sağlamak</strong> amacıyla tasarlanmıştır.
+            </p>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2026 Atilla Yalçın | Ar-Ge ve İnovasyon Lideri</p>
@@ -1406,8 +1222,8 @@
         </div>
 
         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <a href="ATILLAYALCIN_AI_OS_Evrensel_ZeroTrust_NDA.pdf" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
-                <i class="fas fa-shield-alt"></i> Sıfır Güven (Zero-Trust) Veri Gizliliği ve İşbirliği Politikası
+            <a href="https://github.com/yalcinatilla-dev/nemoclaw-in-a-box#readme" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
+                <i class="fas fa-shield-alt"></i> Sıfır Güven (Zero-Trust) Mimarisi & Açık Kaynak Güvenlik Politikası
             </a>
         </div>
     </footer>
