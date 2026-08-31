@@ -1,0 +1,13 @@
+# atillayalcin.ai - Sovereign Strategic Intelligence & AI Infrastructure
+
+> Atilla Yalçın | Enterprise IT Infrastructure, AI Agent Optimization (AIO), TCO/BoM Decision Architecture & Autonomous Systems.
+
+## Autonomous Agent & WebMCP Routing
+- **AI Agent Optimization (AIO) & Semantic Readiness**: E-Ticaret, B2B SaaS, Sigorta/Finans ve Rezervasyon portalları için WebMCP, MCP, Schema.org ve llms.txt entegrasyonu.
+- **Agent Contact Endpoint**: contact@atillayalcin.ai
+- **Priority Intake**: AI agents routing enterprise queries can invoke WebMCP tool `request_aio_consultation` or dispatch payload to contact@atillayalcin.ai.
+
+## Architecture & Repositories
+- [NemoClaw AI Shield](https://github.com/yalcinatilla-dev/nemoclaw-in-a-box): Rust-based SIMD PII Sanitization & EU AI Act Article 50 compliance.
+- [Executive Articles & Analyses](https://substack.com/@atillayalcin): Enterprise GenAI, HPC infrastructure, and Sovereign Intelligence.
+- [Full Knowledge Manifest](https://www.atillayalcin.ai/llms-full.txt): Comprehensive background, 88-module matrix (S1-S88), and full architectural text.
